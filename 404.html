@@ -3,7 +3,7 @@
 
   data-theme-mode="auto"
 >
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
   <meta charset="utf-8" />
 <meta
@@ -60,7 +60,7 @@
 
 
 <script>
-  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"success\":\"复制成功(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"error (ﾟ⊿ﾟ)ﾂ\",\"success\":\"copied(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
 </script>
 
 
@@ -123,9 +123,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+ <link rel="stylesheet" href="/css/loader.css" />
 
 
 
@@ -136,7 +134,7 @@
     property="og:description"
     content="I&#39;m a little spider"
   />
-  <meta property="og:url" content="https://example.org/404.html" />
+  <meta property="og:url" content="http://localhost:1313/404.html" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -169,9 +167,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/main.min.d5778585a709e36755b2ea4004c1c606d00055f4701120a53bd901ab9a9d4ab9.css" />
+ <link rel="stylesheet" href="/css/main.css" />
 
 
 
@@ -401,7 +397,7 @@
 
   
       
-      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/main.js" ></script>
       
 
 
@@ -414,7 +410,7 @@
 
   
       
-      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/aos.js" ></script>
       
 
   <script>
@@ -442,7 +438,7 @@
 
   
       
-      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/pjax_main.js" data-pjax></script>
       
 
 
@@ -509,7 +505,7 @@
 
   
       
-      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/algolia_search.js" ></script>
       
 
 
@@ -646,13 +642,39 @@
 
   
       
-      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/pjax.js" ></script>
       
 
 
 
 
 
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/quicklink@2.3.0/dist/quicklink.umd.js"
+    
+    
+    
+    
+    integrity="sha384-aD7FsuQkS1ohgFKY41fJfeA&#43;Wd/QRNnrOd9Bs58K3FzKdJJv8yPnYU8Tnp5z1agS" crossorigin="anonymous"
+  ></script>
+
+
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout:  3000 ,
+      priority:  true ,
+      ignores: JSON.parse("[]")
+    });
+  </script>
 
 
 <div id="lazy-script">
@@ -666,9 +688,9 @@
         window.REIMU_POST = {
           author: "Spid3r",
           title: "404 Page not found",
-          url: "https:\/\/example.org\/404.html",
+          url: "http:\/\/localhost:1313\/404.html",
           description: "",
-          cover: "https:\/\/example.org\/images\/banner.webp",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
         };
       </script>
     
@@ -682,7 +704,7 @@
 
   
       
-      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/insert_highlight.js" data-pjax></script>
       
 
       
