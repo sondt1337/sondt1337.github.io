@@ -3,7 +3,7 @@
 
   data-theme-mode="auto"
 >
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
   <meta charset="utf-8" />
 <meta
@@ -135,9 +135,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+ <link rel="stylesheet" href="/css/loader.css" />
 
 
 
@@ -148,7 +146,7 @@
     property="og:description"
     content="I&#39;m a little spider"
   />
-  <meta property="og:url" content="https://example.org/404.html" />
+  <meta property="og:url" content="http://localhost:1313/404.html" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -181,9 +179,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/main.min.4c46cad801ebed4972ba1c633af271a0a6ab44e89466e28aa0e84f9e94018a22.css" />
+ <link rel="stylesheet" href="/css/main.css" />
 
 
 
@@ -245,6 +241,13 @@
 
 
 
+
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
+
+
+
   
 </head>
 <body>
@@ -256,44 +259,36 @@
   <nav id="main-nav">
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe632;
           
         </div>
         <a class="main-nav-link" href="/">Home</a>
       </span>
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe604;
           
         </div>
         <a class="main-nav-link" href="/archives">Archives</a>
       </span>
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe628;
           
         </div>
         <a class="main-nav-link" href="/about">About</a>
       </span>
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe621;
           
         </div>
         <a class="main-nav-link" href="/achievements">Achievements</a>
@@ -313,9 +308,18 @@
     
       <picture>
         
+          
+            <source media="(max-width: 479px)" srcset="/images/banner.webp">
+          
+            <source media="(max-width: 799px)" srcset="/images/banner.webp">
+          
+            <source media="(min-width: 800px)" srcset="/images/banner.webp">
+          
+          <img fetchpriority="high" src="/images/banner.webp" alt="">
+        
       </picture>
       
-        <img fetchpriority="high" src="/images/banner.webp" alt="">
+        <img src="" alt="" style="visibility: hidden;">
       
     
   
@@ -406,7 +410,7 @@
 
   
       
-      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/main.js" ></script>
       
 
 
@@ -419,7 +423,7 @@
 
   
       
-      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/aos.js" ></script>
       
 
   <script>
@@ -447,7 +451,7 @@
 
   
       
-      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/pjax_main.js" data-pjax></script>
       
 
 
@@ -514,7 +518,7 @@
 
   
       
-      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/algolia_search.js" ></script>
       
 
 
@@ -651,39 +655,13 @@
 
   
       
-      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/pjax.js" ></script>
       
 
 
 
 
 
-
-  
-
-  
-  
-  
-  
-  
-  
-  <script
-    src="https://npm.webcache.cn/quicklink@2.3.0/dist/quicklink.umd.js"
-    
-    
-    
-    
-    integrity="sha384-aD7FsuQkS1ohgFKY41fJfeA&#43;Wd/QRNnrOd9Bs58K3FzKdJJv8yPnYU8Tnp5z1agS" crossorigin="anonymous"
-  ></script>
-
-
-  <script data-pjax>
-    window.quicklink?.listen({
-      timeout:  3000 ,
-      priority:  true ,
-      ignores: JSON.parse("[]")
-    });
-  </script>
 
 
 <div id="lazy-script">
@@ -697,9 +675,9 @@
         window.REIMU_POST = {
           author: "Spid3r",
           title: "404 Page not found",
-          url: "https:\/\/example.org\/404.html",
+          url: "http:\/\/localhost:1313\/404.html",
           description: "",
-          cover: "https:\/\/example.org\/images\/banner.webp",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
         };
       </script>
     
@@ -713,7 +691,7 @@
 
   
       
-      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/insert_highlight.js" data-pjax></script>
       
 
       
@@ -797,8 +775,8 @@
 
 
   
-       
-         
+      
+        
       
 
   
@@ -809,10 +787,8 @@
 
   
       
-      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/service_worker.js" ></script>
       
-
-
 
 
 
@@ -826,16 +802,35 @@
   
   
   <script
-    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
     
     
     
     
-    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
   ></script>
 
 
   
+    <script>
+      const ap = new APlayer({
+          theme: "var(--color-link)",
+          container: document.getElementById('aplayer'),
+          audio: JSON.parse("[{\"artist\":\"Miki Matsubara\",\"cover\":\"/images/song_covers/Mayonaka_no_Door_Stay_With_Me.jpg\",\"lrc\":\"/songs/Mayonaka_no_Door_Stay_With_Me.lrc\",\"name\":\"Mayonaka no Door / Stay With Me\",\"url\":\"/songs/Mayonaka_no_Door_Stay_With_Me.mp3\"}]") || [],
+          fixed:  null  || false,
+          autoplay:  false  || false,
+          loop: 'all' || 'all',
+          order: '' || 'list',
+          preload: '' || 'auto',
+          volume:  null  || 0.7,
+          mutex:  null  || true,
+          listFolded:  false  || false,
+          lrcType:  3  || 0,
+      });
+    </script>
+  
+
+
 
 
 

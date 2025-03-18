@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Adventures of Spid3r</title>
-    <link>https://example.org/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Adventures of Spid3r</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 17 Mar 2025 20:12:52 +0800</lastBuildDate>
-    <atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://example.org/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 17 Mar 2025 20:12:52 +0800</pubDate>
-      <guid>https://example.org/about/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://example.org/images/spid3r.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-name-is-spid3r&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-name-is-spid3r&#34;&gt;&lt;/a&gt;&#xD;&#xA;My name is Spid3r&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Hey, I&amp;rsquo;m &lt;strong&gt;ZxTS&lt;/strong&gt;, also known by the nickname &lt;strong&gt;Spid3r&lt;/strong&gt;. I’m studying at &lt;strong&gt;SOICT - HUST&lt;/strong&gt;. Additionally, I am currently employed in the field of Malware Analysis | Security Researcher at &amp;hellip; and &lt;strong&gt;BKSec [Bach Khoa Cyber Security Student Club]&lt;/strong&gt;. I participate in CTF competitions, focusing on &lt;code&gt;Reverse Engineering&lt;/code&gt;, &lt;code&gt;Binary Exploitation&lt;/code&gt; and &lt;code&gt;Digital Forensics&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-this-site&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#about-this-site&#34;&gt;&lt;/a&gt;&#xD;&#xA;About this site&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;I’ll use this site to share writeups of CTFs or post articles related to &lt;strong&gt;cybersecurity&lt;/strong&gt;.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/spid3r.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-name-is-spid3r&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-name-is-spid3r&#34;&gt;&lt;/a&gt;&#xD;&#xA;My name is Spid3r&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Hey, I&amp;rsquo;m &lt;strong&gt;ZxTS&lt;/strong&gt;, also known by the nickname &lt;strong&gt;Spid3r&lt;/strong&gt;. I’m studying at &lt;strong&gt;SOICT - HUST&lt;/strong&gt;. Additionally, I am currently employed in the field of Malware Analysis | Security Researcher at &amp;hellip; and &lt;strong&gt;BKSec [Bach Khoa Cyber Security Student Club]&lt;/strong&gt;. I participate in CTF competitions, focusing on &lt;code&gt;Reverse Engineering&lt;/code&gt;, &lt;code&gt;Binary Exploitation&lt;/code&gt; and &lt;code&gt;Digital Forensics&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-this-site&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#about-this-site&#34;&gt;&lt;/a&gt;&#xD;&#xA;About this site&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;I’ll use this site to share writeups of CTFs or post articles related to &lt;strong&gt;cybersecurity&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Achievements</title>
-      <link>https://example.org/achievements/</link>
+      <link>http://localhost:1313/achievements/</link>
       <pubDate>Mon, 17 Mar 2025 20:12:52 +0800</pubDate>
-      <guid>https://example.org/achievements/</guid>
+      <guid>http://localhost:1313/achievements/</guid>
       <description>&lt;h1 id=&#34;coming-soon&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#coming-soon&#34;&gt;&lt;/a&gt;&#xD;&#xA;[Coming soon!]&#xD;&#xA;&lt;/h1&gt;</description>
     </item>
     <item>
       <title>Template Testing</title>
-      <link>https://example.org/post/test/</link>
+      <link>http://localhost:1313/post/test/</link>
       <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://example.org/post/test/</guid>
+      <guid>http://localhost:1313/post/test/</guid>
       <description>&lt;p&gt;💘 ONLY FOR TEST&lt;/p&gt;</description>
     </item>
   </channel>

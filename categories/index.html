@@ -5,7 +5,7 @@
     data-theme-mode="auto"
   
 >
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8" />
 <meta
@@ -139,9 +139,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+ <link rel="stylesheet" href="/css/loader.css" />
 
 
 
@@ -152,7 +150,7 @@
     property="og:description"
     content="I&#39;m a little spider"
   />
-  <meta property="og:url" content="https://example.org/categories/" />
+  <meta property="og:url" content="http://localhost:1313/categories/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -175,7 +173,7 @@
   
 
 
-<link rel="alternate" type="application/rss+xml" href="https://example.org/categories/index.xml" title="Adventures of Spid3r">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/index.xml" title="Adventures of Spid3r">
 
 
 <link rel="shortcut icon" href="/favicon.ico">
@@ -186,9 +184,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/main.min.4c46cad801ebed4972ba1c633af271a0a6ab44e89466e28aa0e84f9e94018a22.css" />
+ <link rel="stylesheet" href="/css/main.css" />
 
 
 
@@ -247,6 +243,13 @@
   <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" />
 
 
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
 
 
 
@@ -314,44 +317,36 @@
   <nav id="main-nav">
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe632;
           
         </div>
         <a class="main-nav-link" href="/">Home</a>
       </span>
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe604;
           
         </div>
         <a class="main-nav-link" href="/archives">Archives</a>
       </span>
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe628;
           
         </div>
         <a class="main-nav-link" href="/about">About</a>
       </span>
     
       <span class="main-nav-link-wrap">
-        <div class='main-nav-icon icon rotate'>
+        <div class='main-nav-icon icon '>
           
-            
-              &#xe62b;
-            
+            &#xe621;
           
         </div>
         <a class="main-nav-link" href="/achievements">Achievements</a>
@@ -360,7 +355,7 @@
     <a id="main-nav-toggle" class="nav-icon"></a>
   </nav>
   <nav id="sub-nav">
-    <a id="nav-rss-link" class="nav-icon" href="https://example.org/categories/index.xml" title="RSS Feed" target="_blank"></a>
+    <a id="nav-rss-link" class="nav-icon" href="http://localhost:1313/categories/index.xml" title="RSS Feed" target="_blank"></a>
     
     
       <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
@@ -372,9 +367,18 @@
     
       <picture>
         
+          
+            <source media="(max-width: 479px)" srcset="/images/banner.webp">
+          
+            <source media="(max-width: 799px)" srcset="/images/banner.webp">
+          
+            <source media="(min-width: 800px)" srcset="/images/banner.webp">
+          
+          <img fetchpriority="high" src="/images/banner.webp" alt="Categories">
+        
       </picture>
       
-        <img fetchpriority="high" src="/images/banner.webp" alt="Categories">
+        <img src="" alt="Categories" style="visibility: hidden;">
       
     
   
@@ -409,6 +413,8 @@
           class="sidebar-right"  >
           <aside id="sidebar">
   
+  
+    <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
   
   
   <div class="sidebar-wrapper ">
@@ -456,11 +462,9 @@
         href="/"
         aria-label="Home"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe632;
         
       </div>
       <div class="sidebar-menu-link">Home</div>
@@ -472,11 +476,9 @@
         href="/archives"
         aria-label="Archives"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe604;
         
       </div>
       <div class="sidebar-menu-link">Archives</div>
@@ -488,11 +490,9 @@
         href="/about"
         aria-label="About"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe628;
         
       </div>
       <div class="sidebar-menu-link">About</div>
@@ -504,11 +504,9 @@
         href="/achievements"
         aria-label="Achievements"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe621;
         
       </div>
       <div class="sidebar-menu-link">Achievements</div>
@@ -545,7 +543,7 @@
         <ul>
           
             <li>
-              <a href="https://example.org/post/test/">Template Testing</a>
+              <a href="http://localhost:1313/post/test/">Template Testing</a>
             </li>
           
         </ul>
@@ -577,24 +575,6 @@
         </div>
         
         
-          <meting-js
-            theme="var(--color-link)"
-            id="2265921590"
-            server="netease"
-            type="playlist"
-            
-            fixed="true"
-            autoplay="true"
-            loop="all"
-            
-            preload="auto"
-            volume="0.7"
-            mutex="true"
-            list-folded="true"
-            lrc-type="3"
-            >
-          </meting-js>
-        
         
 
 
@@ -614,7 +594,7 @@
     
     <div>
       <span class="icon-copyright"></span>
-      2024 -
+      2021 -
       2025
       <span class="footer-info-sep rotate"></span>
       Spid3r
@@ -707,11 +687,9 @@
         href="/"
         aria-label="Home"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe632;
         
       </div>
       <div class="sidebar-menu-link">Home</div>
@@ -723,11 +701,9 @@
         href="/archives"
         aria-label="Archives"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe604;
         
       </div>
       <div class="sidebar-menu-link">Archives</div>
@@ -739,11 +715,9 @@
         href="/about"
         aria-label="About"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe628;
         
       </div>
       <div class="sidebar-menu-link">About</div>
@@ -755,11 +729,9 @@
         href="/achievements"
         aria-label="Achievements"
       ></a>
-      <div class='sidebar-menu-icon icon rotate'>
+      <div class='sidebar-menu-icon icon '>
         
-          
-            &#xe62b;
-          
+          &#xe621;
         
       </div>
       <div class="sidebar-menu-link">Achievements</div>
@@ -840,7 +812,7 @@
 
   
       
-      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/main.js" ></script>
       
 
 
@@ -853,7 +825,7 @@
 
   
       
-      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/aos.js" ></script>
       
 
   <script>
@@ -881,7 +853,7 @@
 
   
       
-      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/pjax_main.js" data-pjax></script>
       
 
 
@@ -948,7 +920,7 @@
 
   
       
-      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/algolia_search.js" ></script>
       
 
 
@@ -1085,39 +1057,13 @@
 
   
       
-      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/pjax.js" ></script>
       
 
 
 
 
 
-
-  
-
-  
-  
-  
-  
-  
-  
-  <script
-    src="https://npm.webcache.cn/quicklink@2.3.0/dist/quicklink.umd.js"
-    
-    
-    
-    
-    integrity="sha384-aD7FsuQkS1ohgFKY41fJfeA&#43;Wd/QRNnrOd9Bs58K3FzKdJJv8yPnYU8Tnp5z1agS" crossorigin="anonymous"
-  ></script>
-
-
-  <script data-pjax>
-    window.quicklink?.listen({
-      timeout:  3000 ,
-      priority:  true ,
-      ignores: JSON.parse("[]")
-    });
-  </script>
 
 
 <div id="lazy-script">
@@ -1131,9 +1077,9 @@
         window.REIMU_POST = {
           author: "Spid3r",
           title: "Categories",
-          url: "https:\/\/example.org\/categories\/",
+          url: "http:\/\/localhost:1313\/categories\/",
           description: "",
-          cover: "https:\/\/example.org\/images\/banner.webp",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
         };
       </script>
     
@@ -1147,7 +1093,7 @@
 
   
       
-      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/insert_highlight.js" data-pjax></script>
       
 
       
@@ -1231,8 +1177,8 @@
 
 
   
-       
-         
+      
+        
       
 
   
@@ -1243,10 +1189,8 @@
 
   
       
-      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/service_worker.js" ></script>
       
-
-
 
 
 
@@ -1260,16 +1204,35 @@
   
   
   <script
-    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
     
     
     
     
-    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
   ></script>
 
 
   
+    <script>
+      const ap = new APlayer({
+          theme: "var(--color-link)",
+          container: document.getElementById('aplayer'),
+          audio: JSON.parse("[{\"artist\":\"Miki Matsubara\",\"cover\":\"/images/song_covers/Mayonaka_no_Door_Stay_With_Me.jpg\",\"lrc\":\"/songs/Mayonaka_no_Door_Stay_With_Me.lrc\",\"name\":\"Mayonaka no Door / Stay With Me\",\"url\":\"/songs/Mayonaka_no_Door_Stay_With_Me.mp3\"}]") || [],
+          fixed:  null  || false,
+          autoplay:  false  || false,
+          loop: 'all' || 'all',
+          order: '' || 'list',
+          preload: '' || 'auto',
+          volume:  null  || 0.7,
+          mutex:  null  || true,
+          listFolded:  false  || false,
+          lrcType:  3  || 0,
+      });
+    </script>
+  
+
+
 
 
 
