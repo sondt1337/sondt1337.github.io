@@ -17,7 +17,22 @@
     <loc>https://sondt1337.github.io/post/ctsv_2023/</loc>
     <lastmod>2024-01-06T11:00:00-07:00</lastmod>
   </url><url>
+    <loc>https://sondt1337.github.io/tags/ctf/</loc>
+    <lastmod>2024-01-06T11:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sondt1337.github.io/tags/digital-forensics/</loc>
+    <lastmod>2024-01-06T11:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sondt1337.github.io/tags/</loc>
+    <lastmod>2024-01-06T11:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sondt1337.github.io/tags/writeups/</loc>
+    <lastmod>2024-01-06T11:00:00-07:00</lastmod>
+  </url><url>
     <loc>https://sondt1337.github.io/post/backdoor-ctf-2023/</loc>
+    <lastmod>2023-12-18T11:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://sondt1337.github.io/tags/reverse-engineering/</loc>
     <lastmod>2023-12-18T11:00:00-07:00</lastmod>
   </url><url>
     <loc>https://sondt1337.github.io/post/cyberseagame2023/</loc>
@@ -38,6 +53,9 @@
     <loc>https://sondt1337.github.io/post/build-server-minecraft-on-linux/</loc>
     <lastmod>2022-11-20T11:00:00-07:00</lastmod>
   </url><url>
+    <loc>https://sondt1337.github.io/tags/trick/</loc>
+    <lastmod>2022-11-20T11:00:00-07:00</lastmod>
+  </url><url>
     <loc>https://sondt1337.github.io/post/corctf-2022/</loc>
     <lastmod>2022-08-09T11:00:00-07:00</lastmod>
   </url><url>
@@ -48,7 +66,5 @@
     <lastmod>2020-02-07T11:00:00-07:00</lastmod>
   </url><url>
     <loc>https://sondt1337.github.io/categories/</loc>
-  </url><url>
-    <loc>https://sondt1337.github.io/tags/</loc>
   </url>
 </urlset>

@@ -6,6 +6,42 @@
     <description>Recent content in Tags on Adventures of Spid3r</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jan 2024 11:00:00 -0700</lastBuildDate>
     <atom:link href="https://sondt1337.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF</title>
+      <link>https://sondt1337.github.io/tags/ctf/</link>
+      <pubDate>Sat, 06 Jan 2024 11:00:00 -0700</pubDate>
+      <guid>https://sondt1337.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Digital Forensics</title>
+      <link>https://sondt1337.github.io/tags/digital-forensics/</link>
+      <pubDate>Sat, 06 Jan 2024 11:00:00 -0700</pubDate>
+      <guid>https://sondt1337.github.io/tags/digital-forensics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Writeups</title>
+      <link>https://sondt1337.github.io/tags/writeups/</link>
+      <pubDate>Sat, 06 Jan 2024 11:00:00 -0700</pubDate>
+      <guid>https://sondt1337.github.io/tags/writeups/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reverse Engineering</title>
+      <link>https://sondt1337.github.io/tags/reverse-engineering/</link>
+      <pubDate>Mon, 18 Dec 2023 11:00:00 -0700</pubDate>
+      <guid>https://sondt1337.github.io/tags/reverse-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trick</title>
+      <link>https://sondt1337.github.io/tags/trick/</link>
+      <pubDate>Sun, 20 Nov 2022 11:00:00 -0700</pubDate>
+      <guid>https://sondt1337.github.io/tags/trick/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
