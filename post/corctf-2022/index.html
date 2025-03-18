@@ -5,7 +5,7 @@
     data-theme-mode="auto"
   
 >
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8" />
 <meta
@@ -130,18 +130,6 @@
 
 
 
-  
-
-
-
-
-
-
-
-  
- <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
-
-
 
 
   <meta property="og:type" content="website" />
@@ -150,7 +138,7 @@
     property="og:description"
     content="CorCTF 2022 | Reverse Engineering"
   />
-  <meta property="og:url" content="https://sondt1337.github.io/post/corctf-2022/" />
+  <meta property="og:url" content="http://localhost:1313/post/corctf-2022/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -183,9 +171,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
+ <link rel="stylesheet" href="/css/main.css" />
 
 
 
@@ -259,44 +245,6 @@
   <body>
     
     
-  <div id='loader'>
-    <div class="loading-left-bg loading-bg"></div>
-    <div class="loading-right-bg loading-bg"></div>
-    <div class="spinner-box">
-      <div class="loading-taichi">
-        
-          <img src="/images/taichi.svg" alt="loading" />
-        
-      </div>
-      <div class="loading-word">Loading...</div>
-    </div>
-  </div>
-  </div>
-  <script>
-    var time = null;
-    var startLoading = () => {
-      time = Date.now();
-      document.getElementById('loader').classList.remove("loading");
-    }
-    var endLoading = () => {
-      if (!time) {
-        document.body.style.overflow = 'auto';
-        document.getElementById('loader').classList.add("loading");
-      } else {
-        if (Date.now() - time > 500) {
-          time = null;
-          document.body.style.overflow = 'auto';
-          document.getElementById('loader').classList.add("loading");
-        } else {
-          setTimeout(endLoading, 500 - (Date.now() - time));
-          time = null;
-        }
-      }
-    }
-    window.addEventListener('DOMContentLoaded', endLoading);
-    document.getElementById('loader').addEventListener('click', endLoading);
-  </script>
-
 
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
@@ -969,7 +917,7 @@ Solve Script
             class="lazyload"
           />
         
-        <a href="https://sondt1337.github.io/post/cai-dat-may-ao-vm-ware/"></a>
+        <a href="http://localhost:1313/post/cai-dat-may-ao-vm-ware/"></a>
         <div class="article-nav-caption">Newer</div>
         <h3 class="article-nav-title">
           
@@ -989,7 +937,7 @@ Solve Script
             class="lazyload"
           />
         
-        <a href="https://sondt1337.github.io/post/build-server-minecraft-on-linux/"></a>
+        <a href="http://localhost:1313/post/build-server-minecraft-on-linux/"></a>
         <div class="article-nav-caption">Older</div>
         <h3 class="article-nav-title">
           
@@ -1317,7 +1265,7 @@ Solve Script
 
   
       
-      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/main.js" ></script>
       
 
 
@@ -1330,7 +1278,7 @@ Solve Script
 
   
       
-      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/aos.js" ></script>
       
 
   <script>
@@ -1358,7 +1306,7 @@ Solve Script
 
   
       
-      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/pjax_main.js" data-pjax></script>
       
 
 
@@ -1425,7 +1373,7 @@ Solve Script
 
   
       
-      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/algolia_search.js" ></script>
       
 
 
@@ -1562,7 +1510,7 @@ Solve Script
 
   
       
-      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/pjax.js" ></script>
       
 
 
@@ -1582,9 +1530,9 @@ Solve Script
         window.REIMU_POST = {
           author: "Spid3r",
           title: "CorCTF 2022 | Reverse Engineering",
-          url: "https:\/\/sondt1337.github.io\/post\/corctf-2022\/",
+          url: "http:\/\/localhost:1313\/post\/corctf-2022\/",
           description: "CorCTF 2022 | Reverse Engineering",
-          cover: "https:\/\/sondt1337.github.io\/images\/corctf2022-re\/featured-image.png",
+          cover: "http:\/\/localhost:1313\/images\/corctf2022-re\/featured-image.png",
         };
       </script>
     
@@ -1598,7 +1546,7 @@ Solve Script
 
   
       
-      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/insert_highlight.js" data-pjax></script>
       
 
       
@@ -1682,8 +1630,8 @@ Solve Script
 
 
   
-       
-         
+      
+        
       
 
   
@@ -1694,7 +1642,7 @@ Solve Script
 
   
       
-      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/service_worker.js" ></script>
       
 
 

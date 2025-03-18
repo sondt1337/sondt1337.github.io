@@ -5,7 +5,7 @@
     data-theme-mode="auto"
   
 >
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8" />
 <meta
@@ -130,18 +130,6 @@
 
 
 
-  
-
-
-
-
-
-
-
-  
- <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
-
-
 
 
   <meta property="og:type" content="website" />
@@ -150,7 +138,7 @@
     property="og:description"
     content="Everything about Spid3r"
   />
-  <meta property="og:url" content="https://sondt1337.github.io/about/" />
+  <meta property="og:url" content="http://localhost:1313/about/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -183,9 +171,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
+ <link rel="stylesheet" href="/css/main.css" />
 
 
 
@@ -259,44 +245,6 @@
   <body>
     
     
-  <div id='loader'>
-    <div class="loading-left-bg loading-bg"></div>
-    <div class="loading-right-bg loading-bg"></div>
-    <div class="spinner-box">
-      <div class="loading-taichi">
-        
-          <img src="/images/taichi.svg" alt="loading" />
-        
-      </div>
-      <div class="loading-word">Loading...</div>
-    </div>
-  </div>
-  </div>
-  <script>
-    var time = null;
-    var startLoading = () => {
-      time = Date.now();
-      document.getElementById('loader').classList.remove("loading");
-    }
-    var endLoading = () => {
-      if (!time) {
-        document.body.style.overflow = 'auto';
-        document.getElementById('loader').classList.add("loading");
-      } else {
-        if (Date.now() - time > 500) {
-          time = null;
-          document.body.style.overflow = 'auto';
-          document.getElementById('loader').classList.add("loading");
-        } else {
-          setTimeout(endLoading, 500 - (Date.now() - time));
-          time = null;
-        }
-      }
-    }
-    window.addEventListener('DOMContentLoaded', endLoading);
-    document.getElementById('loader').addEventListener('click', endLoading);
-  </script>
-
 
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
@@ -543,23 +491,23 @@
         <ul>
           
             <li>
-              <a href="https://sondt1337.github.io/post/ctsv_2023/">CSTV - CAPTURE THE FLAG 2023 | Forensics</a>
+              <a href="http://localhost:1313/post/ctsv_2023/">CSTV - CAPTURE THE FLAG 2023 | Forensics</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/backdoor-ctf-2023/">Backdoor CTF 2023 | Reverse Engineering</a>
+              <a href="http://localhost:1313/post/backdoor-ctf-2023/">Backdoor CTF 2023 | Reverse Engineering</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/cyberseagame2023/">Cyber SEA Game 2023 | Recap</a>
+              <a href="http://localhost:1313/post/cyberseagame2023/">Cyber SEA Game 2023 | Recap</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/sekaictf-re/">SekaiCTF 2023 | Reverse Engineering</a>
+              <a href="http://localhost:1313/post/sekaictf-re/">SekaiCTF 2023 | Reverse Engineering</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/cookie-arena-2/">Cookie Arena 2 | Reverse Engineering</a>
+              <a href="http://localhost:1313/post/cookie-arena-2/">Cookie Arena 2 | Reverse Engineering</a>
             </li>
           
         </ul>
@@ -975,7 +923,7 @@ You can find me at
 
   
       
-      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/main.js" ></script>
       
 
 
@@ -988,7 +936,7 @@ You can find me at
 
   
       
-      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/aos.js" ></script>
       
 
   <script>
@@ -1016,7 +964,7 @@ You can find me at
 
   
       
-      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/pjax_main.js" data-pjax></script>
       
 
 
@@ -1083,7 +1031,7 @@ You can find me at
 
   
       
-      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/algolia_search.js" ></script>
       
 
 
@@ -1220,7 +1168,7 @@ You can find me at
 
   
       
-      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/pjax.js" ></script>
       
 
 
@@ -1240,9 +1188,9 @@ You can find me at
         window.REIMU_POST = {
           author: "Spid3r",
           title: "About",
-          url: "https:\/\/sondt1337.github.io\/about\/",
+          url: "http:\/\/localhost:1313\/about\/",
           description: "Everything about Spid3r",
-          cover: "https:\/\/sondt1337.github.io\/images\/banner.webp",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
         };
       </script>
     
@@ -1256,7 +1204,7 @@ You can find me at
 
   
       
-      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/insert_highlight.js" data-pjax></script>
       
 
       
@@ -1340,8 +1288,8 @@ You can find me at
 
 
   
-       
-         
+      
+        
       
 
   
@@ -1352,7 +1300,7 @@ You can find me at
 
   
       
-      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/service_worker.js" ></script>
       
 
 

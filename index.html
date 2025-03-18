@@ -6,7 +6,7 @@
   
 >
   <head>
-	<meta name="generator" content="Hugo 0.145.0">
+	<meta name="generator" content="Hugo 0.145.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
     <meta charset="utf-8" />
 <meta
@@ -131,18 +131,6 @@
 
 
 
-  
-
-
-
-
-
-
-
-  
- <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
-
-
 
 
   <meta property="og:type" content="website" />
@@ -151,7 +139,7 @@
     property="og:description"
     content="I&#39;m a little spider"
   />
-  <meta property="og:url" content="https://sondt1337.github.io/" />
+  <meta property="og:url" content="http://localhost:1313/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -174,7 +162,7 @@
   
 
 
-<link rel="alternate" type="application/rss+xml" href="https://sondt1337.github.io/index.xml" title="Adventures of Spid3r">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="Adventures of Spid3r">
 
 
 <link rel="shortcut icon" href="/favicon.ico">
@@ -185,9 +173,7 @@
 
 
 
-
-  
- <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
+ <link rel="stylesheet" href="/css/main.css" />
 
 
 
@@ -261,44 +247,6 @@
   <body>
     
     
-  <div id='loader'>
-    <div class="loading-left-bg loading-bg"></div>
-    <div class="loading-right-bg loading-bg"></div>
-    <div class="spinner-box">
-      <div class="loading-taichi">
-        
-          <img src="/images/taichi.svg" alt="loading" />
-        
-      </div>
-      <div class="loading-word">Loading...</div>
-    </div>
-  </div>
-  </div>
-  <script>
-    var time = null;
-    var startLoading = () => {
-      time = Date.now();
-      document.getElementById('loader').classList.remove("loading");
-    }
-    var endLoading = () => {
-      if (!time) {
-        document.body.style.overflow = 'auto';
-        document.getElementById('loader').classList.add("loading");
-      } else {
-        if (Date.now() - time > 500) {
-          time = null;
-          document.body.style.overflow = 'auto';
-          document.getElementById('loader').classList.add("loading");
-        } else {
-          setTimeout(endLoading, 500 - (Date.now() - time));
-          time = null;
-        }
-      }
-    }
-    window.addEventListener('DOMContentLoaded', endLoading);
-    document.getElementById('loader').addEventListener('click', endLoading);
-  </script>
-
 
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
@@ -358,7 +306,7 @@
     <a id="main-nav-toggle" class="nav-icon"></a>
   </nav>
   <nav id="sub-nav">
-    <a id="nav-rss-link" class="nav-icon" href="https://sondt1337.github.io/index.xml" title="RSS Feed" target="_blank"></a>
+    <a id="nav-rss-link" class="nav-icon" href="http://localhost:1313/index.xml" title="RSS Feed" target="_blank"></a>
     
     
       <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
@@ -550,23 +498,23 @@
         <ul>
           
             <li>
-              <a href="https://sondt1337.github.io/post/ctsv_2023/">CSTV - CAPTURE THE FLAG 2023 | Forensics</a>
+              <a href="http://localhost:1313/post/ctsv_2023/">CSTV - CAPTURE THE FLAG 2023 | Forensics</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/backdoor-ctf-2023/">Backdoor CTF 2023 | Reverse Engineering</a>
+              <a href="http://localhost:1313/post/backdoor-ctf-2023/">Backdoor CTF 2023 | Reverse Engineering</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/cyberseagame2023/">Cyber SEA Game 2023 | Recap</a>
+              <a href="http://localhost:1313/post/cyberseagame2023/">Cyber SEA Game 2023 | Recap</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/sekaictf-re/">SekaiCTF 2023 | Reverse Engineering</a>
+              <a href="http://localhost:1313/post/sekaictf-re/">SekaiCTF 2023 | Reverse Engineering</a>
             </li>
           
             <li>
-              <a href="https://sondt1337.github.io/post/cookie-arena-2/">Cookie Arena 2 | Reverse Engineering</a>
+              <a href="http://localhost:1313/post/cookie-arena-2/">Cookie Arena 2 | Reverse Engineering</a>
             </li>
           
         </ul>
@@ -601,7 +549,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/ctsv_2023/"
+        href="http://localhost:1313/post/ctsv_2023/"
         aria-label="CSTV - CAPTURE THE FLAG 2023 | Forensics"
       >
       </a>
@@ -662,7 +610,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/backdoor-ctf-2023/"
+        href="http://localhost:1313/post/backdoor-ctf-2023/"
         aria-label="Backdoor CTF 2023 | Reverse Engineering"
       >
       </a>
@@ -723,7 +671,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/cyberseagame2023/"
+        href="http://localhost:1313/post/cyberseagame2023/"
         aria-label="Cyber SEA Game 2023 | Recap"
       >
       </a>
@@ -784,7 +732,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/sekaictf-re/"
+        href="http://localhost:1313/post/sekaictf-re/"
         aria-label="SekaiCTF 2023 | Reverse Engineering"
       >
       </a>
@@ -845,7 +793,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/cookie-arena-2/"
+        href="http://localhost:1313/post/cookie-arena-2/"
         aria-label="Cookie Arena 2 | Reverse Engineering"
       >
       </a>
@@ -906,7 +854,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/writeups-forensics-umdctf/"
+        href="http://localhost:1313/post/writeups-forensics-umdctf/"
         aria-label="UMDCTF 2023 | Digital Forensics"
       >
       </a>
@@ -967,7 +915,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/kali-linux-vps-for-free/"
+        href="http://localhost:1313/post/kali-linux-vps-for-free/"
         aria-label="Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible"
       >
       </a>
@@ -1028,7 +976,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/build-server-minecraft-on-linux/"
+        href="http://localhost:1313/post/build-server-minecraft-on-linux/"
         aria-label="Guide to Building a Minecraft Server on Linux – Simple and Professional"
       >
       </a>
@@ -1089,7 +1037,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/corctf-2022/"
+        href="http://localhost:1313/post/corctf-2022/"
         aria-label="CorCTF 2022 | Reverse Engineering"
       >
       </a>
@@ -1150,7 +1098,7 @@
     
       <a
         class="post-link"
-        href="https://sondt1337.github.io/post/cai-dat-may-ao-vm-ware/"
+        href="http://localhost:1313/post/cai-dat-may-ao-vm-ware/"
         aria-label="Hướng Dẫn Cài Đặt máy ảo sử dụng VMware Workstation/Fusion"
       >
       </a>
@@ -1491,7 +1439,7 @@
 
   
       
-      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/main.js" ></script>
       
 
 
@@ -1504,7 +1452,7 @@
 
   
       
-      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/aos.js" ></script>
       
 
   <script>
@@ -1532,7 +1480,7 @@
 
   
       
-      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      <script src="/js/pjax_main.js" data-pjax></script>
       
 
 
@@ -1599,7 +1547,7 @@
 
   
       
-      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/algolia_search.js" ></script>
       
 
 
@@ -1736,7 +1684,7 @@
 
   
       
-      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/pjax.js" ></script>
       
 
 
@@ -1756,9 +1704,9 @@
         window.REIMU_POST = {
           author: "Spid3r",
           title: "Adventures of Spid3r",
-          url: "https:\/\/sondt1337.github.io\/",
+          url: "http:\/\/localhost:1313\/",
           description: "",
-          cover: "https:\/\/sondt1337.github.io\/images\/banner.webp",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
         };
       </script>
     
@@ -1799,8 +1747,8 @@
 
 
   
-       
-         
+      
+        
       
 
   
@@ -1811,7 +1759,7 @@
 
   
       
-      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      <script src="/js/service_worker.js" ></script>
       
 
 
