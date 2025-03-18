@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Digital Forensics on Adventures of Spid3r</title>
-    <link>https://sondt1337.github.io/tags/digital-forensics/</link>
+    <link>https://blog.sondt.id.vn/tags/digital-forensics/</link>
     <description>Recent content in Digital Forensics on Adventures of Spid3r</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Jan 2024 11:00:00 -0700</lastBuildDate>
-    <atom:link href="https://sondt1337.github.io/tags/digital-forensics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.sondt.id.vn/tags/digital-forensics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CSTV - CAPTURE THE FLAG 2023 | Digital Forensics</title>
-      <link>https://sondt1337.github.io/post/ctsv_2023/</link>
+      <link>https://blog.sondt.id.vn/post/ctsv_2023/</link>
       <pubDate>Sat, 06 Jan 2024 11:00:00 -0700</pubDate>
-      <guid>https://sondt1337.github.io/post/ctsv_2023/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://sondt1337.github.io/images/ctsv_2023/featured.png&#34; alt=&#34;&#34;&gt;&#xA;Nói thật thì đây là 1 giải khá khó chịu với mình, vì ngoài độ guessing của các thử thách (forensics, mobile) thì thật ra chẳng có gì để nói cả (và rất tiếc với 1 mình mình làm thì không thể giải quyết được toàn bộ cùng 1 lúc)&lt;/p&gt;&#xA;&lt;h2 id=&#34;lost-puppey&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#lost-puppey&#34;&gt;&lt;/a&gt;&#xD;&#xA;Lost Puppey&#xD;&#xA;&lt;/h2&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;Description: This is my lost puppey. He is trying to hide himself and hide something from me. Can you find them for me?&lt;/p&gt;</description>
+      <guid>https://blog.sondt.id.vn/post/ctsv_2023/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://blog.sondt.id.vn/images/ctsv_2023/featured.png&#34; alt=&#34;&#34;&gt;&#xA;Nói thật thì đây là 1 giải khá khó chịu với mình, vì ngoài độ guessing của các thử thách (forensics, mobile) thì thật ra chẳng có gì để nói cả (và rất tiếc với 1 mình mình làm thì không thể giải quyết được toàn bộ cùng 1 lúc)&lt;/p&gt;&#xA;&lt;h2 id=&#34;lost-puppey&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#lost-puppey&#34;&gt;&lt;/a&gt;&#xD;&#xA;Lost Puppey&#xD;&#xA;&lt;/h2&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;Description: This is my lost puppey. He is trying to hide himself and hide something from me. Can you find them for me?&lt;/p&gt;</description>
     </item>
     <item>
       <title>UMDCTF 2023 | Digital Forensics</title>
-      <link>https://sondt1337.github.io/post/writeups-forensics-umdctf/</link>
+      <link>https://blog.sondt.id.vn/post/writeups-forensics-umdctf/</link>
       <pubDate>Wed, 17 May 2023 11:00:00 -0700</pubDate>
-      <guid>https://sondt1337.github.io/post/writeups-forensics-umdctf/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://sondt1337.github.io/images/writeups-forensics-umdctf/featured.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;information&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#information&#34;&gt;&lt;/a&gt;&#xD;&#xA;Information&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;UMDCTF 2023 starts at 5:00 AM on April 29, 2023, and ends at 5:00 AM on May 1, 2023 (which is not at all suitable for someone like me who loves to sleep in).&#xA;The challenges in this competition revolve around Pokemon.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ranking&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#ranking&#34;&gt;&lt;/a&gt;&#xD;&#xA;Ranking&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Our team ranked &lt;strong&gt;17th/745&lt;/strong&gt; teams with 12,799 points. &lt;a href=&#34;https://ctftime.org/event/1949&#34;&gt;Detail of scoreboard here&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://sondt1337.github.io/images/writeups-forensics-umdctf/image-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It&amp;rsquo;s a bit disappointing that during the competition, I couldn&amp;rsquo;t fully solve the Forensics challenges. By around 5 AM, when the competition ended, I was too exhausted to continue thinking.&lt;/p&gt;</description>
+      <guid>https://blog.sondt.id.vn/post/writeups-forensics-umdctf/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://blog.sondt.id.vn/images/writeups-forensics-umdctf/featured.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;information&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#information&#34;&gt;&lt;/a&gt;&#xD;&#xA;Information&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;UMDCTF 2023 starts at 5:00 AM on April 29, 2023, and ends at 5:00 AM on May 1, 2023 (which is not at all suitable for someone like me who loves to sleep in).&#xA;The challenges in this competition revolve around Pokemon.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ranking&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#ranking&#34;&gt;&lt;/a&gt;&#xD;&#xA;Ranking&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Our team ranked &lt;strong&gt;17th/745&lt;/strong&gt; teams with 12,799 points. &lt;a href=&#34;https://ctftime.org/event/1949&#34;&gt;Detail of scoreboard here&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.sondt.id.vn/images/writeups-forensics-umdctf/image-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;It&amp;rsquo;s a bit disappointing that during the competition, I couldn&amp;rsquo;t fully solve the Forensics challenges. By around 5 AM, when the competition ended, I was too exhausted to continue thinking.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

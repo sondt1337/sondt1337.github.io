@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Trick on Adventures of Spid3r</title>
-    <link>https://sondt1337.github.io/tags/trick/</link>
+    <link>https://blog.sondt.id.vn/tags/trick/</link>
     <description>Recent content in Trick on Adventures of Spid3r</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Nov 2022 11:00:00 -0700</lastBuildDate>
-    <atom:link href="https://sondt1337.github.io/tags/trick/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.sondt.id.vn/tags/trick/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Guide to Building a Minecraft Server on Linux – Simple and Professional</title>
-      <link>https://sondt1337.github.io/post/build-server-minecraft-on-linux/</link>
+      <link>https://blog.sondt.id.vn/post/build-server-minecraft-on-linux/</link>
       <pubDate>Sun, 20 Nov 2022 11:00:00 -0700</pubDate>
-      <guid>https://sondt1337.github.io/post/build-server-minecraft-on-linux/</guid>
+      <guid>https://blog.sondt.id.vn/post/build-server-minecraft-on-linux/</guid>
       <description>&lt;p&gt;Minecraft, one of the most popular sandbox games, allows players to unleash creativity, explore, and survive in an infinite world. Setting up your own Minecraft server to play with friends is an incredibly rewarding experience. This guide walks you through the process of creating a Minecraft server on Linux, from installation to configuration and connecting with friends.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://tmdpc.vn/media/news/0206_CuhnhchiMinecrafttrnPCkhnglogitlag1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-choose-linux-for-your-minecraft-server&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#why-choose-linux-for-your-minecraft-server&#34;&gt;&lt;/a&gt;&#xD;&#xA;Why Choose Linux for Your Minecraft Server?&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Linux is renowned for its stability, security, and resource optimization. It is the perfect environment for running a smooth Minecraft server, even on modest hardware. With Linux, you gain complete control over your server while leveraging a vast and supportive community.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hướng Dẫn Cài Đặt máy ảo sử dụng VMware Workstation/Fusion</title>
-      <link>https://sondt1337.github.io/post/cai-dat-may-ao-vm-ware/</link>
+      <link>https://blog.sondt.id.vn/post/cai-dat-may-ao-vm-ware/</link>
       <pubDate>Fri, 07 Feb 2020 11:00:00 -0700</pubDate>
-      <guid>https://sondt1337.github.io/post/cai-dat-may-ao-vm-ware/</guid>
+      <guid>https://blog.sondt.id.vn/post/cai-dat-may-ao-vm-ware/</guid>
       <description>&lt;h2 id=&#34;hướng-dẫn-cài-đặt-máy-ảo-sử-dụng-vmware-workstationfusion&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#h%c6%b0%e1%bb%9bng-d%e1%ba%abn-c%c3%a0i-%c4%91%e1%ba%b7t-m%c3%a1y-%e1%ba%a3o-s%e1%bb%ad-d%e1%bb%a5ng-vmware-workstationfusion&#34;&gt;&lt;/a&gt;&#xD;&#xA;&lt;strong&gt;Hướng Dẫn Cài Đặt máy ảo sử dụng VMware Workstation/Fusion&lt;/strong&gt;&#xD;&#xA;&lt;/h2&gt;&lt;h3 id=&#34;1-giới-thiệu&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#1-gi%e1%bb%9bi-thi%e1%bb%87u&#34;&gt;&lt;/a&gt;&#xD;&#xA;&lt;strong&gt;1. Giới Thiệu&lt;/strong&gt;&#xD;&#xA;&lt;/h3&gt;&lt;p&gt;Kali Linux là một hệ điều hành dựa trên Debian, được thiết kế cho kiểm thử bảo mật và nghiên cứu an toàn thông tin. Để chạy Kali Linux mà không ảnh hưởng đến hệ thống chính, bạn có thể sử dụng các trình ảo hóa như &lt;strong&gt;VMware Workstation&lt;/strong&gt;, &lt;strong&gt;VMware Fusion&lt;/strong&gt;, hoặc &lt;strong&gt;VirtualBox&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hackmd.io/_uploads/S1h55GQKJe.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Bài viết này hướng dẫn cài đặt &lt;strong&gt;Windows 11&lt;/strong&gt; và &lt;strong&gt;Kali Linux&lt;/strong&gt; trên &lt;strong&gt;VMware Workstation/Fusion&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Adventures of Spid3r</title>
-    <link>https://sondt1337.github.io/archives/</link>
+    <link>https://blog.sondt.id.vn/archives/</link>
     <description>Recent content on Adventures of Spid3r</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="https://sondt1337.github.io/archives/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.sondt.id.vn/archives/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
