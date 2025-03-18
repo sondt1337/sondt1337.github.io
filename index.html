@@ -6,7 +6,7 @@
   
 >
   <head>
-	<meta name="generator" content="Hugo 0.145.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.145.0">
     
     <meta charset="utf-8" />
 <meta
@@ -66,6 +66,9 @@
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"error (ﾟ⊿ﾟ)ﾂ\",\"success\":\"copied(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
 </script>
 
+<script>
+  window.siteConfig.swPath = '\/sw.js';
+</script>
 
 
 
@@ -75,6 +78,13 @@
 
 
 
+
+
+  
+  
+  
+    
+  
 
   
   
@@ -89,17 +99,19 @@
   
 
   
-    
+  
+  
+
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="preload"
   as="style"
-  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
 />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
   media="print"
   onload="this.media='all'"
 />
@@ -126,7 +138,9 @@
 
 
 
- <link rel="stylesheet" href="/css/loader.css" />
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
 
 
 
@@ -137,7 +151,7 @@
     property="og:description"
     content="I&#39;m a little spider"
   />
-  <meta property="og:url" content="http://localhost:1313/" />
+  <meta property="og:url" content="https://example.org/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -160,7 +174,7 @@
   
 
 
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="Adventures of Spid3r">
+<link rel="alternate" type="application/rss+xml" href="https://example.org/index.xml" title="Adventures of Spid3r">
 
 
 <link rel="shortcut icon" href="/favicon.ico">
@@ -171,7 +185,9 @@
 
 
 
- <link rel="stylesheet" href="/css/main.css" />
+
+  
+ <link rel="stylesheet" href="/css/main.min.4c46cad801ebed4972ba1c633af271a0a6ab44e89466e28aa0e84f9e94018a22.css" />
 
 
 
@@ -233,13 +249,6 @@
 
 
 
-
-
-
-  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
-
-
-
     
   </head>
   <body>
@@ -287,6 +296,15 @@
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
 
+
+  <div class="notification-wrapper">
+    <h1>New version found</h1>
+    <p>The website seems to have new content, do you want to update?</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">Update</button>
+      <button id="notification-close-btn">Cancel</button>
+    </div>
+  </div>
 
     <div id="container">
       <div id="wrap">
@@ -341,7 +359,7 @@
     <a id="main-nav-toggle" class="nav-icon"></a>
   </nav>
   <nav id="sub-nav">
-    <a id="nav-rss-link" class="nav-icon" href="http://localhost:1313/index.xml" title="RSS Feed" target="_blank"></a>
+    <a id="nav-rss-link" class="nav-icon" href="https://example.org/index.xml" title="RSS Feed" target="_blank"></a>
     
     
       <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
@@ -530,7 +548,7 @@
         <ul>
           
             <li>
-              <a href="http://localhost:1313/post/test/">Template Testing</a>
+              <a href="https://example.org/post/test/">Template Testing</a>
             </li>
           
         </ul>
@@ -573,7 +591,7 @@
     
       <a
         class="post-link"
-        href="http://localhost:1313/post/test/"
+        href="https://example.org/post/test/"
         aria-label="Template Testing"
       >
       </a>
@@ -913,7 +931,7 @@
 
   
       
-      <script src="/js/main.js" ></script>
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -926,7 +944,7 @@
 
   
       
-      <script src="/js/aos.js" ></script>
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
       
 
   <script>
@@ -954,7 +972,7 @@
 
   
       
-      <script src="/js/pjax_main.js" data-pjax></script>
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
       
 
 
@@ -1021,7 +1039,7 @@
 
   
       
-      <script src="/js/algolia_search.js" ></script>
+      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -1158,7 +1176,7 @@
 
   
       
-      <script src="/js/pjax.js" ></script>
+      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -1204,9 +1222,9 @@
         window.REIMU_POST = {
           author: "Spid3r",
           title: "Adventures of Spid3r",
-          url: "http:\/\/localhost:1313\/",
+          url: "https:\/\/example.org\/",
           description: "",
-          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+          cover: "https:\/\/example.org\/images\/banner.webp",
         };
       </script>
     
@@ -1240,37 +1258,30 @@
 
 
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        for (let registration of registrations) {
-          registration.unregister();
-        }
-      });
-    }
-  </script>
+  
+
+
 
 
 
   
+       
+         
+      
 
   
-  
-  
-  
-  
-  
-  <script
-    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
-    
-    
-    
-    
-    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
-  ></script>
+
+
+
 
 
   
+      
+      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
 
 
 

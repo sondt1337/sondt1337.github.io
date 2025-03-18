@@ -5,7 +5,7 @@
     data-theme-mode="auto"
   
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8" />
 <meta
@@ -22,7 +22,7 @@
   
 
 <title>
-  achievements | Spid3r
+  Achievements | Spid3r
 </title>
 <meta
   name="description"
@@ -65,6 +65,9 @@
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"error (ﾟ⊿ﾟ)ﾂ\",\"success\":\"copied(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
 </script>
 
+<script>
+  window.siteConfig.swPath = '\/sw.js';
+</script>
 
 
 
@@ -74,6 +77,13 @@
 
 
 
+
+
+  
+  
+  
+    
+  
 
   
   
@@ -88,17 +98,19 @@
   
 
   
-    
+  
+  
+
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="preload"
   as="style"
-  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
 />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
   media="print"
   onload="this.media='all'"
 />
@@ -125,18 +137,20 @@
 
 
 
- <link rel="stylesheet" href="/css/loader.css" />
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
 
 
 
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="achievements | Spid3r" />
+  <meta property="og:title" content="Achievements | Spid3r" />
   <meta
     property="og:description"
     content="achievements"
   />
-  <meta property="og:url" content="http://localhost:1313/achievements/" />
+  <meta property="og:url" content="https://example.org/achievements/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
@@ -146,8 +160,8 @@
     content="/"
   />
   <meta property="article:author" content="Spid3r" />
-  <meta property="article:published_time" content="2022-06-09T20:12:52&#43;08:00" />
-  <meta property="article:modified_time" content="2022-06-09T20:12:52&#43;08:00" />
+  <meta property="article:published_time" content="2025-03-17T20:12:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-03-17T20:12:52&#43;08:00" />
   
   
   <meta name="twitter:card" content="summary" />
@@ -169,7 +183,9 @@
 
 
 
- <link rel="stylesheet" href="/css/main.css" />
+
+  
+ <link rel="stylesheet" href="/css/main.min.4c46cad801ebed4972ba1c633af271a0a6ab44e89466e28aa0e84f9e94018a22.css" />
 
 
 
@@ -231,13 +247,6 @@
 
 
 
-
-
-
-  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
-
-
-
     
   </head>
   <body>
@@ -285,6 +294,15 @@
 <div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
 </div>
 
+
+  <div class="notification-wrapper">
+    <h1>New version found</h1>
+    <p>The website seems to have new content, do you want to update?</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">Update</button>
+      <button id="notification-close-btn">Cancel</button>
+    </div>
+  </div>
 
     <div id="container">
       <div id="wrap">
@@ -352,7 +370,7 @@
         
       </picture>
       
-        <img fetchpriority="high" src="/images/banner.webp" alt="achievements">
+        <img fetchpriority="high" src="/images/banner.webp" alt="Achievements">
       
     
   
@@ -367,7 +385,7 @@
   
         
           <a href="/" id="logo">
-            <h1 data-aos="slide-up">achievements</h1>
+            <h1 data-aos="slide-up">Achievements</h1>
           </a>
         
       
@@ -523,7 +541,7 @@
         <ul>
           
             <li>
-              <a href="http://localhost:1313/post/test/">Template Testing</a>
+              <a href="https://example.org/post/test/">Template Testing</a>
             </li>
           
         </ul>
@@ -555,11 +573,11 @@
     class="article-date-link"
     data-aos="zoom-in"
   >
-    <time datetime="2022-06-09 20:12:52 &#43;0800 &#43;0800" itemprop="datePublished"
-      >2022-06-09</time
+    <time datetime="2025-03-17 20:12:52 &#43;0800 &#43;0800" itemprop="datePublished"
+      >2025-03-17</time
     >
     <time style="display: none;" id="post-update-time"
-      >2022-06-09</time
+      >2025-03-17</time
     >
   </span>
 </div>
@@ -574,36 +592,10 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        <h2 id="本站信息">
-<a class="header-anchor" href="#%e6%9c%ac%e7%ab%99%e4%bf%a1%e6%81%af"></a>
-本站信息
-</h2><ul>
-<li>站名： 拔剑Sketon</li>
-<li>站长： 拔剑Sketon</li>
-</ul>
-<h2 id="申请方法">
-<a class="header-anchor" href="#%e7%94%b3%e8%af%b7%e6%96%b9%e6%b3%95"></a>
-申请方法
-</h2><ul>
-<li>添加本站后，在本页留言，格式如下</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="l">```yml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="c">#您的名字</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="c">#您的网址</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="c">#简短描述</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="c">#一张图片</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">```</span><span class="w">
-</span></span></span></code></pre></div><h2 id="小伙伴们">
-<a class="header-anchor" href="#%e5%b0%8f%e4%bc%99%e4%bc%b4%e4%bb%ac"></a>
-小伙伴们
-</h2>
-
-
-<div class="friend-wrap" data-aos="zoom-in">
-  
-</div>
-
-
+        <h1 id="coming-soon">
+<a class="header-anchor" href="#coming-soon"></a>
+[Coming soon!]
+</h1>
       
     </div>
     <footer class="article-footer">
@@ -622,7 +614,7 @@
   
   
   
-    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2022-06-09 20:12:52</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2025-03-17 20:12:52</p>
   
   
   
@@ -953,7 +945,7 @@
 
   
       
-      <script src="/js/main.js" ></script>
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -966,7 +958,7 @@
 
   
       
-      <script src="/js/aos.js" ></script>
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
       
 
   <script>
@@ -994,7 +986,7 @@
 
   
       
-      <script src="/js/pjax_main.js" data-pjax></script>
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
       
 
 
@@ -1061,7 +1053,7 @@
 
   
       
-      <script src="/js/algolia_search.js" ></script>
+      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -1198,7 +1190,7 @@
 
   
       
-      <script src="/js/pjax.js" ></script>
+      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -1243,10 +1235,10 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "Spid3r",
-          title: "achievements",
-          url: "http:\/\/localhost:1313\/achievements\/",
+          title: "Achievements",
+          url: "https:\/\/example.org\/achievements\/",
           description: "achievements",
-          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+          cover: "https:\/\/example.org\/images\/banner.webp",
         };
       </script>
     
@@ -1260,7 +1252,7 @@
 
   
       
-      <script src="/js/insert_highlight.js" data-pjax></script>
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
       
 
       
@@ -1337,37 +1329,30 @@
 
 
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        for (let registration of registrations) {
-          registration.unregister();
-        }
-      });
-    }
-  </script>
+  
+
+
 
 
 
   
+       
+         
+      
 
   
-  
-  
-  
-  
-  
-  <script
-    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
-    
-    
-    
-    
-    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
-  ></script>
+
+
+
 
 
   
+      
+      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
 
 
 
