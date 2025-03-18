@@ -1,0 +1,1746 @@
+<!doctype html>
+<html
+  lang="en-us" 
+  
+    data-theme-mode="auto"
+  
+>
+  <head>
+    
+    <meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+
+
+
+
+
+
+
+  
+
+<title>
+  CorCTF 2022 | Reverse Engineering | Spid3r
+</title>
+<meta
+  name="description"
+  content="CorCTF 2022 | Reverse Engineering"
+/>
+
+
+
+  <script>
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "true");
+</script>
+
+
+  
+<script src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script data-pjax>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+
+  gtag('config', 'true');
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"error (ﾟ⊿ﾟ)ﾂ\",\"success\":\"copied(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
+</script>
+
+<script>
+  window.siteConfig.swPath = '\/sw.js';
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+
+
+
+
+
+
+  <link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_0khxww3tj3q9.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+
+
+
+  
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+
+
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CorCTF 2022 | Reverse Engineering | Spid3r" />
+  <meta
+    property="og:description"
+    content="CorCTF 2022 | Reverse Engineering"
+  />
+  <meta property="og:url" content="https://sondt1337.github.io/post/corctf-2022/" />
+  <meta
+    property="og:site_name"
+    content="Adventures of Spid3r"
+  />
+  <meta
+    property="og:image"
+    content="/images/corctf2022-re/featured-image.png"
+  />
+  <meta property="article:author" content="Spid3r" />
+  <meta property="article:published_time" content="2022-08-09T11:00:00-07:00" />
+  <meta property="article:modified_time" content="2022-08-09T11:00:00-07:00" />
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/images/corctf2022-re/featured-image.png" />
+  
+  
+  
+  
+  
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.9/dist/katex.min.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
+
+
+
+    
+  </head>
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        
+          <img src="/images/taichi.svg" alt="loading" />
+        
+      </div>
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+  <div class="notification-wrapper">
+    <h1>New version found</h1>
+    <p>The website seems to have new content, do you want to update?</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">Update</button>
+      <button id="notification-close-btn">Cancel</button>
+    </div>
+  </div>
+
+    <div id="container">
+      <div id="wrap">
+        
+<div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe632;
+          
+        </div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe604;
+          
+        </div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe628;
+          
+        </div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe621;
+          
+        </div>
+        <a class="main-nav-link" href="/achievements">Achievements</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <picture></picture>
+    <img fetchpriority="high" src="/images/corctf2022-re/featured-image.png" alt="CorCTF 2022 | Reverse Engineering">
+  
+
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          
+        
+  
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">CorCTF 2022 | Reverse Engineering</h1>
+          </a>
+        
+      
+  
+      
+        
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+        <div id="content"
+          
+          class="sidebar-right"  >
+          <aside id="sidebar">
+  
+  
+    <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  
+  
+  <div class="sidebar-wrapper wrap-sticky">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    >
+      
+        
+          <div class="sidebar-toc-sidebar">
+            <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#microsoft--linux">Microsoft ❤️ Linux</a>
+      <ul>
+        <li><a href="#part-1-analysis">Part 1 analysis</a></li>
+        <li><a href="#script-part-1">Script part 1</a></li>
+        <li><a href="#part-2-analysis">Part 2 analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#turbocrab">turbocrab</a>
+      <ul>
+        <li><a href="#check-the-file">Check the file</a></li>
+        <li><a href="#debugging">Debugging</a></li>
+        <li><a href="#solve-script">Solve Script</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+          </div>
+          <div class="sidebar-common-sidebar hidden">
+            
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/../images/avatar.jpg"
+    data-sizes="auto"
+    alt="Spid3r"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Spid3r</div>
+  <div class="sidebar-description">I&#39;m a little spider</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div>
+    
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      0
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tags</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe632;
+        
+      </div>
+      <div class="sidebar-menu-link">Home</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe604;
+        
+      </div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe628;
+        
+      </div>
+      <div class="sidebar-menu-link">About</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/achievements"
+        aria-label="Achievements"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe621;
+        
+      </div>
+      <div class="sidebar-menu-link">Achievements</div>
+    </div>
+  
+</div>
+
+          </div>
+        
+      
+
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+
+  <div class="sidebar-widget">
+    
+  </div>
+  
+</aside>
+
+          <section id="main">
+  <article
+  class="h-entry article"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+      <div class="article-date">
+  <span
+    class="article-date-link"
+    data-aos="zoom-in"
+  >
+    <time datetime="2022-08-09 11:00:00 -0700 -0700" itemprop="datePublished"
+      >2022-08-09</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2022-08-09</time
+    >
+  </span>
+</div>
+
+      <div class="article-category">
+  
+</div>
+
+    </div>
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p><img src="/images/corctf2022-re/featured-image.png" alt=""></p>
+<h2 id="microsoft--linux">
+<a class="header-anchor" href="#microsoft--linux"></a>
+Microsoft ❤️ Linux
+</h2><p>Microsoft’s latest addition to the world of Open Source: a flag checker…</p>
+<h3 id="part-1-analysis">
+<a class="header-anchor" href="#part-1-analysis"></a>
+Part 1 analysis
+</h3><p>Check file &ndash;&gt; elf</p>
+<p><img src="/images/corctf2022-re/image.png" alt=""></p>
+<p><img src="/images/corctf2022-re/image-1.png" alt=""></p>
+<p>check the <code>start</code> function:</p>
+<p><img src="/images/corctf2022-re/image-2.png" alt=""></p>
+<p>So easy to see in the <code>loc_100063</code> stream along with the LINUX system commands, the conclusion is that that the input will be scanned 18 times (1 element each time) then stored in <code>byte_100111</code>, then rol with 0Dh (left shift 13 bits) and compaerd to <code>byte_100210</code> (in the local)</p>
+<p>Check <code>byte_100210</code> (local):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">00100210</span> <span class="nf">byte_100210</span>     <span class="no">db</span> <span class="mi">6</span><span class="no">Ch</span>                  <span class="c1">; DATA XREF: start+1D↑r
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00100211</span>                 <span class="nf">dd</span> <span class="no">offset</span> <span class="no">byte_8E6C4EED</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100215</span>                 <span class="nf">align</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100216</span>                 <span class="nf">dd</span> <span class="no">offset</span> <span class="no">byte_4CAD666F</span>
+</span></span><span class="line"><span class="cl"><span class="err">0010021</span><span class="nf">A</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">word_666C864E</span>
+</span></span><span class="line"><span class="cl"><span class="err">0010021</span><span class="nf">E</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">byte_8E0F6685</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100222</span>                 <span class="nf">dd</span> <span class="no">offset</span> <span class="no">word_2169633E</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100226</span>                 <span class="nf">dd</span> <span class="no">offset</span> <span class="no">word_3C79553E</span>
+</span></span><span class="line"><span class="cl"><span class="err">0010022</span><span class="nf">A</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">byte_3C786A63</span>
+</span></span><span class="line"><span class="cl"><span class="err">0010022</span><span class="nf">E</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">dword_2C2C6538</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100232</span>                 <span class="nf">dw</span> <span class="mi">703</span><span class="no">Ch</span>
+</span></span></code></pre></div><p>We can <code>byte_100210</code>: <code>b'l\xedNl\x8e\xccof\xadLN\x86lf\x85f\x0f\x8e&gt;ci!&gt;Uy&lt;cjx&lt;8e,,&lt;p'</code></p>
+<p>Now just write a scipt to find the original flag :333 (reverse the encoding of <code>byte_100210</code> from the original flag):</p>
+<h3 id="script-part-1">
+<a class="header-anchor" href="#script-part-1"></a>
+Script part 1
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="n">ror</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">input_data</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;l</span><span class="se">\xed</span><span class="s1">Nl</span><span class="se">\x8e\xcc</span><span class="s1">of</span><span class="se">\xad</span><span class="s1">LN</span><span class="se">\x86</span><span class="s1">lf</span><span class="se">\x85</span><span class="s1">f</span><span class="se">\x0f\x8e</span><span class="s1">&gt;ci!&gt;Uy&lt;cjx&lt;8e,,&lt;p&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shifted_data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">shifted_byte</span> <span class="o">=</span> <span class="n">ror</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">shifted_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shifted_byte</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">shifted_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin-1&#39;</span><span class="p">))</span>
+</span></span></code></pre></div><p>And what we get is &hellip;</p>
+<p><img src="/images/corctf2022-re/image-3.png" alt=""></p>
+<p><code>corctf{3mbr4c3,3xtñ\x1bK    ñªËá\x1bSÃáÁ+aaá</code></p>
+<p>It seems like i can only get the first half of the flag, which isn&rsquo;t easy by i can input it hix &hellip;</p>
+<p><img src="/images/corctf2022-re/image-4.png" alt=""></p>
+<h3 id="part-2-analysis">
+<a class="header-anchor" href="#part-2-analysis"></a>
+Part 2 analysis
+</h3><p>i will carefully check IDA again &amp; see that between function <code>start</code> &amp; <code>byte_100111</code> along with <code>byte_100210</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">C2</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">dword_168D0AB4</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">C6</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">byte_6C60211</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">CA</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">byte_C6FF0211</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">CE</span>                 <span class="no">dw</span> <span class="mi">1206</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D0</span>                 <span class="no">dd</span> <span class="no">offset</span> <span class="no">word_21CDFF02</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D4</span>                 <span class="no">dd</span> <span class="mi">0</span><span class="no">FE83F631h</span><span class="p">,</span> <span class="mi">8</span><span class="no">A117412h</span><span class="p">,</span> <span class="mi">34021384</span><span class="no">h</span><span class="p">,</span> <span class="mi">229</span><span class="no">C8A0Dh</span><span class="p">,</span> <span class="mi">75</span><span class="no">D83803h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D4</span>                 <span class="no">dd</span> <span class="mi">0</span><span class="no">EAEB4609h</span><span class="p">,</span> <span class="mi">33406</span><span class="no">C7h</span><span class="p">,</span> <span class="mi">0</span><span class="no">DB310001h</span><span class="p">,</span> <span class="mi">3</span><span class="no">E8309B4h</span><span class="p">,</span> <span class="mi">74010334</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D4</span>                 <span class="no">dd</span> <span class="mi">9</span><span class="no">F168D0Ah</span><span class="p">,</span> <span class="mi">0</span><span class="no">B421CD03h</span><span class="p">,</span> <span class="mi">8</span><span class="no">D21CD4Ch</span><span class="p">,</span> <span class="mi">0</span><span class="no">CD033616h</span><span class="p">,</span> <span class="mi">0</span><span class="no">CD4CB421h</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100110</span>                 <span class="nf">db</span> <span class="mi">21</span><span class="no">h</span>
+</span></span></code></pre></div><p>Switching to reading the code, we get the following</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">C2</span>                 <span class="no">mov</span>     <span class="no">ah</span><span class="p">,</span> <span class="mi">0</span><span class="no">Ah</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">C4</span>                 <span class="no">lea</span>     <span class="no">edx</span><span class="p">,</span> <span class="p">[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">C6</span>                 <span class="no">adc</span>     <span class="p">[</span><span class="no">edx</span><span class="p">],</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">C8</span>                 <span class="no">mov</span>     <span class="no">byte</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">esi</span><span class="p">],</span> <span class="mi">11</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">CB</span>                 <span class="no">add</span>     <span class="no">bh</span><span class="p">,</span> <span class="no">bh</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">CD</span>                 <span class="no">mov</span>     <span class="no">byte</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">esi</span><span class="p">],</span> <span class="mi">12</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D0</span>                 <span class="no">add</span>     <span class="no">bh</span><span class="p">,</span> <span class="no">bh</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D2</span>                 <span class="no">int</span>     <span class="mi">21</span><span class="no">h</span>             <span class="c1">; DOS - BUFFERED KEYBOARD INPUT
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">D2</span>                                         <span class="c1">; DS:DX -&gt; buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">D4</span>                 <span class="no">xor</span>     <span class="no">esi</span><span class="p">,</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D6</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D6</span> <span class="no">loc_1000D6</span><span class="p">:</span>                             <span class="c1">; CODE XREF: 001000EA↓j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">D6</span>                 <span class="no">cmp</span>     <span class="no">esi</span><span class="p">,</span> <span class="mi">12</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">D9</span>                 <span class="no">jz</span>      <span class="no">short</span> <span class="no">loc_1000EC</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">DB</span>                 <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="p">[</span><span class="no">ebx</span><span class="err">+</span><span class="no">edx-75F2CBFEh</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">E2</span>                 <span class="no">pushf</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">E3</span>                 <span class="no">and</span>     <span class="no">al</span><span class="p">,</span> <span class="p">[</span><span class="no">ebx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">E5</span>                 <span class="no">cmp</span>     <span class="no">al</span><span class="p">,</span> <span class="no">bl</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">E7</span>                 <span class="no">jnz</span>     <span class="no">short</span> <span class="no">loc_1000F2</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">E9</span>                 <span class="no">inc</span>     <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">EA</span>                 <span class="no">jmp</span>     <span class="no">short</span> <span class="no">loc_1000D6</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">EC</span> <span class="c1">; ---------------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">EC</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">EC</span> <span class="no">loc_1000EC</span><span class="p">:</span>                             <span class="c1">; CODE XREF: 001000D9↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">EC</span>                 <span class="no">mov</span>     <span class="no">dword</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">esi</span><span class="p">],</span> <span class="mi">10334</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">F2</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">F2</span> <span class="no">loc_1000F2</span><span class="p">:</span>                             <span class="c1">; CODE XREF: 001000E7↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">F2</span>                 <span class="no">xor</span>     <span class="no">ebx</span><span class="p">,</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">F4</span>                 <span class="no">mov</span>     <span class="no">ah</span><span class="p">,</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">F6</span>                 <span class="no">cmp</span>     <span class="no">dword</span> <span class="no">ptr</span> <span class="p">[</span><span class="no">esi</span><span class="p">],</span> <span class="mi">34</span><span class="no">h</span> <span class="c1">; &#39;4&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">001000</span><span class="nf">F9</span>                 <span class="no">add</span>     <span class="no">eax</span><span class="p">,</span> <span class="p">[</span><span class="no">ecx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">FB</span>                 <span class="no">jz</span>      <span class="no">short</span> <span class="no">near</span> <span class="no">ptr</span> <span class="no">loc_100102</span><span class="err">+</span><span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">FD</span>                 <span class="no">lea</span>     <span class="no">edx</span><span class="p">,</span> <span class="p">[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">001000</span><span class="nf">FF</span>                 <span class="no">lahf</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100100</span>                 <span class="nf">add</span>     <span class="no">ecx</span><span class="p">,</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100102</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100102</span> <span class="nl">loc_100102:</span>                             <span class="c1">; CODE XREF: 001000FB↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00100102</span>                 <span class="nf">and</span>     <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="no">ecx</span><span class="p">*</span><span class="mi">2</span><span class="err">+</span><span class="mi">168</span><span class="no">D21CDh</span><span class="p">],</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100109</span>                 <span class="nf">db</span>      <span class="mi">36</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="err">00100109</span>                 <span class="nf">add</span>     <span class="no">ecx</span><span class="p">,</span> <span class="no">ebp</span>
+</span></span></code></pre></div><p>Combined with assigning <code>0xd</code> to edx, perhaps this half of the flag will do something with <code>0xd</code></p>
+<p>Maybe i though too much (just xor with <code>0xd</code>)</p>
+<p><img src="/images/corctf2022-re/image-5.png" alt=""></p>
+<p><strong>flag: <code>corctf{3mbr4c3,3xt3nd,3Xt1ngu15h!!1}</code></strong></p>
+<h2 id="turbocrab">
+<a class="header-anchor" href="#turbocrab"></a>
+turbocrab
+</h2><p>Description: 🚀🚀 blazinglyer faster 🚀🚀 SHA256 hash of the flag: <code>dc136f8bf4ba6cc1b3d2f35708a0b2b55cb32c2deb03bdab1e45fcd1102ae00a</code></p>
+<h3 id="check-the-file">
+<a class="header-anchor" href="#check-the-file"></a>
+Check the file
+</h3><p><img src="/images/corctf2022-re/image-6.png" alt=""></p>
+<p>Setup and run file:</p>
+<p><img src="/images/corctf2022-re/image-8.png" alt=""></p>
+<p>When i load <code>turbocrab</code> into IDA64</p>
+<p><img src="/images/corctf2022-re/image-9.png" alt=""></p>
+<p>Looking at this decompiled rust, I came up with the idea of ​​searching the string from the previous check flag section to find the function 🤡</p>
+<p><img src="/images/corctf2022-re/image-11.png" alt=""></p>
+<p><img src="/images/corctf2022-re/image-12.png" alt=""></p>
+<p>function <code>turbocrab::execute_shellcode::h6984ce5848b31780</code>:</p>
+<p><img src="/images/corctf2022-re/image-13.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="n">void</span><span class="w"> </span><span class="n">__cdecl</span><span class="w"> </span><span class="n">turbocrab</span>::<span class="n">execute_shellcode</span>::<span class="n">h6984ce5848b31780</span><span class="p">(</span><span class="n">__u8_</span><span class="w"> </span><span class="n">shellcode</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">__u8_</span><span class="w"> </span><span class="n">v1</span><span class="p">;</span><span class="w"> </span><span class="c1">// rdi
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span><span class="w"> </span><span class="c1">// r15
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v3</span><span class="p">;</span><span class="w"> </span><span class="c1">// rdx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kt">usize</span><span class="w"> </span><span class="n">v4</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+8h] [rbp-190h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kt">u8</span><span class="w"> </span><span class="o">*</span><span class="n">v5</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+10h] [rbp-188h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kt">usize</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+20h] [rbp-178h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+28h] [rbp-170h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">ffi</span>::<span class="n">c_void</span><span class="w"> </span><span class="o">*</span><span class="n">src</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+30h] [rbp-168h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">ffi</span>::<span class="n">c_void</span><span class="w"> </span><span class="o">*</span><span class="n">dst</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+48h] [rbp-150h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="no">_BYTE</span><span class="w"> </span><span class="n">v10</span><span class="p">[</span><span class="mi">29</span><span class="p">];</span><span class="w"> </span><span class="c1">// [rsp+63h] [rbp-135h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">alloc</span>::<span class="n">vec</span>::<span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="p">,</span><span class="n">alloc</span>::<span class="n">alloc</span>::<span class="n">Global</span><span class="o">&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+80h] [rbp-118h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kt">u8</span><span class="w"> </span><span class="o">*</span><span class="n">v12</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+98h] [rbp-100h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v13</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+A0h] [rbp-F8h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">fmt</span>::<span class="n">Arguments</span><span class="w"> </span><span class="n">v14</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+A8h] [rbp-F0h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">fmt</span>::<span class="n">Arguments</span><span class="w"> </span><span class="n">v15</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+D8h] [rbp-C0h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__u8_</span><span class="w"> </span><span class="n">v16</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+108h] [rbp-90h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">ffi</span>::<span class="n">c_void</span><span class="w"> </span><span class="o">*</span><span class="n">v17</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+118h] [rbp-80h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="o">*</span><span class="n">v18</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+130h] [rbp-68h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v19</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+138h] [rbp-60h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v20</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+140h] [rbp-58h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v21</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+148h] [rbp-50h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">ffi</span>::<span class="n">c_void</span><span class="w"> </span><span class="o">*</span><span class="n">v22</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+150h] [rbp-48h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">core</span>::<span class="n">ffi</span>::<span class="n">c_void</span><span class="w"> </span><span class="o">*</span><span class="n">v23</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+158h] [rbp-40h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v24</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+160h] [rbp-38h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v25</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+168h] [rbp-30h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kt">u8</span><span class="w"> </span><span class="o">*</span><span class="n">v26</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+170h] [rbp-28h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">__int64</span><span class="w"> </span><span class="n">v27</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+178h] [rbp-20h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="kt">u8</span><span class="w"> </span><span class="o">*</span><span class="n">v28</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+180h] [rbp-18h]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shellcode</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">LL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">dst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mmap</span><span class="p">(</span><span class="mi">0</span><span class="n">LL</span><span class="p">,</span><span class="w"> </span><span class="n">shellcode</span><span class="p">.</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="n">LL</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v17</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dst</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">qmemcpy</span><span class="p">(</span><span class="n">v10</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;R^CRIWJM&lt;6.[5I.G`.C3G3CB5_V?P&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">sizeof</span><span class="p">(</span><span class="n">v10</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">alloc</span>::<span class="n">vec</span>::<span class="n">from_elem</span>::<span class="n">hba0d51ad3cb1207d</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x4000</span><span class="n">uLL</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v26</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alloc</span>::<span class="n">vec</span>::<span class="nb">Vec</span><span class="cp">$LT$T$C$A$GT$</span>::<span class="n">as_ptr</span>::<span class="n">h0252951c7d91d004</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v27</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">49602</span><span class="n">LL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v28</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v26</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">49602</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v26</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">49602</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span>::<span class="n">slice</span>::<span class="n">_</span><span class="cp">$LT$impl$u20$$u5b$T$u5d$$GT$</span>::<span class="n">as_ptr</span>::<span class="n">h869fdf96852d8c48</span><span class="p">(</span><span class="n">shellcode</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span>::<span class="n">slice</span>::<span class="n">_</span><span class="cp">$LT$impl$u20$$u5b$T$u5d$$GT$</span>::<span class="n">len</span>::<span class="n">h00af0a2d7a9c0658</span><span class="p">(</span><span class="n">shellcode</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v22</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dst</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v23</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">src</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">core</span>::<span class="n">intrinsics</span>::<span class="n">copy</span>::<span class="n">h46e3e522e297e890</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span>::<span class="n">slice</span>::<span class="n">_</span><span class="cp">$LT$impl$u20$$u5b$T$u5d$$GT$</span>::<span class="n">len</span>::<span class="n">h00af0a2d7a9c0658</span><span class="p">(</span><span class="n">shellcode</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">mprotect</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v20</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v13</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v1</span><span class="p">.</span><span class="n">data_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v1</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">29</span><span class="n">LL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span>::<span class="n">slice</span>::<span class="n">_</span><span class="cp">$LT$impl$u20$$u5b$T$u5d$$GT$</span>::<span class="n">as_ptr</span>::<span class="n">h869fdf96852d8c48</span><span class="p">(</span><span class="n">v1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v1</span><span class="p">.</span><span class="n">data_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v1</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">29</span><span class="n">LL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span>::<span class="n">slice</span>::<span class="n">_</span><span class="cp">$LT$impl$u20$$u5b$T$u5d$$GT$</span>::<span class="n">len</span>::<span class="n">h00af0a2d7a9c0658</span><span class="p">(</span><span class="n">v1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v12</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dst</span><span class="p">)(</span><span class="n">v10</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="n">LL</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">,</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">v5</span><span class="p">,</span><span class="w"> </span><span class="n">v4</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v19</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v13</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">v21</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v13</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">v13</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">core</span>::<span class="n">fmt</span>::<span class="n">Arguments</span>::<span class="n">new_v1</span>::<span class="n">h610d7aa66ccb1a0c</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v14</span><span class="p">,</span><span class="w"> </span><span class="n">__PAIR128__</span><span class="p">(</span><span class="mi">1</span><span class="n">LL</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stru_5620902FFF78</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stru_562090296240</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">else</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">core</span>::<span class="n">fmt</span>::<span class="n">Arguments</span>::<span class="n">new_v1</span>::<span class="n">h610d7aa66ccb1a0c</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v15</span><span class="p">,</span><span class="w"> </span><span class="n">__PAIR128__</span><span class="p">(</span><span class="mi">1</span><span class="n">LL</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stru_5620902FFF68</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stru_562090296240</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">std</span>::<span class="n">io</span>::<span class="n">stdio</span>::<span class="n">_print</span>::<span class="n">hccc6c4adfff98fee</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">core</span>::<span class="n">ptr</span>::<span class="n">drop_in_place</span><span class="cp">$LT$alloc</span><span class="o">..</span><span class="n">vec</span><span class="o">..</span><span class="nb">Vec</span><span class="cp">$LT$u8$GT$$GT$</span>::<span class="n">h34608ea8b4b90afb</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>My conclusion here is:</p>
+<ul>
+<li>
+<p><code>R^CRIWJM&lt;6.[5I.G`.C3G3CB5_V?P</code> looks like it&rsquo;s been encrypted</p>
+</li>
+<li>
+<p><code>shellcode</code> and source <code>dst</code> are unknown
+<code>v13 == 1 --&gt; Correct!</code> and vice versa</p>
+</li>
+</ul>
+<h3 id="debugging">
+<a class="header-anchor" href="#debugging"></a>
+Debugging
+</h3><p>Setup virtual machine for debugging with breakpoint set at <code>v13 = (dst)(v10, 29LL, v3, dst, v5, v4);</code></p>
+<p><img src="/images/corctf2022-re/image-7.png" alt=""></p>
+<p>Step into continuously and when it comes to <code>call close ptr unk_7F8C04CC62B2</code> there is a section <code>LINUX-sys_read</code> &ndash;&gt; Interrupt for input, we will see the section after that will have the input you entered and also the local encoding flag</p>
+<p>Continue and understand that the flow of the program is xor with 13 then sub with 1Eh (each character) like the asm fragment below:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D120</span> <span class="no">loc_7FE17840D120</span><span class="p">:</span>                       <span class="c1">; CODE XREF: zero:00007FE17840D06F↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D120</span> <span class="no">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">r9</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D123</span> <span class="no">xor</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">r9</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D126</span> <span class="no">mov</span>     <span class="no">r9</span><span class="p">,</span> <span class="no">rax</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D129</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="p">[</span><span class="no">r8</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D12C</span> <span class="no">mov</span>     <span class="no">r9b</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D12F</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D132</span> <span class="no">xor</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">13</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D134</span> <span class="no">mov</span>     <span class="no">r9b</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D137</span> <span class="no">pushfq</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D138</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D13B</span> <span class="no">mov</span>     <span class="no">rbx</span><span class="p">,</span> <span class="no">rax</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D13E</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">80</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D140</span> <span class="no">mov</span>     <span class="no">rcx</span><span class="p">,</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D14A</span> <span class="no">cmp</span>     <span class="no">rbx</span><span class="p">,</span> <span class="no">rax</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D14D</span> <span class="no">jz</span>      <span class="no">short</span> <span class="no">loc_7FE17840D158</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D14F</span> <span class="no">sbb</span>     <span class="no">rcx</span><span class="p">,</span> <span class="no">rcx</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D152</span> <span class="no">and</span>     <span class="no">ecx</span><span class="p">,</span> <span class="mi">0</span><span class="no">FFFFFFFDh</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D155</span> <span class="no">add</span>     <span class="no">ecx</span><span class="p">,</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D158</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D158</span> <span class="no">loc_7FE17840D158</span><span class="p">:</span>                       <span class="c1">; CODE XREF: zero:00007FE17840D14D↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D158</span> <span class="no">mov</span>     <span class="no">r14</span><span class="p">,</span> <span class="no">rcx</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D15B</span> <span class="no">popfq</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D15C</span> <span class="no">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">r14</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D15F</span> <span class="no">and</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D161</span> <span class="no">test</span>    <span class="no">al</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D163</span> <span class="no">jz</span>      <span class="no">short</span> <span class="no">loc_7FE17840D16D</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D165</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D168</span> <span class="no">xor</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">37</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D16A</span> <span class="no">mov</span>     <span class="no">r9b</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D16D</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D16D</span> <span class="no">loc_7FE17840D16D</span><span class="p">:</span>                       <span class="c1">; CODE XREF: zero:00007FE17840D163↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D16D</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D170</span> <span class="no">sub</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">1</span><span class="no">Eh</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D172</span> <span class="no">mov</span>     <span class="no">r9b</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D175</span> <span class="no">pushfq</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D176</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D179</span> <span class="no">mov</span>     <span class="no">rbx</span><span class="p">,</span> <span class="no">rax</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D17C</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">10</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D17E</span> <span class="no">mov</span>     <span class="no">rcx</span><span class="p">,</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D188</span> <span class="no">cmp</span>     <span class="no">rbx</span><span class="p">,</span> <span class="no">rax</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D18B</span> <span class="no">jz</span>      <span class="no">short</span> <span class="no">loc_7FE17840D196</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D18D</span> <span class="no">sbb</span>     <span class="no">rcx</span><span class="p">,</span> <span class="no">rcx</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D190</span> <span class="no">and</span>     <span class="no">ecx</span><span class="p">,</span> <span class="mi">0</span><span class="no">FFFFFFFDh</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D193</span> <span class="no">add</span>     <span class="no">ecx</span><span class="p">,</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D196</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D196</span> <span class="no">loc_7FE17840D196</span><span class="p">:</span>                       <span class="c1">; CODE XREF: zero:00007FE17840D18B↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D196</span> <span class="no">mov</span>     <span class="no">r14</span><span class="p">,</span> <span class="no">rcx</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D199</span> <span class="no">popfq</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D19A</span> <span class="no">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">r14</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D19D</span> <span class="no">and</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D19F</span> <span class="no">test</span>    <span class="no">al</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1A1</span> <span class="no">jz</span>      <span class="no">short</span> <span class="no">loc_7FE17840D1AB</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1A3</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1A6</span> <span class="no">xor</span>     <span class="no">al</span><span class="p">,</span> <span class="mi">31</span><span class="no">h</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1A8</span> <span class="no">mov</span>     <span class="no">r9b</span><span class="p">,</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1AB</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1AB</span> <span class="no">loc_7FE17840D1AB</span><span class="p">:</span>                       <span class="c1">; CODE XREF: zero:00007FE17840D1A1↑j
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1AB</span> <span class="no">mov</span>     <span class="no">al</span><span class="p">,</span> <span class="no">r9b</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1AE</span> <span class="no">mov</span>     <span class="p">[</span><span class="no">r8</span><span class="p">],</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1B1</span> <span class="no">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="p">[</span><span class="no">r15</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1B4</span> <span class="no">add</span>     <span class="no">r15</span><span class="p">,</span> <span class="mi">8</span>
+</span></span><span class="line"><span class="cl"><span class="nl">zero:</span><span class="err">00007</span><span class="nf">FE17840D1B8</span> <span class="no">jmp</span>     <span class="no">rax</span>
+</span></span></code></pre></div><h3 id="solve-script">
+<a class="header-anchor" href="#solve-script"></a>
+Solve Script
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">encrypt</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;R^CRIWJM&lt;6.[5I.G`.C3G3CB5_V?P&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">encrypt</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mh">0x1e</span><span class="p">)</span> <span class="o">^</span> <span class="mh">0x13</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>&ndash;&gt; <code>corctf{xIG_j@t_vm_rBvBrs@ngN}</code></p>
+<p>It seems that the flag still has no meaning, but now I notice the sha256 part in the Description: <code>dc136f8bf4ba6cc1b3d2f35708a0b2b55cb32c2deb03bdab1e45fcd1102ae00a</code></p>
+<p>I can only think of one direction: bruteforce until the two sha256 codes are the same, then initial flag with some identifiable characteristics to save time such as: <code>B</code> can be <code>3</code>, <code>e</code> or <code>E</code> and <code>@</code> can be <code>1</code>, <code>i</code>, <code>I</code> or <code>!</code>.</p>
+<p>Based on those, we can write a script to get the flag:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">target_hash</span> <span class="o">=</span> <span class="s2">&#34;dc136f8bf4ba6cc1b3d2f35708a0b2b55cb32c2deb03bdab1e45fcd1102ae00a&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">characters</span> <span class="o">=</span> <span class="s2">&#34;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.!?;:&#39;-()[]</span><span class="si">{}</span><span class="s2">&lt;&gt;\/@#$%^&amp;*_+=&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">guess1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;i&#34;</span><span class="p">,</span> <span class="s2">&#34;I&#34;</span><span class="p">,</span> <span class="s2">&#34;!&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">guess2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;3&#34;</span><span class="p">,</span> <span class="s2">&#34;e&#34;</span><span class="p">,</span> <span class="s2">&#34;E&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">characters</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">characters</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">guess1</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">guess2</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">characters</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">candidate</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;corctf</span><span class="se">{{</span><span class="s2">x</span><span class="si">{</span><span class="n">characters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}{</span><span class="n">characters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">_j</span><span class="si">{</span><span class="n">guess1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">t_vm_r</span><span class="si">{</span><span class="n">guess2</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="si">}</span><span class="s2">v</span><span class="si">{</span><span class="n">guess2</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="si">}</span><span class="s2">rs</span><span class="si">{</span><span class="n">guess1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">ng</span><span class="si">{</span><span class="n">characters</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="si">}</span><span class="se">}}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">hashed</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="n">hashed</span> <span class="o">==</span> <span class="n">target_hash</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Found:&#34;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">break</span>
+</span></span></code></pre></div><p><strong>flag:<code>corctf{x86_j1t_vm_r3v3rs1ng?}</code></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+
+
+
+
+
+
+<blockquote class="article-copyright">
+  
+    <p><strong><span class="icon-user icon"></span>Author: </strong>Spid3r @ Adventures of Spid3r</p>
+  
+  
+  
+  
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2022-08-09 11:00:00</p>
+  
+  
+  
+    <p>
+      <strong><span class="icon-copyright icon"></span>License: </strong>
+      All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener external nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  
+</blockquote>
+
+      
+
+      
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button-wrapper">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">Sponsor</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">Buy the author a coffee!</div>
+  
+    <div class="sponsor-qr">
+      
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/bmc_qr.png" alt="buymeacoffee.com/spid3r" width="200" />
+          <p class="sponsor-qr-name">buymeacoffee.com/spid3r</p>
+        </div>
+      
+    </div>
+  
+</div>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <ul class="article-tag-list" itemprop="keywords">
+  
+</ul>
+
+    </footer>
+  </div>
+  
+    
+  <nav
+    id="article-nav"
+    data-aos="fade-up"
+  >
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img
+            data-src="/images/cai-dat-may-ao-vm-ware/featured.png"
+            data-sizes="auto"
+            alt="Hướng Dẫn Cài Đặt máy ảo sử dụng VMware Workstation/Fusion"
+            class="lazyload"
+          />
+        
+        <a href="https://sondt1337.github.io/post/cai-dat-may-ao-vm-ware/"></a>
+        <div class="article-nav-caption">Newer</div>
+        <h3 class="article-nav-title">
+          
+            Hướng Dẫn Cài Đặt máy ảo sử dụng VMware Workstation/Fusion
+          
+        </h3>
+      </div>
+    
+
+    
+      <div class="article-nav-link-wrap article-nav-link-right">
+        
+          <img
+            data-src="https://tmdpc.vn/media/news/0206_CuhnhchiMinecrafttrnPCkhnglogitlag1.jpg"
+            data-sizes="auto"
+            alt="Guide to Building a Minecraft Server on Linux – Simple and Professional"
+            class="lazyload"
+          />
+        
+        <a href="https://sondt1337.github.io/post/build-server-minecraft-on-linux/"></a>
+        <div class="article-nav-caption">Older</div>
+        <h3 class="article-nav-title">
+          
+            Guide to Building a Minecraft Server on Linux – Simple and Professional
+          
+        </h3>
+      </div>
+    
+  </nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+</section>
+        </div>
+        
+        
+        
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+<footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+      <div style="flex-direction:column;align-items: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"></a>
+    
+    <div>
+      <span class="icon-copyright"></span>
+      2021 -
+      2025
+      <span class="footer-info-sep rotate"></span>
+      Spid3r
+    </div>
+    
+      <div>
+        <span class="icon-brush"
+          >&nbsp;
+            13.4k
+          </span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;
+          
+          
+
+          01:09
+        </span>
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar">
+          <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#microsoft--linux">Microsoft ❤️ Linux</a>
+      <ul>
+        <li><a href="#part-1-analysis">Part 1 analysis</a></li>
+        <li><a href="#script-part-1">Script part 1</a></li>
+        <li><a href="#part-2-analysis">Part 2 analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#turbocrab">turbocrab</a>
+      <ul>
+        <li><a href="#check-the-file">Check the file</a></li>
+        <li><a href="#debugging">Debugging</a></li>
+        <li><a href="#solve-script">Solve Script</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+        </div>
+        <div class="sidebar-common-sidebar hidden">
+          
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/../images/avatar.jpg"
+    data-sizes="auto"
+    alt="Spid3r"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Spid3r</div>
+  <div class="sidebar-description">I&#39;m a little spider</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div>
+    
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      0
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tags</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe632;
+        
+      </div>
+      <div class="sidebar-menu-link">Home</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe604;
+        
+      </div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe628;
+        
+      </div>
+      <div class="sidebar-menu-link">About</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/achievements"
+        aria-label="Achievements"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe621;
+        
+      </div>
+      <div class="sidebar-menu-link">Achievements</div>
+    </div>
+  
+</div>
+
+        </div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div class="reimu-search-input" id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" />
+        </div>
+      </div>
+    
+    
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"
+  ></script>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+
+
+  <script>
+    var ALGOLIA_CONFIG = {
+      logo: '\/images\/algolia_logo.svg',
+      algolia: {
+        applicationID: "",
+        apiKey: "",
+        indexName: "",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"
+    defer
+    
+    
+    
+    integrity="sha384-xvLS0jfKuoREs7pqkRI/OI8GcqohO5S&#43;jQz7ZBtQXnsXmD&#43;9jDOOY4cL6dCPzlrk" crossorigin="anonymous"
+  ></script>
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-hHJCflT4KBLQyHfKO9vpstIcFKn/Y&#43;KHTORelMMEn7mOp2AVPp&#43;7fr03dLgZiV3J" crossorigin="anonymous"
+  ></script>
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/mouse-firework@0.1.0/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-KM6i7tu43nYd6e0beIljxHMC5tZc58XBDu7pPA58w50h18Jsx7gLdimfS09RXlKv" crossorigin="anonymous"
+  ></script>
+
+
+<script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"#ff5252\",\"#ff7c7c\",\"#ffafaf\",\"#ffd0d0\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"#ff0000\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"
+  ></script>
+
+
+  <script>
+    function loadScripts(scripts, index) {
+      if (index < scripts.length) {
+        const script = scripts[index];
+        const src = script.getAttribute('src');
+
+        const loadScript = (scriptContent) => {
+          return new Promise((resolve, reject) => {
+            const scriptElement = document.createElement('script');
+            if (script.type) {
+              scriptElement.type = script.type;
+            }
+            if (script.src) {
+              scriptElement.src = script.src;
+              scriptElement.onload = resolve;
+              scriptElement.onerror = reject;
+            }
+            if (scriptContent) {
+              scriptElement.text = scriptContent;
+            }
+            document.head.appendChild(scriptElement);
+            if (!script.src) {
+              resolve();
+            }
+          })
+          
+        }
+
+        ;(src ? loadScript() : loadScript(script.text))
+          .then(() => loadScripts(scripts, index + 1))
+          .catch(error => {
+            console.error(`Failed to load script: ${src || 'inline script'}`, error);
+            loadScripts(scripts, index + 1);
+          });
+      }
+    }
+    window.Pjax &&
+      new window.Pjax({
+        selectors: [
+          "#header>img",
+          "#header>picture",
+          "head title",
+          "#header-title",
+          "#subtitle-wrap",
+          "#main",
+          "#content",
+          ".sidebar-widget",
+          ".sidebar-wrapper",
+          "#mobile-nav",
+          "#lazy-script",
+        ],
+        switches: {
+          "#content": function(oldEl, newEl) {
+            
+            oldEl.className = newEl.className;
+            this.onSwitch();
+          },
+          "#header-title": Pjax.switches.outerHTML,
+          "#subtitle-wrap": Pjax.switches.outerHTML,
+          "#main": function (oldEl, newEl) {
+            const scripts = [...newEl.querySelectorAll("script")];
+            loadScripts(scripts, 0);
+            oldEl.outerHTML = newEl.outerHTML;
+            this.onSwitch();
+          },
+          "#mobile-nav": Pjax.switches.outerHTML,
+          "#lazy-script": function (oldEl, newEl) {
+            const scripts = [...newEl.querySelectorAll("script")];
+            loadScripts(scripts, 0);
+            oldEl.innerHTML = newEl.innerHTML;
+            this.onSwitch();
+          },
+        },
+        cacheBust: false,
+      });
+  </script>
+  
+
+
+
+
+
+  
+      
+      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+        
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Spid3r",
+          title: "CorCTF 2022 | Reverse Engineering",
+          url: "https:\/\/sondt1337.github.io\/post\/corctf-2022\/",
+          description: "CorCTF 2022 | Reverse Engineering",
+          cover: "https:\/\/sondt1337.github.io\/images\/corctf2022-re\/featured-image.png",
+        };
+      </script>
+    
+    
+    
+      
+
+
+
+
+
+  
+      
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+      
+      
+      
+      
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;
+
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+    
+  </div>
+</div>
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+
+
+
+  
+       
+         
+      
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    
+    
+    
+    
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
+  ></script>
+
+
+  
+    <script>
+      const ap = new APlayer({
+          theme: "var(--color-link)",
+          container: document.getElementById('aplayer'),
+          audio: JSON.parse("[{\"artist\":\"Miki Matsubara\",\"cover\":\"/images/song_covers/Mayonaka_no_Door_Stay_With_Me.jpg\",\"lrc\":\"/songs/Mayonaka_no_Door_Stay_With_Me.lrc\",\"name\":\"Mayonaka no Door / Stay With Me\",\"url\":\"/songs/Mayonaka_no_Door_Stay_With_Me.mp3\"},{\"artist\":\"Tomoko Aran\",\"cover\":\"/images/song_covers/Midnight Pretenders.jpg\",\"lrc\":\"/songs/Midnight Pretenders.lrc\",\"name\":\"Midnight Pretenders\",\"url\":\"/songs/Midnight Pretenders.mp3\"},{\"artist\":\"Spectrum\",\"cover\":\"/images/song_covers/F・L・Y.jpg\",\"lrc\":\"/songs/F・L・Y.lrc\",\"name\":\"F・L・Y\",\"url\":\"/songs/F・L・Y.mp3\"},{\"artist\":\"Yoko Oginome\",\"cover\":\"/images/song_covers/LAZY DANCE.jpg\",\"lrc\":\"/songs/LAZY DANCE.lrc\",\"name\":\"LAZY DANCE\",\"url\":\"/songs/LAZY DANCE.mp3\"}]") || [],
+          fixed:  null  || false,
+          autoplay:  false  || false,
+          loop: 'all' || 'all',
+          order: '' || 'list',
+          preload: '' || 'auto',
+          volume:  null  || 0.7,
+          mutex:  null  || true,
+          listFolded:  false  || false,
+          lrcType:  3  || 0,
+      });
+    </script>
+  
+
+
+
+
+
+    
+  </body>
+</html>

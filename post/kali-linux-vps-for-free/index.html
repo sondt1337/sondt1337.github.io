@@ -1,0 +1,1683 @@
+<!doctype html>
+<html
+  lang="en-us" 
+  
+    data-theme-mode="auto"
+  
+>
+  <head>
+    
+    <meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+
+
+
+
+
+
+
+  
+
+<title>
+  Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible | Spid3r
+</title>
+<meta
+  name="description"
+  content="Kali Linux VPS for Free"
+/>
+
+
+
+  <script>
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "true");
+</script>
+
+
+  
+<script src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script data-pjax>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+
+  gtag('config', 'true');
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"error (ﾟ⊿ﾟ)ﾂ\",\"success\":\"copied(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
+</script>
+
+<script>
+  window.siteConfig.swPath = '\/sw.js';
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+
+
+
+
+
+
+  <link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_0khxww3tj3q9.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+
+
+
+  
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+
+
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible | Spid3r" />
+  <meta
+    property="og:description"
+    content="Kali Linux VPS for Free"
+  />
+  <meta property="og:url" content="https://sondt1337.github.io/post/kali-linux-vps-for-free/" />
+  <meta
+    property="og:site_name"
+    content="Adventures of Spid3r"
+  />
+  <meta
+    property="og:image"
+    content="https://hackmd.io/_uploads/Hk9g7yPWyg.png"
+  />
+  <meta property="article:author" content="Spid3r" />
+  <meta property="article:published_time" content="2023-05-05T11:00:00-07:00" />
+  <meta property="article:modified_time" content="2023-05-05T11:00:00-07:00" />
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://hackmd.io/_uploads/Hk9g7yPWyg.png" />
+  
+  
+  
+  
+  
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.9/dist/katex.min.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
+
+
+
+    
+  </head>
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        
+          <img src="/images/taichi.svg" alt="loading" />
+        
+      </div>
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+  <div class="notification-wrapper">
+    <h1>New version found</h1>
+    <p>The website seems to have new content, do you want to update?</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">Update</button>
+      <button id="notification-close-btn">Cancel</button>
+    </div>
+  </div>
+
+    <div id="container">
+      <div id="wrap">
+        
+<div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe632;
+          
+        </div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe604;
+          
+        </div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe628;
+          
+        </div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe621;
+          
+        </div>
+        <a class="main-nav-link" href="/achievements">Achievements</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <picture></picture>
+    <img fetchpriority="high" src="https://hackmd.io/_uploads/Hk9g7yPWyg.png" alt="Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible">
+  
+
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          
+        
+  
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible</h1>
+          </a>
+        
+      
+  
+      
+        
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+        <div id="content"
+          
+          class="sidebar-right"  >
+          <aside id="sidebar">
+  
+  
+    <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  
+  
+  <div class="sidebar-wrapper wrap-sticky">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    >
+      
+        
+          <div class="sidebar-toc-sidebar">
+            <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#connecting-to-the-segfault-server">Connecting to the Segfault Server</a></li>
+    <li><a href="#tunnel-server">TUNNEL SERVER</a>
+      <ul>
+        <li><a href="#argo-tunnel-cloudflare-tunnel">Argo Tunnel (Cloudflare Tunnel)</a></li>
+        <li><a href="#create-a-tunnel">Create a tunnel</a></li>
+        <li><a href="#name-your-tunnel">Name your tunnel</a></li>
+        <li><a href="#install-and-run-connectors">Install and run connectors</a></li>
+        <li><a href="#route-traffic">Route Traffic</a></li>
+        <li><a href="#uptime-server">UPTIME Server</a></li>
+        <li><a href="#github-actions">GITHUB ACTIONS</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#connecting-to-the-segfault-server-1">Connecting to the Segfault Server</a></li>
+    <li><a href="#tunnel-server-1">TUNNEL SERVER</a>
+      <ul>
+        <li><a href="#argo-tunnel-cloudflare-tunnel-1">Argo Tunnel (Cloudflare Tunnel)</a></li>
+        <li><a href="#create-a-tunnel-1">Create a tunnel</a></li>
+        <li><a href="#name-your-tunnel-1">Name your tunnel</a></li>
+        <li><a href="#install-and-run-connectors-1">Install and run connectors</a></li>
+        <li><a href="#route-traffic-1">Route Traffic</a></li>
+        <li><a href="#uptime-server-1">UPTIME Server</a></li>
+        <li><a href="#github-actions-1">GITHUB ACTIONS</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-1">Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+          </div>
+          <div class="sidebar-common-sidebar hidden">
+            
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/../images/avatar.jpg"
+    data-sizes="auto"
+    alt="Spid3r"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Spid3r</div>
+  <div class="sidebar-description">I&#39;m a little spider</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div>
+    
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      0
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tags</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe632;
+        
+      </div>
+      <div class="sidebar-menu-link">Home</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe604;
+        
+      </div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe628;
+        
+      </div>
+      <div class="sidebar-menu-link">About</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/achievements"
+        aria-label="Achievements"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe621;
+        
+      </div>
+      <div class="sidebar-menu-link">Achievements</div>
+    </div>
+  
+</div>
+
+          </div>
+        
+      
+
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+
+  <div class="sidebar-widget">
+    
+  </div>
+  
+</aside>
+
+          <section id="main">
+  <article
+  class="h-entry article"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+      <div class="article-date">
+  <span
+    class="article-date-link"
+    data-aos="zoom-in"
+  >
+    <time datetime="2023-05-05 11:00:00 -0700 -0700" itemprop="datePublished"
+      >2023-05-05</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2023-05-05</time
+    >
+  </span>
+</div>
+
+      <div class="article-category">
+  
+</div>
+
+    </div>
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p><img src="https://hackmd.io/_uploads/Hk9g7yPWyg.png" alt="image"></p>
+<p><strong>Segfault</strong>, created by The Hacker’s Choice, is a complimentary application for Cyber Security Researcher. It provides an unlimited server with Root access. With each new server that is generated, SSH connection is established for communal use.</p>
+<p><img src="https://hackmd.io/_uploads/rkmIm1DZyl.png" alt="image"></p>
+<h2 id="connecting-to-the-segfault-server">
+<a class="header-anchor" href="#connecting-to-the-segfault-server"></a>
+Connecting to the Segfault Server
+</h2><p>To log into Segfault, start by using the SSH command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh root@segfault.net # The password is &#39;segfault&#39;
+</span></span></code></pre></div><p>When initially connecting to Segfault to open a root and SSH server, a 60-second wait is required. However, this duration is not typical for subsequent connections (probably less).</p>
+<p><img src="https://hackmd.io/_uploads/rytLmkwZyl.png" alt="image"></p>
+<p>Once successfully connected to the server, it will provide details such as SSH and IP address. (It’s important to save this information for future reference.)</p>
+<p><img src="https://hackmd.io/_uploads/B1qPm1vWJe.png" alt="image"></p>
+<p>Later, to log in again, simply execute the SSH command provided below.</p>
+<p><img src="https://hackmd.io/_uploads/ByWOQyPZJg.png" alt="image"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh -o &#34;SetEnv SECRET=YOUR_KEY_PRIVATE&#34; root@lulz.segfault.net
+</span></span></code></pre></div><p>Once logged in, this Kali server can be utilized as a virtual machine equipped with a comprehensive suite of tools for security and networking, … (<a href="https://www.thc.org/segfault/">Segfault’s homepage</a> for more details).</p>
+<p><img src="https://hackmd.io/_uploads/H1HtXkvb1g.png" alt="image"></p>
+<p>To log out of the server, simply use the exit command.</p>
+<p><img src="https://hackmd.io/_uploads/r1jtmyvZ1l.png" alt="image"></p>
+<h2 id="tunnel-server">
+<a class="header-anchor" href="#tunnel-server"></a>
+TUNNEL SERVER
+</h2><p>Although the server we have is nearly identical to a real Kali Linux virtual machine, it can initiate connections from the inside, but external connections cannot reach it using common protocols like HTTP, TCP, etc. For this, I will need to utilize a powerful Cloudflare feature called Tunnel.</p>
+<h3 id="argo-tunnel-cloudflare-tunnel">
+<a class="header-anchor" href="#argo-tunnel-cloudflare-tunnel"></a>
+Argo Tunnel (Cloudflare Tunnel)
+</h3><p>Initially, you must establish a tunnel from Cloudflare to the Kali Linux server using <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/">Zero Trust</a>.</p>
+<h3 id="create-a-tunnel">
+<a class="header-anchor" href="#create-a-tunnel"></a>
+Create a tunnel
+</h3><p><img src="https://hackmd.io/_uploads/BkPqmJP-1g.png" alt="image"></p>
+<h3 id="name-your-tunnel">
+<a class="header-anchor" href="#name-your-tunnel"></a>
+Name your tunnel
+</h3><p><img src="https://hackmd.io/_uploads/HJSoQyDZ1l.png" alt="image"></p>
+<h3 id="install-and-run-connectors">
+<a class="header-anchor" href="#install-and-run-connectors"></a>
+Install and run connectors
+</h3><p>In the <code>Choose your environment</code> options, select Debian — 64-bit.</p>
+<p><img src="https://hackmd.io/_uploads/rk8pQyD-yl.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJe0XJwb1l.png" alt="image"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">curl</span> <span class="o">-</span><span class="n">L</span> <span class="o">--</span><span class="n">output</span> <span class="n">cloudflared</span><span class="o">.</span><span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cloudflare</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">deb</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">cloudflared</span><span class="o">.</span><span class="n">deb</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">cloudflared</span> <span class="n">service</span> <span class="n">install</span> <span class="s2">&#34;YOUR_TOKEN_CLOUDFLARE&#34;</span> <span class="c1"># Replace YOUR_TOKEN_CLOUDFLARE</span>
+</span></span></code></pre></div><p>Upon a successful connection, Connectors will display both ID and Status.</p>
+<p><img src="https://hackmd.io/_uploads/HJok4kPbyx.png" alt="image"></p>
+<p><em>You should delete the old Cloudflare version on Segfault to install the new version (like the other version is being warned)</em></p>
+<h3 id="route-traffic">
+<a class="header-anchor" href="#route-traffic"></a>
+Route Traffic
+</h3><p><img src="https://hackmd.io/_uploads/rJ_lN1wZyl.png" alt="image"></p>
+<p>In <code>Route Traffic</code>, you must fill in the <strong>Domain</strong> (at least one domain is required) and the method + URL (localhost).</p>
+<p>Use <code>http.server</code> in background to tunnel from machine to cloudflare</p>
+<p><img src="https://hackmd.io/_uploads/S1lz41vW1l.png" alt="image"></p>
+<p>When the http.server is running in the background, a Cloudflare tunnel can be configured to a domain</p>
+<p><img src="https://hackmd.io/_uploads/Byvz41vbJl.png" alt="image"></p>
+<p>You can create an HTML file in the background to display a welcome page. :&gt;</p>
+<h3 id="uptime-server">
+<a class="header-anchor" href="#uptime-server"></a>
+UPTIME Server
+</h3><p>However, if the requirement is to establish a connection that remains active indefinitely, allowing applications to run continuously, what should be done?</p>
+<p><img src="https://hackmd.io/_uploads/ByaMVkDWkx.png" alt="image"></p>
+<p>According to the segfault announcement, the server will remain up as long as you are logged into the Segfault. This means your progress will be preserved as long as you maintain an SSH connection to segfault.net.</p>
+<p>So we need to make something that can automatically connect “ssh” to the segfault server.</p>
+<h3 id="github-actions">
+<a class="header-anchor" href="#github-actions"></a>
+GITHUB ACTIONS
+</h3><p><a href="https://docs.github.com/en/actions">GitHub Actions</a> is a complimentary service offered by GitHub that facilitates the automation of the CI/CD process. It enables users to create workflows that automate tasks within the software development lifecycle.</p>
+<p>When you create a repository in Github, you can choose Actions to start Github Actions, choose the simple workflow.</p>
+<p><img src="https://hackmd.io/_uploads/HkC4N1D-Je.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJtB4kwb1g.png" alt="image"></p>
+<p>I have created a YAML script to automate the process of repeatedly establishing an SSH connection with a set interval.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">SEGFAULT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">main]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">main]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;*/20 * * * *&#39;</span><span class="w"> </span><span class="c"># Restart each 20 minutes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install sshpass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">sudo apt-get install -y sshpass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Connect to SSH and run command</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># automatic connect ssh from github actions</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sshpass -p &#34;segfault&#34; ssh -o &#34;SetEnv SECRET=YOUR_KEY&#34; -o &#34;StrictHostKeyChecking=no&#34; root@lulz.segfault.net &#34;ls&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>This workflow keeps the server connection alive by reconnecting every 20 minutes, ensuring your server remains active.</p>
+<p><img src="https://hackmd.io/_uploads/r1484kP-yl.png" alt="Automation Complete"></p>
+<p>We have successfully established a continuous SSH connection to the server, ensuring it remains active for our needs.</p>
+<h2 id="conclusion">
+<a class="header-anchor" href="#conclusion"></a>
+Conclusion
+</h2><p>By following these steps, you can set up a reliable, free Kali Linux environment using Segfault, create secure outbound tunnels, and maintain uptime indefinitely. Share this guide if it’s helpful!</p>
+<p><img src="https://hackmd.io/_uploads/Hk9g7yPWyg.png" alt="image"></p>
+<p><strong>Segfault</strong>, created by The Hacker’s Choice, is a complimentary application for Cyber Security Researcher. It provides an unlimited server with Root access. With each new server that is generated, SSH connection is established for communal use.</p>
+<p><img src="https://hackmd.io/_uploads/rkmIm1DZyl.png" alt="image"></p>
+<h2 id="connecting-to-the-segfault-server-1">
+<a class="header-anchor" href="#connecting-to-the-segfault-server-1"></a>
+Connecting to the Segfault Server
+</h2><p>To log into Segfault, start by using the SSH command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh root@segfault.net # The password is &#39;segfault&#39;
+</span></span></code></pre></div><p>When initially connecting to Segfault to open a root and SSH server, a 60-second wait is required. However, this duration is not typical for subsequent connections (probably less).</p>
+<p><img src="https://hackmd.io/_uploads/rytLmkwZyl.png" alt="image"></p>
+<p>Once successfully connected to the server, it will provide details such as SSH and IP address. (It’s important to save this information for future reference.)</p>
+<p><img src="https://hackmd.io/_uploads/B1qPm1vWJe.png" alt="image"></p>
+<p>Later, to log in again, simply execute the SSH command provided below.</p>
+<p><img src="https://hackmd.io/_uploads/ByWOQyPZJg.png" alt="image"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh -o &#34;SetEnv SECRET=YOUR_KEY_PRIVATE&#34; root@lulz.segfault.net
+</span></span></code></pre></div><p>Once logged in, this Kali server can be utilized as a virtual machine equipped with a comprehensive suite of tools for security and networking, … (<a href="https://www.thc.org/segfault/">Segfault’s homepage</a> for more details).</p>
+<p><img src="https://hackmd.io/_uploads/H1HtXkvb1g.png" alt="image"></p>
+<p>To log out of the server, simply use the exit command.</p>
+<p><img src="https://hackmd.io/_uploads/r1jtmyvZ1l.png" alt="image"></p>
+<h2 id="tunnel-server-1">
+<a class="header-anchor" href="#tunnel-server-1"></a>
+TUNNEL SERVER
+</h2><p>Although the server we have is nearly identical to a real Kali Linux virtual machine, it can initiate connections from the inside, but external connections cannot reach it using common protocols like HTTP, TCP, etc. For this, I will need to utilize a powerful Cloudflare feature called Tunnel.</p>
+<h3 id="argo-tunnel-cloudflare-tunnel-1">
+<a class="header-anchor" href="#argo-tunnel-cloudflare-tunnel-1"></a>
+Argo Tunnel (Cloudflare Tunnel)
+</h3><p>Initially, you must establish a tunnel from Cloudflare to the Kali Linux server using <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/">Zero Trust</a>.</p>
+<h3 id="create-a-tunnel-1">
+<a class="header-anchor" href="#create-a-tunnel-1"></a>
+Create a tunnel
+</h3><p><img src="https://hackmd.io/_uploads/BkPqmJP-1g.png" alt="image"></p>
+<h3 id="name-your-tunnel-1">
+<a class="header-anchor" href="#name-your-tunnel-1"></a>
+Name your tunnel
+</h3><p><img src="https://hackmd.io/_uploads/HJSoQyDZ1l.png" alt="image"></p>
+<h3 id="install-and-run-connectors-1">
+<a class="header-anchor" href="#install-and-run-connectors-1"></a>
+Install and run connectors
+</h3><p>In the <code>Choose your environment</code> options, select Debian — 64-bit.</p>
+<p><img src="https://hackmd.io/_uploads/rk8pQyD-yl.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJe0XJwb1l.png" alt="image"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">curl</span> <span class="o">-</span><span class="n">L</span> <span class="o">--</span><span class="n">output</span> <span class="n">cloudflared</span><span class="o">.</span><span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cloudflare</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">deb</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">cloudflared</span><span class="o">.</span><span class="n">deb</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">cloudflared</span> <span class="n">service</span> <span class="n">install</span> <span class="s2">&#34;YOUR_TOKEN_CLOUDFLARE&#34;</span> <span class="c1"># Replace YOUR_TOKEN_CLOUDFLARE</span>
+</span></span></code></pre></div><p>Upon a successful connection, Connectors will display both ID and Status.</p>
+<p><img src="https://hackmd.io/_uploads/HJok4kPbyx.png" alt="image"></p>
+<p><em>You should delete the old Cloudflare version on Segfault to install the new version (like the other version is being warned)</em></p>
+<h3 id="route-traffic-1">
+<a class="header-anchor" href="#route-traffic-1"></a>
+Route Traffic
+</h3><p><img src="https://hackmd.io/_uploads/rJ_lN1wZyl.png" alt="image"></p>
+<p>In <code>Route Traffic</code>, you must fill in the <strong>Domain</strong> (at least one domain is required) and the method + URL (localhost).</p>
+<p>Use <code>http.server</code> in background to tunnel from machine to cloudflare</p>
+<p><img src="https://hackmd.io/_uploads/S1lz41vW1l.png" alt="image"></p>
+<p>When the http.server is running in the background, a Cloudflare tunnel can be configured to a domain</p>
+<p><img src="https://hackmd.io/_uploads/Byvz41vbJl.png" alt="image"></p>
+<p>You can create an HTML file in the background to display a welcome page. :&gt;</p>
+<h3 id="uptime-server-1">
+<a class="header-anchor" href="#uptime-server-1"></a>
+UPTIME Server
+</h3><p>However, if the requirement is to establish a connection that remains active indefinitely, allowing applications to run continuously, what should be done?</p>
+<p><img src="https://hackmd.io/_uploads/ByaMVkDWkx.png" alt="image"></p>
+<p>According to the segfault announcement, the server will remain up as long as you are logged into the Segfault. This means your progress will be preserved as long as you maintain an SSH connection to segfault.net.</p>
+<p>So we need to make something that can automatically connect “ssh” to the segfault server.</p>
+<h3 id="github-actions-1">
+<a class="header-anchor" href="#github-actions-1"></a>
+GITHUB ACTIONS
+</h3><p><a href="https://docs.github.com/en/actions">GitHub Actions</a> is a complimentary service offered by GitHub that facilitates the automation of the CI/CD process. It enables users to create workflows that automate tasks within the software development lifecycle.</p>
+<p>When you create a repository in Github, you can choose Actions to start Github Actions, choose the simple workflow.</p>
+<p><img src="https://hackmd.io/_uploads/HkC4N1D-Je.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJtB4kwb1g.png" alt="image"></p>
+<p>I have created a YAML script to automate the process of repeatedly establishing an SSH connection with a set interval.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">SEGFAULT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">main]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">main]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;*/20 * * * *&#39;</span><span class="w"> </span><span class="c"># Restart each 20 minutes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install sshpass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">sudo apt-get install -y sshpass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Connect to SSH and run command</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># automatic connect ssh from github actions</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sshpass -p &#34;segfault&#34; ssh -o &#34;SetEnv SECRET=YOUR_KEY&#34; -o &#34;StrictHostKeyChecking=no&#34; root@lulz.segfault.net &#34;ls&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>This workflow keeps the server connection alive by reconnecting every 20 minutes, ensuring your server remains active.</p>
+<p><img src="https://hackmd.io/_uploads/r1484kP-yl.png" alt="Automation Complete"></p>
+<p>We have successfully established a continuous SSH connection to the server, ensuring it remains active for our needs.</p>
+<h2 id="conclusion-1">
+<a class="header-anchor" href="#conclusion-1"></a>
+Conclusion
+</h2><p>By following these steps, you can set up a reliable, free Kali Linux environment using Segfault, create secure outbound tunnels, and maintain uptime indefinitely. Share this guide if it’s helpful!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+
+
+
+
+
+
+<blockquote class="article-copyright">
+  
+    <p><strong><span class="icon-user icon"></span>Author: </strong>Spid3r @ Adventures of Spid3r</p>
+  
+  
+  
+  
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2023-05-05 11:00:00</p>
+  
+  
+  
+    <p>
+      <strong><span class="icon-copyright icon"></span>License: </strong>
+      All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener external nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  
+</blockquote>
+
+      
+
+      
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button-wrapper">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">Sponsor</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">Buy the author a coffee!</div>
+  
+    <div class="sponsor-qr">
+      
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/bmc_qr.png" alt="buymeacoffee.com/spid3r" width="200" />
+          <p class="sponsor-qr-name">buymeacoffee.com/spid3r</p>
+        </div>
+      
+    </div>
+  
+</div>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <ul class="article-tag-list" itemprop="keywords">
+  
+</ul>
+
+    </footer>
+  </div>
+  
+    
+  <nav
+    id="article-nav"
+    data-aos="fade-up"
+  >
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img
+            data-src="https://tmdpc.vn/media/news/0206_CuhnhchiMinecrafttrnPCkhnglogitlag1.jpg"
+            data-sizes="auto"
+            alt="Guide to Building a Minecraft Server on Linux – Simple and Professional"
+            class="lazyload"
+          />
+        
+        <a href="https://sondt1337.github.io/post/build-server-minecraft-on-linux/"></a>
+        <div class="article-nav-caption">Newer</div>
+        <h3 class="article-nav-title">
+          
+            Guide to Building a Minecraft Server on Linux – Simple and Professional
+          
+        </h3>
+      </div>
+    
+
+    
+      <div class="article-nav-link-wrap article-nav-link-right">
+        
+          <img
+            data-src="/images/writeups-forensics-umdctf/featured.png"
+            data-sizes="auto"
+            alt="UMDCTF 2023 | Digital Forensics"
+            class="lazyload"
+          />
+        
+        <a href="https://sondt1337.github.io/post/writeups-forensics-umdctf/"></a>
+        <div class="article-nav-caption">Older</div>
+        <h3 class="article-nav-title">
+          
+            UMDCTF 2023 | Digital Forensics
+          
+        </h3>
+      </div>
+    
+  </nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+</section>
+        </div>
+        
+        
+        
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+<footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+      <div style="flex-direction:column;align-items: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"></a>
+    
+    <div>
+      <span class="icon-copyright"></span>
+      2021 -
+      2025
+      <span class="footer-info-sep rotate"></span>
+      Spid3r
+    </div>
+    
+      <div>
+        <span class="icon-brush"
+          >&nbsp;
+            13.4k
+          </span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;
+          
+          
+
+          01:09
+        </span>
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar">
+          <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#connecting-to-the-segfault-server">Connecting to the Segfault Server</a></li>
+    <li><a href="#tunnel-server">TUNNEL SERVER</a>
+      <ul>
+        <li><a href="#argo-tunnel-cloudflare-tunnel">Argo Tunnel (Cloudflare Tunnel)</a></li>
+        <li><a href="#create-a-tunnel">Create a tunnel</a></li>
+        <li><a href="#name-your-tunnel">Name your tunnel</a></li>
+        <li><a href="#install-and-run-connectors">Install and run connectors</a></li>
+        <li><a href="#route-traffic">Route Traffic</a></li>
+        <li><a href="#uptime-server">UPTIME Server</a></li>
+        <li><a href="#github-actions">GITHUB ACTIONS</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#connecting-to-the-segfault-server-1">Connecting to the Segfault Server</a></li>
+    <li><a href="#tunnel-server-1">TUNNEL SERVER</a>
+      <ul>
+        <li><a href="#argo-tunnel-cloudflare-tunnel-1">Argo Tunnel (Cloudflare Tunnel)</a></li>
+        <li><a href="#create-a-tunnel-1">Create a tunnel</a></li>
+        <li><a href="#name-your-tunnel-1">Name your tunnel</a></li>
+        <li><a href="#install-and-run-connectors-1">Install and run connectors</a></li>
+        <li><a href="#route-traffic-1">Route Traffic</a></li>
+        <li><a href="#uptime-server-1">UPTIME Server</a></li>
+        <li><a href="#github-actions-1">GITHUB ACTIONS</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-1">Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+        </div>
+        <div class="sidebar-common-sidebar hidden">
+          
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/../images/avatar.jpg"
+    data-sizes="auto"
+    alt="Spid3r"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Spid3r</div>
+  <div class="sidebar-description">I&#39;m a little spider</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div>
+    
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      0
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tags</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe632;
+        
+      </div>
+      <div class="sidebar-menu-link">Home</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe604;
+        
+      </div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe628;
+        
+      </div>
+      <div class="sidebar-menu-link">About</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/achievements"
+        aria-label="Achievements"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe621;
+        
+      </div>
+      <div class="sidebar-menu-link">Achievements</div>
+    </div>
+  
+</div>
+
+        </div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div class="reimu-search-input" id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" />
+        </div>
+      </div>
+    
+    
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"
+  ></script>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+
+
+  <script>
+    var ALGOLIA_CONFIG = {
+      logo: '\/images\/algolia_logo.svg',
+      algolia: {
+        applicationID: "",
+        apiKey: "",
+        indexName: "",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"
+    defer
+    
+    
+    
+    integrity="sha384-xvLS0jfKuoREs7pqkRI/OI8GcqohO5S&#43;jQz7ZBtQXnsXmD&#43;9jDOOY4cL6dCPzlrk" crossorigin="anonymous"
+  ></script>
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-hHJCflT4KBLQyHfKO9vpstIcFKn/Y&#43;KHTORelMMEn7mOp2AVPp&#43;7fr03dLgZiV3J" crossorigin="anonymous"
+  ></script>
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/mouse-firework@0.1.0/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-KM6i7tu43nYd6e0beIljxHMC5tZc58XBDu7pPA58w50h18Jsx7gLdimfS09RXlKv" crossorigin="anonymous"
+  ></script>
+
+
+<script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"#ff5252\",\"#ff7c7c\",\"#ffafaf\",\"#ffd0d0\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"#ff0000\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"
+  ></script>
+
+
+  <script>
+    function loadScripts(scripts, index) {
+      if (index < scripts.length) {
+        const script = scripts[index];
+        const src = script.getAttribute('src');
+
+        const loadScript = (scriptContent) => {
+          return new Promise((resolve, reject) => {
+            const scriptElement = document.createElement('script');
+            if (script.type) {
+              scriptElement.type = script.type;
+            }
+            if (script.src) {
+              scriptElement.src = script.src;
+              scriptElement.onload = resolve;
+              scriptElement.onerror = reject;
+            }
+            if (scriptContent) {
+              scriptElement.text = scriptContent;
+            }
+            document.head.appendChild(scriptElement);
+            if (!script.src) {
+              resolve();
+            }
+          })
+          
+        }
+
+        ;(src ? loadScript() : loadScript(script.text))
+          .then(() => loadScripts(scripts, index + 1))
+          .catch(error => {
+            console.error(`Failed to load script: ${src || 'inline script'}`, error);
+            loadScripts(scripts, index + 1);
+          });
+      }
+    }
+    window.Pjax &&
+      new window.Pjax({
+        selectors: [
+          "#header>img",
+          "#header>picture",
+          "head title",
+          "#header-title",
+          "#subtitle-wrap",
+          "#main",
+          "#content",
+          ".sidebar-widget",
+          ".sidebar-wrapper",
+          "#mobile-nav",
+          "#lazy-script",
+        ],
+        switches: {
+          "#content": function(oldEl, newEl) {
+            
+            oldEl.className = newEl.className;
+            this.onSwitch();
+          },
+          "#header-title": Pjax.switches.outerHTML,
+          "#subtitle-wrap": Pjax.switches.outerHTML,
+          "#main": function (oldEl, newEl) {
+            const scripts = [...newEl.querySelectorAll("script")];
+            loadScripts(scripts, 0);
+            oldEl.outerHTML = newEl.outerHTML;
+            this.onSwitch();
+          },
+          "#mobile-nav": Pjax.switches.outerHTML,
+          "#lazy-script": function (oldEl, newEl) {
+            const scripts = [...newEl.querySelectorAll("script")];
+            loadScripts(scripts, 0);
+            oldEl.innerHTML = newEl.innerHTML;
+            this.onSwitch();
+          },
+        },
+        cacheBust: false,
+      });
+  </script>
+  
+
+
+
+
+
+  
+      
+      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+        
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Spid3r",
+          title: "Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible",
+          url: "https:\/\/sondt1337.github.io\/post\/kali-linux-vps-for-free\/",
+          description: "Kali Linux VPS for Free",
+          cover: "https:\/\/hackmd.io\/_uploads\/Hk9g7yPWyg.png",
+        };
+      </script>
+    
+    
+    
+      
+
+
+
+
+
+  
+      
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+      
+      
+      
+      
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;
+
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+    
+  </div>
+</div>
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+
+
+
+  
+       
+         
+      
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    
+    
+    
+    
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
+  ></script>
+
+
+  
+    <script>
+      const ap = new APlayer({
+          theme: "var(--color-link)",
+          container: document.getElementById('aplayer'),
+          audio: JSON.parse("[{\"artist\":\"Miki Matsubara\",\"cover\":\"/images/song_covers/Mayonaka_no_Door_Stay_With_Me.jpg\",\"lrc\":\"/songs/Mayonaka_no_Door_Stay_With_Me.lrc\",\"name\":\"Mayonaka no Door / Stay With Me\",\"url\":\"/songs/Mayonaka_no_Door_Stay_With_Me.mp3\"},{\"artist\":\"Tomoko Aran\",\"cover\":\"/images/song_covers/Midnight Pretenders.jpg\",\"lrc\":\"/songs/Midnight Pretenders.lrc\",\"name\":\"Midnight Pretenders\",\"url\":\"/songs/Midnight Pretenders.mp3\"},{\"artist\":\"Spectrum\",\"cover\":\"/images/song_covers/F・L・Y.jpg\",\"lrc\":\"/songs/F・L・Y.lrc\",\"name\":\"F・L・Y\",\"url\":\"/songs/F・L・Y.mp3\"},{\"artist\":\"Yoko Oginome\",\"cover\":\"/images/song_covers/LAZY DANCE.jpg\",\"lrc\":\"/songs/LAZY DANCE.lrc\",\"name\":\"LAZY DANCE\",\"url\":\"/songs/LAZY DANCE.mp3\"}]") || [],
+          fixed:  null  || false,
+          autoplay:  false  || false,
+          loop: 'all' || 'all',
+          order: '' || 'list',
+          preload: '' || 'auto',
+          volume:  null  || 0.7,
+          mutex:  null  || true,
+          listFolded:  false  || false,
+          lrcType:  3  || 0,
+      });
+    </script>
+  
+
+
+
+
+
+    
+  </body>
+</html>

