@@ -9,25 +9,18 @@
     <lastBuildDate>Mon, 17 Mar 2025 20:12:52 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About Spid3r</title>
+      <title>About</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 17 Mar 2025 20:12:52 +0800</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;hehe&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/spid3r.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-name-is-spid3r&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-name-is-spid3r&#34;&gt;&lt;/a&gt;&#xD;&#xA;My name is Spid3r&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Hey, I&amp;rsquo;m &lt;strong&gt;ZxTS&lt;/strong&gt;, also known by the nickname &lt;strong&gt;Spid3r&lt;/strong&gt;. I’m studying at &lt;strong&gt;SOICT - HUST&lt;/strong&gt;. Additionally, I am currently employed in the field of Malware Analysis | Security Researcher at &amp;hellip; and &lt;strong&gt;BKSec [Bach Khoa Cyber Security Student Club]&lt;/strong&gt;. I participate in CTF competitions, focusing on &lt;code&gt;Reverse Engineering&lt;/code&gt;, &lt;code&gt;Binary Exploitation&lt;/code&gt; and &lt;code&gt;Digital Forensics&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-this-site&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#about-this-site&#34;&gt;&lt;/a&gt;&#xD;&#xA;About this site&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;I’ll use this site to share writeups of CTFs or post articles related to &lt;strong&gt;cybersecurity&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/post/hello-copy/</link>
+      <title>Template Testing</title>
+      <link>http://localhost:1313/post/test/</link>
       <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/post/hello-copy/</guid>
-      <description>&lt;p&gt;💘 博麗 霊夢 💘&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/post/hello/</link>
-      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/post/hello/</guid>
-      <description>&lt;p&gt;💘 博麗 霊夢 💘&lt;/p&gt;</description>
+      <guid>http://localhost:1313/post/test/</guid>
+      <description>&lt;p&gt;💘 ONLY FOR TEST&lt;/p&gt;</description>
     </item>
     <item>
       <title>achievements</title>
