@@ -6,6 +6,14 @@
     <description>Recent content in Categories on Adventures of Spid3r</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 27 Oct 2024 11:00:00 -0700</lastBuildDate>
     <atom:link href="https://sondt1337.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF</title>
+      <link>https://sondt1337.github.io/categories/ctf/</link>
+      <pubDate>Sun, 27 Oct 2024 11:00:00 -0700</pubDate>
+      <guid>https://sondt1337.github.io/categories/ctf/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
