@@ -32,6 +32,18 @@
     <loc>https://blog.sondt.id.vn/tags/writeups/</loc>
     <lastmod>2024-01-06T11:00:00-07:00</lastmod>
   </url><url>
+    <loc>https://blog.sondt.id.vn/post/camera_an_toan_hay_ao_tuong/</loc>
+    <lastmod>2024-01-01T01:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.sondt.id.vn/categories/iot/</loc>
+    <lastmod>2024-01-01T01:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.sondt.id.vn/tags/security/</loc>
+    <lastmod>2024-01-01T01:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.sondt.id.vn/tags/trick/</loc>
+    <lastmod>2024-01-01T01:00:00-07:00</lastmod>
+  </url><url>
     <loc>https://blog.sondt.id.vn/post/backdoor-ctf-2023/</loc>
     <lastmod>2023-12-18T11:00:00-07:00</lastmod>
   </url><url>
@@ -54,9 +66,6 @@
     <lastmod>2023-05-05T11:00:00-07:00</lastmod>
   </url><url>
     <loc>https://blog.sondt.id.vn/post/build-server-minecraft-on-linux/</loc>
-    <lastmod>2022-11-20T11:00:00-07:00</lastmod>
-  </url><url>
-    <loc>https://blog.sondt.id.vn/tags/trick/</loc>
     <lastmod>2022-11-20T11:00:00-07:00</lastmod>
   </url><url>
     <loc>https://blog.sondt.id.vn/post/corctf-2022/</loc>

@@ -13,7 +13,7 @@
       <link>https://blog.sondt.id.vn/about/</link>
       <pubDate>Mon, 17 Mar 2025 20:12:52 +0800</pubDate>
       <guid>https://blog.sondt.id.vn/about/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://blog.sondt.id.vn/images/spid3r.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-name-is-spid3r&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-name-is-spid3r&#34;&gt;&lt;/a&gt;&#xD;&#xA;My name is Spid3r&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Hey, I&amp;rsquo;m &lt;strong&gt;ZxTS&lt;/strong&gt;, also known by the nickname &lt;strong&gt;Spid3r&lt;/strong&gt;. I’m studying at &lt;strong&gt;SOICT - HUST&lt;/strong&gt;. Additionally, I am currently employed in the field of Malware Analysis | Security Researcher at &amp;hellip; and &lt;strong&gt;BKSec [Bach Khoa Cyber Security Student Club]&lt;/strong&gt;. I participate in CTF competitions, focusing on &lt;code&gt;Reverse Engineering&lt;/code&gt;, &lt;code&gt;Binary Exploitation&lt;/code&gt; and &lt;code&gt;Digital Forensics&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-this-site&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#about-this-site&#34;&gt;&lt;/a&gt;&#xD;&#xA;About this site&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;I’ll use this site to share writeups of CTFs or post articles related to &lt;strong&gt;cybersecurity&lt;/strong&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://blog.sondt.id.vn/images/spid3r.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-name-is-spid3r&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-name-is-spid3r&#34;&gt;&lt;/a&gt;&#xD;&#xA;My name is Spid3r&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;Hey, I&amp;rsquo;m &lt;strong&gt;ZxTS&lt;/strong&gt;, also known by the nickname &lt;strong&gt;Spid3r&lt;/strong&gt;. I’m currently studying &lt;strong&gt;Computer Engineering&lt;/strong&gt; at &lt;strong&gt;Hanoi University of Science &amp;amp; Technology (HUST)&lt;/strong&gt;.. Additionally, I am currently employed in the field of Malware Analysis | Security Researcher at &amp;hellip; and &lt;strong&gt;BKSec [Bach Khoa Cyber Security Student Club]&lt;/strong&gt;. I participate in CTF competitions, focusing on &lt;code&gt;Reverse Engineering&lt;/code&gt;, &lt;code&gt;Binary Exploitation&lt;/code&gt; and &lt;code&gt;Digital Forensics&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-this-site&#34;&gt;&#xD;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#about-this-site&#34;&gt;&lt;/a&gt;&#xD;&#xA;About this site&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;I’ll use this site to share writeups of CTFs or post articles related to &lt;strong&gt;cybersecurity&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Achievements</title>
@@ -35,6 +35,13 @@
       <pubDate>Sat, 06 Jan 2024 11:00:00 -0700</pubDate>
       <guid>https://blog.sondt.id.vn/post/ctsv_2023/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://blog.sondt.id.vn/images/ctsv_2023/featured.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Nói thật thì đây là 1 giải khá khó chịu với mình, vì ngoài độ guessing của các thử thách (forensics, mobile) thì thật ra chẳng có gì để nói cả (và rất tiếc với 1 mình mình làm thì không thể giải quyết được toàn bộ cùng 1 lúc)&lt;/p&gt;&#xA;&lt;p&gt;Giải này thì mình đăng ký team nhưng hôm thi thì chỉ có 1 mình try hard :))), lấy được top 3&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Camera an ninh: An toàn hay ảo tưởng?</title>
+      <link>https://blog.sondt.id.vn/post/camera_an_toan_hay_ao_tuong/</link>
+      <pubDate>Mon, 01 Jan 2024 01:00:00 -0700</pubDate>
+      <guid>https://blog.sondt.id.vn/post/camera_an_toan_hay_ao_tuong/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Chào mọi người, hôm nay mình muốn chia sẻ một chút về hệ thống camera của gia đình mình – đã lắp đặt từ 2018 với gần 10 chiếc cũ và một vài chiếc đời mới. Những chiếc &amp;ldquo;đời mới&amp;rdquo; thì hơn ở chỗ được tích hợp các tính năng hiện đại như xem qua app, đàm thoại và tách biệt hẳn với đám cũ kỹ chỉ biết ghi hình qua dây.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Backdoor CTF 2023 | Reverse Engineering</title>

@@ -23,17 +23,24 @@
       <description></description>
     </item>
     <item>
-      <title>Reverse Engineering</title>
-      <link>https://blog.sondt.id.vn/tags/reverse-engineering/</link>
-      <pubDate>Mon, 18 Dec 2023 11:00:00 -0700</pubDate>
-      <guid>https://blog.sondt.id.vn/tags/reverse-engineering/</guid>
+      <title>Security</title>
+      <link>https://blog.sondt.id.vn/tags/security/</link>
+      <pubDate>Mon, 01 Jan 2024 01:00:00 -0700</pubDate>
+      <guid>https://blog.sondt.id.vn/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Trick</title>
       <link>https://blog.sondt.id.vn/tags/trick/</link>
-      <pubDate>Sun, 20 Nov 2022 11:00:00 -0700</pubDate>
+      <pubDate>Mon, 01 Jan 2024 01:00:00 -0700</pubDate>
       <guid>https://blog.sondt.id.vn/tags/trick/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reverse Engineering</title>
+      <link>https://blog.sondt.id.vn/tags/reverse-engineering/</link>
+      <pubDate>Mon, 18 Dec 2023 11:00:00 -0700</pubDate>
+      <guid>https://blog.sondt.id.vn/tags/reverse-engineering/</guid>
       <description></description>
     </item>
   </channel>
